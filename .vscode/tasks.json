@@ -1,0 +1,22 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "type": "shell",
+            "label": "Build with MSVC",
+            "command": "powershell",
+            "args": [
+                "-Command",
+                "mkdir -Force ${fileDirname}\\bin; cl.exe /Zi /std:c++latest /EHsc /Fe:${fileDirname}\\bin\\${fileBasenameNoExtension}.exe ${fileDirname}/*.cpp"
+            ],
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Create bin directory and build with MSVC"
+        }
+    ]
+}
