@@ -1,45 +1,26 @@
 #include <iostream>
 
 int main(){
+    int var1{123};
+    std::cout << "var1: " << var1 << std::endl;
+    var1 = 456;
+    std::cout << "var1: " << var1 << std::endl;
 
-	int var1{123}; // Declare and initialize
-    std::cout << "var1 : "  << var1 << std::endl;
-    
-    var1 = 55; // Assign
-    std::cout << "var1 : "  << var1 << std::endl;
-    
-    std::cout << std::endl;
-
-    std::cout << "----------------" << std::endl;
-
-    double var2 {44.55}; // Declare and initialize
+    double var2{321.0};
     std::cout << "var2 : " << var2 << std::endl;
-    
-    var2 = 99.99; // Assign
+    var2 = 543.0;
     std::cout << "var2 : " << var2 << std::endl;
-    
-    std::cout << std::endl;
 
-    std::cout << "----------------" << std::endl;
-
-    std::cout << std::endl;
-    bool state{false}; // Declare and initialize
+    bool var3{};
     std::cout << std::boolalpha;
-    std::cout << "state : " << state << std::endl;
-    
-    state = true; // Assign
-    
-    std::cout << "state : " << state << std::endl;
-
-
-    //Auto type deduction
-    //Careful about auto assignments
-    auto var3 {333u}; // Declare and initialize with type deduction
-    
-    var3 = -22; // Assign negative number. DANGER!
-    
+    std::cout << "var3 : " << var3 << std::endl;
+    var3 = true;
     std::cout << "var3 : " << var3 << std::endl;
 
-   
+    auto var4{123u};
+    std::cout << "var4 : " << var4 << std::endl;
+    var4 = -22;
+    std::cout << "var4 : " << var4 << std::endl;
+
     return 0;
 }
