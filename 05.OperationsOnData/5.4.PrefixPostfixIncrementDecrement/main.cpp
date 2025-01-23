@@ -1,68 +1,29 @@
 #include <iostream>
 
 int main(){
+    int number{5};
+    int result = number + 1;
+    std::cout << "increment 1 result : " << result << std::endl;
 
-	int value { 5 };
-    
-    //Increment by one
-    value = value + 1; //6
-    std::cout << "The value is : " << value << std::endl; // 6
-    
-    value = 5; // Reset value to 5
-    
-    //Decrement by one
-    value = value - 1; // 4
-    std::cout << "The value is : " << value << std::endl; //4
-    
-    //===================================================================
+    number = 5;
+    result = number - 1;
+    std::cout << "decrement 1 result : " << result << std::endl;
 
-    
-    std::cout << "======Postfix increment and decrement======"<< std::endl;
-    //Reset value to 5
-    value = 5;
-    
-    std::cout << "The value is (incrementing) : " << value++ << std::endl; // 5
-    std::cout << "The value is : " << value << std::endl; // 6
-    
-    std::cout << std::endl;
-    
-    //Decrement with postfix
-    
-    //Reset value to 5
-    value = 5;
-    
-    std::cout << "The value is (decrementing) : " << value-- << std::endl; //5
-    std::cout << "The value is : " << value << std::endl; // 4
+    number = 5;
+    std::cout << "incrementing postfix result : " << number++ << std::endl;
+    std::cout << "incremented postfix result : " << number << std::endl;
 
+    number = 5;
+    std::cout << "decrementing postfix result : " << number-- << std::endl;
+    std::cout << "decremented postfix result : " << number << std::endl;
 
-    //===================================================================
+    number = 5;
+    std::cout << "incrementing prefix result : " << ++number << std::endl;
+    std::cout << "incremented prefix result : " << number << std::endl;
 
-    
-    std::cout << "======Prefix increment and decrement======"<< std::endl;
+    number = 5;
+    std::cout << "decrementing prefix result : " << --number << std::endl;
+    std::cout << "decremented prefix result : " << number << std::endl;
 
-    //Reset value to 5
-    value = 5;
-    
-    ++value;
-    std::cout << "The value is (prefix++) : " << value << std::endl; // 6
-    
-    //Reset value to 5
-    value = 5;
-    std::cout << "The value is (prefix++ in place) : " << ++value << std::endl; // 6
-    
-    std::cout << std::endl;
-    
-    //Prefix : Decrementing
-    
-    //Reset value to 5;
-    value = 5;
-    --value;
-    std::cout << "The value is (prefix--) : " << value << std::endl; // 4
-    
-    //Reset value to 5;
-    value = 5;
-    std::cout << "The value is (prefix-- in place) : " << --value << std::endl;//4
-
-   
     return 0;
 }

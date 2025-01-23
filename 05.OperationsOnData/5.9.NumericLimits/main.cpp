@@ -3,38 +3,27 @@
 
 int main(){
 
-	std::cout << "The range for short is from " << std::numeric_limits<short>::min() << " to " 
-        << std::numeric_limits<short>::max() << std::endl;
-        
-    std::cout << "The range for unsigned short is from " << std::numeric_limits<unsigned short>::min() << " to " 
-        << std::numeric_limits<unsigned short>::max() << std::endl;
-        
-        
-	std::cout << "The range for int is from " << std::numeric_limits<int>::min() << " to " 
-        << std::numeric_limits<int>::max() << std::endl;
-        
-    std::cout << "The range for unsigned int is from " << std::numeric_limits<unsigned int>::min() << " to " 
-        << std::numeric_limits<unsigned int>::max() << std::endl;
-        
-    std::cout << "The range for long is from " << std::numeric_limits<long>::min() << " to " 
-        << std::numeric_limits<long>::max() << std::endl;
-        
-    std::cout << "The range for float is from " << std::numeric_limits<float>::min() << " to " 
-        << std::numeric_limits<float>::max() << std::endl;
-        
-    std::cout << "The range(with lowest) for float is from " << std::numeric_limits<float>::lowest() << " to " 
-        << std::numeric_limits<float>::max() << std::endl;
-        
-    std::cout << "The range(with lowest) for double is from " << std::numeric_limits<double>::lowest() << " to " 
-        << std::numeric_limits<double>::max() << std::endl;
-        
-    std::cout << "The range(with lowest) for long double is from " << std::numeric_limits<long double>::lowest() << " to " 
-        << std::numeric_limits<long double>::max() << std::endl;
+    std::cout << "int size: " << sizeof(int) << ", range from " << std::numeric_limits<int>::min() 
+        << " to " << std::numeric_limits<int>::max() << std::endl;
+    std::cout << "unsigned int size: " << sizeof(unsigned int) << ", range from " << std::numeric_limits<unsigned int>::min() 
+        << " to " << std::numeric_limits<unsigned int>::max() << std::endl;
+    std::cout << "short int size: " << sizeof(short int) << ", range from " << std::numeric_limits<short int>::min() 
+        << " to " << std::numeric_limits<short int>::max() << std::endl;
+    std::cout << "long int size: " << sizeof(long int) << ", range from " << std::numeric_limits<long int>::min() 
+        << " to " << std::numeric_limits<long int>::max() << std::endl;
+    std::cout << "long long int size: " << sizeof(long long int) << ", range from " << std::numeric_limits<long long int>::min() 
+        << " to " << std::numeric_limits<long long int>::max() << std::endl;
+    std::cout << "unsigned long long int size: " << sizeof(unsigned long long int) << ", range from " << std::numeric_limits<unsigned long long int>::min() 
+        << " to " << std::numeric_limits<unsigned long long int>::max() << std::endl;
 
+    std::cout << "float size: " << sizeof(float) << ", range from " << std::numeric_limits<float>::min()
+        << " to " << std::numeric_limits<float>::max() << std::endl;
+    std::cout << "double size: " << sizeof(double) << ", range from " << std::numeric_limits<double>::min()
+        << " to " << std::numeric_limits<double>::max() << std::endl;
+    std::cout << "long double size: " << sizeof(long double) << ", range from " << std::numeric_limits<long double>::min()
+        << " to " << std::numeric_limits<long double>::max() << std::endl;
 
-    //Other facilities
-    //More info : https://en.cppreference.com/w/cpp/types/numeric_limits
-    std::cout << "int is signed : " << std::numeric_limits<int>::is_signed << std::endl;
-    std::cout << "int digits : " << std::numeric_limits<int>::digits << std::endl;
+    std::cout << "isdigit is " << std::numeric_limits<int>::digits << std::endl;
+    
     return 0;
 }

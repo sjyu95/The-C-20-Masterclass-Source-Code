@@ -1,25 +1,20 @@
 #include <iostream>
 
-
 int main(){
+	char var1{'a'};
+	char var2{'b'};
 
-	short int var1 {10}; // 2 bytes
-	short int var2 {20};
-	
-	char var3 {40}; //1
-	char var4 {50};
-	
-	std::cout << "size of var1 : " << sizeof(var1) << std::endl;
-	std::cout << "size of var2 : " << sizeof(var2) << std::endl;
-	std::cout << "size of var3 : " << sizeof(var3) << std::endl;
-	std::cout << "size of var4 : " << sizeof(var4) << std::endl;
-	
-	auto result1 = var1 + var2 ;
-	auto result2 = var3 + var4;
-	
-	std::cout << "size of result1 : " << sizeof(result1) << std::endl; // 4
-	std::cout << "size of result2 : " << sizeof(result2) << std::endl; // 4
-	
-   
-    return 0;
+	short var3{3};
+	short var4{4};
+
+	std::cout << "sizeof(char) is " << sizeof(var1) << std::endl;
+	std::cout << "sizeof(short) is " << sizeof(var3) << std::endl;
+
+	auto result = var3 + var4;
+	std::cout << "short + short is int size : " << sizeof(result) << std::endl;
+
+	auto result2 = var1 + var2;
+	std::cout << "char + char is int size : " << sizeof(result2) << std::endl;
+
+	return 0;
 }
