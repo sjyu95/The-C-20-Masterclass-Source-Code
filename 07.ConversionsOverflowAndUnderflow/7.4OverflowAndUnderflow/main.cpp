@@ -1,40 +1,21 @@
 #include <iostream>
 
-int main(){
+int main() {
+    std::cout << std::hex;
 
-    //Overflow 
+    // overflow
+    unsigned char data{250};
+    for (auto i = 0; i < 7; ++i) {
+        ++data;
+        std::cout << "incrementing data : " << static_cast<int>(data) << std::endl;
+    }
 
-    unsigned char data {250};
+    // underflow
+    data = 5;
+    for (auto i = 0; i < 7; ++i) {
+        --data;
+        std::cout << "decrementing data : " << static_cast<int>(data) << std::endl;
+    }
 
-    ++data;
-    std::cout << "data : " << static_cast<int>(data) << std::endl;
-
-    ++data;
-    std::cout << "data : " << static_cast<int>(data) << std::endl;
-
-    ++data;
-    std::cout << "data : " << static_cast<int>(data) << std::endl;
-
-    ++data;
-    std::cout << "data : " << static_cast<int>(data) << std::endl;
-
-    ++data; 
-    std::cout << "data : " << std::hex <<  static_cast<int>(data) << std::endl; // 255
-
-    ++data;  // Overflow
-    std::cout << "data : " << static_cast<int>(data) << std::endl; // 256
-
-    std::cout << std::dec ;
-
-
-    data = 1;
-
-    --data;
-    std::cout << "data : " << static_cast<int>(data) << std::endl;
-
-    --data;
-    std::cout << "data : " << static_cast<int>(data) << std::endl;
-
-   
     return 0;
 }
