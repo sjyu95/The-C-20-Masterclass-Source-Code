@@ -1,66 +1,28 @@
 #include <iostream>
 #include <bitset>
+#include <typeinfo>
 
+int main() {
+    unsigned short int value{0xff0u};
 
-int main(){
+    std::cout << std::showbase;
+    std::cout << std::bitset<16>(value) << std::hex << ", value(hex) : " << value << std::dec << ", value(dec): " << value << ", sizeof : " << sizeof(value) << std::endl;
 
-	unsigned short int value {0xff0u};
+    auto tmp1 = value << 1;
+    std::cout << std::bitset<16>(tmp1) << std::hex << ", value(hex) : " << tmp1 << std::dec << ", value(dec): " << tmp1 << ", sizeof : " << sizeof(tmp1) << std::endl;
+    std::cout << "type (deduction to int) : " << typeid(tmp1).name() << std::endl;
 
-	std::cout << "Size of short int " << sizeof(short int) <<  std::endl;//  16 bits
-	
-    std::cout << "value : " << std::bitset<16>(value) 
-    << ", dec : " << value << std::endl;
+    for (auto i = 0; i < 5; ++i) {
+        value = static_cast<unsigned short int>(value << 1);
+        std::cout << std::bitset<16>(value) << std::hex << ", value(hex) : " << value << std::dec << ", value(dec): " << value << ", sizeof : " << sizeof(value) << std::endl;
+        std::cout << "type : " << typeid(value).name() << std::endl;
+    }
 
-    //Shift left by one bit
-    value = static_cast<unsigned short int>(value << 1);
-    std::cout << "value : " << std::bitset<16>(value) 
-    << ", dec : " << value << std::endl;
+    for (auto i = 0; i < 5; ++i) {
+        value = static_cast<unsigned short int>(value >> 1);
+        std::cout << std::bitset<16>(value) << std::hex << ", value(hex) : " << value << std::dec << ", value(dec): " << value << ", sizeof : " << sizeof(value) << std::endl;
+        std::cout << "type : " << typeid(value).name() << std::endl;
+    }
 
-    //Shift left by one bit
-    value = static_cast<unsigned short int>(value << 1);
-    std::cout << "value : " << std::bitset<16>(value) 
-    << ", dec : " << value << std::endl;
-
-    //Shift left by one bit
-    value = static_cast<unsigned short int>(value << 1);
-    std::cout << "value : " << std::bitset<16>(value) 
-    << ", dec : " << value << std::endl;
-
-
-    //Shift left by one bit
-    value = static_cast<unsigned short int>(value << 1);
-    std::cout << "value : " << std::bitset<16>(value) 
-    << ", dec : " << value << std::endl;
-
-    //Shift left by one bit
-    value = static_cast<unsigned short int>(value << 1);
-    std::cout << "value : " << std::bitset<16>(value) 
-    << ", dec : " << value << std::endl;
-
-    //Shift right by one bit
-    value = static_cast<unsigned short int>(value >> 1);
-    std::cout << "value : " << std::bitset<16>(value) 
-    << ", dec : " << value << std::endl;
-
-
-    //Shift by multiple bits in one go
-    //Shift right by four bits 
-    value = static_cast<unsigned short int>(value >> 4);
-    std::cout << "value : " << std::bitset<16>(value) 
-    << ", dec : " << value << std::endl;
-
-
-
-    //
-    std::cout << "value : " << (value >> 1) << std::endl;
-
-
-
-
-
-
-
-
-   
     return 0;
 }

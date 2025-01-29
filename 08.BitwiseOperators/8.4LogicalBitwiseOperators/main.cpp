@@ -1,62 +1,20 @@
 #include <iostream>
-#include <iomanip>
 #include <bitset>
+#include <iomanip>
 
-int main(){
+int main() {
+	unsigned char val1{0b00000011};
+	unsigned char val2{0b00000101};
 
-    int COLUMN_WIDTH {20};
-    unsigned char value1 {0x3}; // 0000 0011
-    unsigned char value2 {0x5}; // 0000 0101
-	
-
-    std::cout << std::setw(COLUMN_WIDTH) << "value1 : " 
-		<< std::setw(COLUMN_WIDTH) << std::bitset<8>(value1) << std::endl; 
-		
-	std::cout << std::setw(COLUMN_WIDTH) << "value2 : "
-		<< std::setw(COLUMN_WIDTH) << std::bitset<8>(value2) << std::endl;
-    
-	//AND
+	std::cout << "val1 : " << std::bitset<8>(val1) << std::endl;
+	std::cout << "val2 : " << std::bitset<8>(val2) << std::endl;
 	std::cout << std::endl;
-	std::cout << "Bitwise AND :  " << std::endl;
-    std::cout << std::setw(COLUMN_WIDTH) << "value1 & value2 : "
-		<< std::setw(COLUMN_WIDTH) << std::bitset<8>(value1 & value2) << std::endl;
-    std::cout << std::endl;
 
-	//OR
-	std::cout << std::endl;
-	std::cout << "Bitwise OR :  " << std::endl;
-    std::cout << std::setw(COLUMN_WIDTH) << "value1 | value2 : "
-		<< std::setw(COLUMN_WIDTH) << std::bitset<8>(value1 | value2) << std::endl;
-    std::cout << std::endl;
+	std::cout << std::setw(18) << "bitwise & : " << std::setw(12) <<  std::bitset<8>(val1 & val2) << std::endl;
+	std::cout << std::setw(18) << "bitwise | : " << std::setw(12) <<  std::bitset<8>(val1 | val2) << std::endl;
+	std::cout << std::setw(18) << "bitwise ~val1 : " << std::setw(12) <<  std::bitset<8>(~val1) << std::endl;
+	std::cout << std::setw(18) << "bitwise ~val2 : " << std::setw(12) <<  std::bitset<8>(~val2) << std::endl;
+	std::cout << std::setw(18) << "bitwise ^ : " << std::setw(12) <<  std::bitset<8>(val1 ^ val2) << std::endl;
 
-
-    //NOT
-	std::cout << std::endl;
-    std::cout << "Bitwise NOT " << std::endl;
-	
-    std::cout << std::setw(COLUMN_WIDTH) << "~value1 : "
-		<< std::setw(COLUMN_WIDTH) <<  std::bitset<8>(~value1) << std::endl;
-		
-    std::cout << std::setw(COLUMN_WIDTH) << "~value2 : "
-		<< std::setw(COLUMN_WIDTH) << std::bitset<8>(~value2) << std::endl;
-		
-    std::cout << std::setw(COLUMN_WIDTH) << "~01011001 : "
-		<< std::setw(COLUMN_WIDTH) << std::bitset<8>(~0b01011001) << std::endl;//Using bin literal
-		
-    std::cout << std::setw(COLUMN_WIDTH) << "~01011001 : "
-		<< std::setw(COLUMN_WIDTH) << std::bitset<8>(~0x59) << std::endl;//Using hex literal
-    std::cout << std::endl; 
-
-
-	//XOR
-	std::cout << std::endl;
-	std::cout << "Bitwise XOR :  " << std::endl;
-    std::cout << std::setw(COLUMN_WIDTH) << "value1 ^ value2 : "
-		<< std::setw(COLUMN_WIDTH) << std::bitset<8>(value1 ^ value2) << std::endl;
-    std::cout << std::endl;
-
-
-
-   
-    return 0;
+	return 0;
 }
