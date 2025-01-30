@@ -1,23 +1,26 @@
 #include <iostream>
 
-int global_var1{23}; // global variable
+constinit int global_var{10};
 
-
-void some_function(){
-    int local_var{10};
-    std::cout << "Inside function global_var : " << global_var1 << std::endl;
-    std::cout << "Inside functoin local_var : " << local_var << std::endl;
+void some_func() {
+    int local_var_in_func{3};
+    std::cout << "local_var in func is " << local_var_in_func << std::endl;
 }
 
-void some_other_function(){
-    //local_var = 5;
-}
+int main() {
+    int local_var{1};
+    int local_var2{12};
 
+    {
+        int local_var{2};
+        std::cout << "local_var is " << local_var << std::endl;
+        std::cout << "local_var2 is " << local_var2 << std::endl;
+    }
 
+    std::cout << "local_var is " << local_var << std::endl;
+    std::cout << "global_var is " << global_var << std::endl;
 
-int main(){
- std::cout << "Inside main function global_var : " << global_var1 << std::endl;
- //local_var = 5;
-   
+    some_func();
+
     return 0;
 }
