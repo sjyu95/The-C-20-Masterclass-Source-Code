@@ -1,21 +1,16 @@
 #include <iostream>
 
-
-int main(){
-
-    int condition {-5};
+int main() {
+    int condition{0};
 
     bool bool_condition = condition;
-    std::cout << std::boolalpha;
 
-
-    if(bool_condition){
-        std::cout << "We have a " << bool_condition << " in our variable " << std::endl; // different from 0
-    }else
-    {
-        std::cout << "We have " << bool_condition << " in our variable" << std::endl; // zero
+    if (bool_condition) {
+        std::cout << "condition value is " << condition << ". if integral type no 0, it's evaluted " << bool_condition << std::endl;
     }
-    
-    
+    else {
+        std::cout << "if condition value is 0, it's evalted " << bool_condition << std::endl;
+    }
+
     return 0;
 }

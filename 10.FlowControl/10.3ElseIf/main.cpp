@@ -1,40 +1,31 @@
 #include <iostream>
 
-
-// Tools
-const int Pen{ 10 }; 
-const int Marker{ 20 };
-const int Eraser{ 30 };
-const int Rectangle{ 40 };
-const int Circle{ 50 };
-const int Ellipse{ 60 };
-
-
-int main(){
-
-    int tool {Eraser};
-
-    if (tool == Pen) {
-        std::cout << "Active tool is pen" << std::endl;
-        //Do the actual painting
-    }
-    else if (tool == Marker) {
-        std::cout << "Active tool is Marker" << std::endl;
-    }
-    else if (tool == Eraser) {
-        std::cout << "Active tool is Eraser" << std::endl;
-    }
-    else if (tool == Rectangle) {
-        std::cout << "Active tool is Rectangle" << std::endl;
-    }
-    else if (tool == Circle) {
-        std::cout << "Active tool is Circle" << std::endl;
-    }
-    else if (tool == Ellipse) {
-        std::cout << "Active tool is Ellipse" << std::endl;
-    }
-
-    std::cout << "Moving on" << std::endl;
+constexpr int pen{10}, marker{20}, erasier{30};
+constexpr int retangle{100}, triangle{200}, ellipse{300};
     
+int main(){
+    int tool{pen};
+
+    if (tool == pen) {
+        std::cout << "Active tool is pen." << std::endl;
+    }
+    if (tool == marker) {
+        std::cout << "Active tool is marker." << std::endl;
+    }
+    if (tool == erasier) {
+        std::cout << "Active tool is erasier." << std::endl;
+    }
+    if (tool == retangle) {
+        std::cout << "Active tool is retangle." << std::endl;
+    }
+    if (tool == triangle) {
+        std::cout << "Active tool is triangle." << std::endl;
+    }
+    if (tool == ellipse) {
+        std::cout << "Active tool is ellipse." << std::endl;
+    }
+
+    std::cout << "Moving on " << std::endl;
+
     return 0;
 }

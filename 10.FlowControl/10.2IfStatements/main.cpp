@@ -1,109 +1,41 @@
 #include <iostream>
 
-
 int main(){
+    int number1{55}, number2{66};
 
-	int number1 {75};
-    int number2 {60};
-    bool result = (number1 < number2);//Expression yielding the condition
-    
-    /*
-	
-	std::cout << std::boolalpha << "result : " << result << std::endl; 
-	
-	std::cout << std::endl;
-	std::cout << "free standing if statement" << std::endl;
-   
-    //if(result){
-	if(result == true){
-        std::cout << number1 << " is less than " << number2 << std::endl;
+    bool result = (number1 < number2);
+    std::cout << std::boolalpha;
+
+    if (result == true) {
+        std::cout << "number1 < number2 is " << result << std::endl;
     }
-    
-    //if(!result){
-	if(!(result == true)){
-        std::cout << number1 << " is NOT less than " << number2 << std::endl;
+    if (!(result == true)) {
+        std::cout << "number1 >= number2 is " << result << std::endl;
     }
 
-    */
-
-
-   	//Using else
-    /*
-	std::cout << std::endl;
-	std::cout << "using the else clause : " << std::endl;
-	
-	if(result == true){
-        std::cout << number1 << " is less than " << number2 << std::endl;
-    }else{
-        std::cout << number1 << " is NOT less than " << number2 << std::endl;
+    if (result) {
+        std::cout << "number1 < number2 is " << result << std::endl;
+    } else {
+        std::cout << "number1 >= number2 is " << result << std::endl;
     }
-    */
 
+    // nested if statements
+    bool red{false}, green{false}, yello{true}, policy_stop{true};
 
-	//Use expression as condition directly
-    /*
-	std::cout << std::endl;
-	std::cout << "Using expression as condition : " << std::endl;
-	
-	if(number1 < number2){
-        std::cout << number1 << " is less than " << number2 << std::endl;
-    }else{
-        std::cout << number1 << " is NOT less than " << number2 << std::endl;
+    if (red) {
+        std::cout << "Stop because of red light" << std::endl;
     }
-    */
-
-
-	//Nesting if statements
-	std::cout << std::endl;
-	std::cout << "Nesting if statements" << std::endl;
-	
-    bool red = false;
-    bool green {true};
-    bool yellow {false};
-    bool police_stop{true};
-    
-    /*
-     *      If green : go
-     *      If red, yellow : stop
-     *      If green and police_stop : stop
-     * */
-     /*
-     if(red){
-         std::cout << "Stop" << std::endl;
-     }
-     if(yellow){
-         std::cout << "Slow down" << std::endl;
-     }
-	 if(green){
-		 std::cout << "Go" << std::endl;
-	 }
-     */
-
-    /*
-    std::cout << std::endl;
-	 std::cout << "Police officer stops(verbose)" << std::endl;
-	 if(green){
-         if(police_stop){
-             std::cout << "Stop" << std::endl;
-         }
-         else{
-             std::cout << "Go" << std::endl;
-         }
-
-     }
-     */
-
-
-     std::cout << std::endl;
-	 std::cout << "Police officer stops(less verbose)" << std::endl;
-	 if(green && !police_stop){
-         std::cout << "Go" << std::endl;
-     }else{
-         std::cout << "Stop" << std::endl;
-     }
-
-
-    
+    if (green) {
+        std::cout << "Go because of red light" << std::endl;
+    }
+    if (yello) {
+        if (policy_stop) {
+            std::cout << "Stop because of yellow light and policy stop" << std::endl;
+        }
+        else {
+            std::cout << "Slow down because of yello light" << std::endl;
+        }
+    }
 
     return 0;
 }

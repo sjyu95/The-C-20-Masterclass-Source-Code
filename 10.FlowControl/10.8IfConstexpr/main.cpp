@@ -1,14 +1,14 @@
 #include <iostream>
 
-
 int main(){
-   
-   constexpr bool condition {false};
+    //constexpr int result{true};
+    //if constexpr(result) {
+    if constexpr( (120 > 100) ? true : false ) {
+        std::cout << "result is true. evaluated in compile time." << std::endl;
+    }
+    else {
+        std::cout << "result is false. evaluated in compile time." << std::endl;
+    }
 
-   if constexpr (condition){
-       std::cout << "Condition is true" << std::endl;
-   }else{
-       std::cout << "Condition is false" << std::endl;
-   }
     return 0;
 }

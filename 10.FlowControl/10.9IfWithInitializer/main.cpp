@@ -1,26 +1,19 @@
 #include <iostream>
 
-
-
 int main(){
+	bool go{false};
 
-	
-	bool go {true};
-
-	if(int speed {10};go){
-        std::cout << "speed : " << speed << std::endl;
-		
-		if(speed > 5){
-			std::cout << "Slow down!" << std::endl;
-		}else{
-			std::cout << "All good!" << std::endl;
+	if (int speed{40}, a{1}; go) {
+		if (speed > 30) {
+			std::cout << "Slow down. speed limit is 30, but your speed is " << speed << std::endl;
 		}
-	}else{
-        std::cout << "speed : " << speed << std::endl;
-		std::cout << "Stop" << std::endl;
+		else {
+			std::cout << "Go. Your speed " << speed << " is good." << std::endl; 
+		}
+	}
+	else {
+		std::cout << "Stop. Your speed is " << speed << std::endl; 
 	}
 
-    //std::cout << "Out of the if block , speed : " << speed << std::endl;
-   
-    return 0;
+	return 0;
 }

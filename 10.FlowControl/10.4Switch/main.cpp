@@ -1,66 +1,40 @@
 #include <iostream>
-#include <string>
 
-
-// Tools
-const int Pen{ 10 };
-const int Marker{ 20 };
-const int Eraser{ 30 };
-const int Rectangle{ 40 };
-const int Circle{ 50 };
-const int Ellipse{ 60 };
-
-
+constexpr int pen{10}, marker{20}, erasier{30};
+constexpr int retangle{100}, triangle{200}, ellipse{300};
+    
 int main(){
+    int tool{retangle};
 
-    int tool {Eraser};
+     switch (tool) {
+          case pen: {
+               std::cout << "Active tool is pen." << std::endl;
+          }
+          break;
+          
+          case marker: {
+               std::cout << "Active tool is marker." << std::endl;
+          }
+          break;
 
-    switch (tool)
-    {
-        case Pen : {
-             std::cout << "Active tool is Pen" << std::endl;
-        }
-        break;
+          case erasier: {
+               std::cout << "Active tool is erasier." << std::endl;
+          }
+          break;
 
-        case Marker : {
-             std::cout << "Active tool is Marker" << std::endl;
-        }
-        break;
+          case retangle:
+          case triangle:
+          case ellipse: {
+               std::cout << "drawing shape" << std::endl;
+          }
+          break;
 
+          default: {
+               std::cout << "no found match" << std::endl;
+          }
+     }
 
-        case Eraser :
-        case Rectangle : 
-        case Circle : {
-             std::cout << "Drawing Shapes" << std::endl;
-        }
-        break;
+    std::cout << "Moving on " << std::endl;
 
-        case Ellipse : {
-             std::cout << "Active tool is Ellipse" << std::endl;
-        }
-        break;
-    
-        default: {
-            std::cout << "No match found" << std::endl;
-        }
-            break;
-    }
-
-    std::cout << "Moving on" << std::endl;
-
-
-    /*
-    // Condition can only be integer of enum (We'll learn about enums later in the course)
-    std::string name {"John"};
-    switch (name) // Compiler error!
-    {
-    
-    }
-    */
-
-
-
-
-   
     return 0;
 }
