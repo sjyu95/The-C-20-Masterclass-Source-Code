@@ -1,75 +1,37 @@
 #include <iostream>
 #include <iomanip>
 
-int main(){
+int main() {
+    constexpr size_t ROW_COUNT{15};
+    constexpr size_t COL_COUNT{5};
+    size_t row{}, col{0};
 
-    //Setw on numbers before you print them
-	const size_t ROWS {12}; 
-	const size_t COLS {3};
-
-
-    /*
-	std::cout << "Tabular data visualization with nested for loops : " << std::endl;
-	
-
-	
-	for (size_t row{0} ; row < ROWS ; ++ row){
-        
-		for (size_t col{0} ; col < COLS ; ++col){
-
-			std::cout  << "( row "  <<  std::setw(2) << row << ",col " << std::setw(2) <<  col << ")  ";
-		}
-        std::cout << std::endl;
-    }
-
-    */
-
-
-   //While loop
-   /*
-	std::cout << std::endl;
-	std::cout << "Tabular data visualization with nested while loops : " << std::endl;
-	
-	//Remember to reset col to 0 after the inner loop is done for the next row 
-    // to use the right columns.
-    size_t row {0};
-    size_t col {0};
-    
-    while(row < ROWS){
-        
-        while(col < COLS){
-            std::cout  << "( row " << std::setw(2) <<  row << ",col "<< std::setw(2) <<  col << ") ";
-            ++col;
+    for (; row < ROW_COUNT; ++row) {
+        for (size_t col{}; col < COL_COUNT; ++col) {
+            std::cout << "(row " << std::setw(2) << row << ", col " << std::setw(2) << col << ") "; 
         }
         std::cout << std::endl;
-        col = 0 ;   // Reset col to 0 to allow printing from col 0 . col is in main
-                    // function local scope now.
-        ++row;
     }
 
-    */
-
-
-
-	std::cout << std::endl;
-	std::cout << "Tabular data visualization with nested do while loops : " << std::endl;
-	
-    size_t row = 0;
-    size_t col = 0;
-    
-    do { // row
-    
-        do {
-			std::cout  << "( row " << std::setw(2) <<  row << ",col "<< std::setw(2) <<  col << ")   ";
+    row = 0, col = 0; // Causion!!
+    while (row < ROW_COUNT) {
+        while (col < COL_COUNT) {
+            std::cout << "(row " << std::setw(2) << row << ", col " << std::setw(2) << col << ") "; 
             ++col;
-        }while(col < COLS);
-        
+        }
+        ++row, col = 0;
         std::cout << std::endl;
-        col = 0 ; 	// Reset col to 0 to allow printing from col 0 . col is in main
-					// function local scope now.
-        ++row;
-    }while(row < ROWS);
+    }
 
-   
+    row = 0, col = 0;
+    do {
+        do {
+            std::cout << "(row " << std::setw(2) << row << ", col " << std::setw(2) << col << ") "; 
+            ++col;
+        } while (col < COL_COUNT);
+        ++row, col = 0;
+        std::cout << std::endl;
+    } while (row < ROW_COUNT);
+    
     return 0;
 }

@@ -1,12 +1,12 @@
 #include <iostream>
 
-int main(){
+int main() {
+    int arr[]{1,2,3,4,5};
 
-
-    for(double multiplier{4}; auto i : {1,2,3,4,5,6,7,8,9,10}){
-        std::cout << "result : " << ( i * multiplier) << std::endl;
+    for (auto multiplier1{4.0}, multiplier2{1.0}; const auto i : arr) {
+        std::cout << i << " * " << multiplier1 << " = " << i * multiplier1 << std::endl; 
+        std::cout << i << " * " << multiplier2 << " = " << i * multiplier2 << std::endl; 
     }
 
-   
     return 0;
 }

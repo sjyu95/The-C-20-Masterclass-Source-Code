@@ -1,35 +1,15 @@
 #include <iostream>
 
+int main() {
+    // for (unsigned i{0}; ; ++i) {
+    //     std::cout << i << std::endl;
+    // }
 
-int main(){
-   
-
-   //Infinite loop : for loop
-   /*
-   for(size_t i{};true ; ++i){
-       std::cout << i <<  " : I love C++" << std::endl;
-   }
-   */
-
-    //Infinite loop : while loop
-    /*
-    size_t i{0};
-
-    while(true){
-        std::cout << i  << " : I love C++" << std::endl;
+    unsigned i{0};
+    do {
+        std::cout << i << std::endl;
         ++i;
-    }
-    */
+    } while (true);
 
-
-    //Infinite loop : do while loop
-
-    size_t i{0};
-
-    do{
-        std::cout << i  << " : I love C++" << std::endl;
-        ++i;
-    }while(true);
-    
     return 0;
 }

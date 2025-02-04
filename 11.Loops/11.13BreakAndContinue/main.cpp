@@ -1,67 +1,50 @@
 #include <iostream>
 
+int main() {
+    constexpr size_t COUNT{20};
+    size_t i{0};
 
-int main(){
-
-
-    /*
-    // break and continue : for loops
-    const size_t COUNT{20};
-
-
-    for(size_t i{0} ; i < COUNT ; ++i ){
-
-        if(i==5)
+    for (; i < COUNT; ++i) {
+        if (i == 5)
             continue;
-
-        if(i == 11)
-            break; // Breaks out of the loop
+        if (i == 11)
+            break;
         std::cout << "i : " << i << std::endl;
     }
-    std::cout << "Loop done!" << std::endl;
-    */
 
+    std::cout << std::endl;
 
-   // break and continue : while loop
-    /*
-   size_t i{0};
-
-   while (i < 20){
-
-       if(i==5){
+    i = 0;
+    while (i < COUNT) {
+        if (i == 5) {
             ++i;
             continue;
-       }
+        }
 
-     if(i==11)
-        break;
-
+        if (i == 11) {
+            break;
+        }
 
         std::cout << "i : " << i << std::endl;
         ++i;
+    } 
+    
+    std::cout << std::endl;
 
-   }
-   std::cout << "Loop done!" << std::endl;
-   */
-
-
-  //break and continue : do while loop
-  size_t i{0};
-
-  do{
-      if(i==5){
+    i = 0;
+    do {
+        if (i == 5) {
             ++i;
             continue;
-       }
+        }
 
-     if(i==11)
-        break;
-
+        if (i == 11) {
+            break;
+        }
 
         std::cout << "i : " << i << std::endl;
         ++i;
+    } while (i < COUNT);
 
-  }while(i <20);
-  
     return 0;
 }

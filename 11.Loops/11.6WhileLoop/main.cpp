@@ -1,31 +1,13 @@
 #include <iostream>
 
-int main(){
+int main() {
+    constexpr size_t COUNT{10};
 
-	//Print I love C++ 10 times
-    /*
-    std::cout << "I love C++" << std::endl;
-    std::cout << "I love C++" << std::endl;
-    std::cout << "I love C++" << std::endl;
-    std::cout << "I love C++" << std::endl;
-    std::cout << "I love C++" << std::endl;
-    std::cout << "I love C++" << std::endl;
-    std::cout << "I love C++" << std::endl;
-    std::cout << "I love C++" << std::endl;
-    std::cout << "I love C++" << std::endl;
-    std::cout << "I love C++" << std::endl;
-    */
-
-
-    const size_t COUNT{100};
-    size_t i{0}; // Iterator declaration
-
-    while(i < COUNT ){ // Test
-       std::cout << i << " : I love C++" << std::endl;
-
-       ++i; // Incrementation 
+    unsigned i{0};
+    while(i < COUNT) {
+        std::cout << i << " : I love C++" << std::endl;
+        ++i;
     }
-    std::cout << "Loop done!" << std::endl;
-   
+
     return 0;
 }
