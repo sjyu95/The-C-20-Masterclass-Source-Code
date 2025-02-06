@@ -1,33 +1,10 @@
 #include <iostream>
 
-int main(){
+int main() {
+    int arr[]{1,2,3,4,5};
 
-    int scores [] {1,2,5};
+    std::cout << "if cpp17, array size is " << std::size(arr) << std::endl;
+    std::cout << "array size is " << sizeof(arr)/sizeof(arr[0]) << std::endl;
 
-   
-    int count { std::size(scores)}; // std::size( C++17)
-
-    std::cout << "sizeof(scores) : " << sizeof(scores) << std::endl;
-    std::cout << "sizeof(scores[0]) : " << sizeof(scores[0]) << std::endl;
-    std::cout << "count : " << count << std::endl;
-
-
-
-    /*
-    int count {sizeof(scores)/sizeof(scores[0])};
-
-
-    for(size_t i {0} ; i < count ; ++i){
-        std::cout << "scores [" << i << "] : " << scores[i] << std::endl;
-    }
- 
-
-   //Range based for loop
-    for ( auto i : scores){
-            std::cout << "value  : " << i << std::endl;       
-    }
-    */
-   
-    
     return 0;
 }
