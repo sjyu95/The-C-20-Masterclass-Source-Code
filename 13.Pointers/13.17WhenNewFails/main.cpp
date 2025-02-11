@@ -1,42 +1,25 @@
 #include <iostream>
 
-int main(){
+int main() {
+    int *p_number{};
 
-    /*
-    //int * data = new int[10000000000000000]; // 
-
-    for(size_t i{0} ; i < 10000000 ; ++i){
-        int * data = new int[100000000];
+    for (size_t i{};; i++) {
+        try {
+            p_number = new int[10000000]{};
+        } catch (std::exception& ex) {
+            std::cout << i << " : cache exception : " << ex.what() << std::endl;
+            break;
+        }    
     }
-    */
-
-   //exception
-   /*
-    for(size_t i{0} ; i < 100 ; ++i){
-        try{
-            int * data = new int[1000000000];
-        }catch(std::exception& ex){
-            std::cout << "  Something went wrong : " << ex.what() << std::endl;
-        }
-    }
-    */
-
-
-   //std::nothrow
-    for(size_t i{0} ; i < 100 ; ++i){
-   
-        int * data = new(std::nothrow) int[1000000000];
-
-        if(data!=nullptr){
-            std::cout << "Data allocated" << std::endl;
-        }else{
-            std::cout << "Data allocation failed" << std::endl;
-        }
-       
-    }
-
-
-    std::cout << "Program ending well" << std::endl;
     
+    int *p_number2{ new(std::nothrow) int[10000000]{} };
+    if (p_number2) {
+        std::cout << "sizeof(p_number2) is " << sizeof(*p_number2) << std::endl; // size of 1th element is 4.
+    } else {
+        std::cout << "nothrow~" << std::endl;
+    }
+
+    std::cout << "End~!" << std::endl;
+
     return 0;
 }

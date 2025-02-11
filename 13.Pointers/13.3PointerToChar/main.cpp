@@ -1,18 +1,18 @@
 #include <iostream>
 
+int main() {
+    const char * message{ "Hello world!"};
 
-int main(){
-
-    const char * message {"Hello World!"};
     std::cout << "message : " << message << std::endl;
-
-    //*message = "B"; // Compiler error
     std::cout << "*message : " << *message << std::endl;
 
-    //Allow users to modify the string
-    char message1[] {"Hello World!"};
-    message1[0] = 'B';
+    char message1[]{"Hello world!"};
+    message1[0] = 'J';
+
     std::cout << "message1 : " << message1 << std::endl;
-    
+    std::cout << "*message1 : " << *message1 << std::endl;
+    std::cout << "&message : " << &message << std::endl;
+    std::cout << "&message1 : " << &message1 << std::endl;
+
     return 0;
 }

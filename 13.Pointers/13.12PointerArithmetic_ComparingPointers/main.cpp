@@ -1,25 +1,16 @@
 #include <iostream>
 
+int main() {
+    int arr[]{ 9,8,7,6,5,4,3,2,1,0 };
 
-int main(){
-    
-    int scores[10] {11,12,13,14,15,16,17,18,19,20};
-    
-    int * pointer1 {&scores[0]};
-    int * pointer2 {&scores[8]};
-	
-    //Can also compare pointers
-    
-    //The further you go in the array, the bigger the address
-    
-    std::cout << "Comparing pointers : " <<std::boolalpha <<  std::endl;
-	
-    std::cout << "pointer1 > pointer2 : " <<  (pointer1 > pointer2) << std::endl;
-    std::cout << "pointer1 < pointer2 : " << (pointer1 < pointer2) << std::endl;
-    std::cout << "pointer1 >= pointer2 : " <<  (pointer1 >= pointer2) << std::endl;
-    std::cout << "pointer1 <= pointer2: " << (pointer1 <= pointer2) << std::endl;
-    std::cout << "pointer1 == pointer2 : " <<  (pointer1 == pointer2) << std::endl;
-    std::cout << "pointer1 != pointer2 : " << (pointer1 != pointer2) << std::endl;
-    
+    int *p_arr0{&arr[0]}, *p_arr7{arr+7};
+
+    std::cout << "p_arr0 : " << p_arr0 << std::endl;
+    std::cout << "p_arr7 : " << p_arr7 << std::endl; 
+    std::cout << std::boolalpha;
+    std::cout << "p_arr0 <= p_arr7 is " << (p_arr0 <= p_arr7) << std::endl; 
+    std::cout << "p_arr0 >= p_arr7 is " << (p_arr0 >= p_arr7) << std::endl; 
+    std::cout << "p_arr0 == p_arr7 is " << (p_arr0 == p_arr7) << std::endl; 
+
     return 0;
 }
