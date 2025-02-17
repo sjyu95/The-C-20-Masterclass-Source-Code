@@ -1,73 +1,38 @@
 #include <iostream>
-#include <string>
 
-int main(){
-    /*
-    //The bad way to do things
-    std::string todo_list {"\tClean the house\n\tWalk the dog\n\tDo laundry\n\tpick groceries"};
-    std::string windows_path {"D:\\sandbox\\testProject\\hello.txt"};
-	std::string linux_path {"/home/username/files/hello.txt"};
-    std::string hint {" \"\\\\\" escapes a backslash character like \\."};
-	
-	std::cout << "todo_list : " << std::endl;
-	std::cout << todo_list << std::endl;
-	std::cout << "windows_path : " << windows_path << std::endl;
-	std::cout << "linux_path : " << linux_path << std::endl;
-	std::cout << "hint : " << hint << std::endl;
-    */
+int main() {
+    std::string message{R"(Introductions:
+        My name is Sejung.
+        I'm from South Korea.
+    )"};
+    message.append(R"(
+        C:\TOOLS\MinGW)");
+    message.append(R"(
+        \noctal 65: \101, \\101
+    )");
+    message.append(R"(
+        hex 65: \x41, \\x41
+    )");
 
-   /*
-   //Use raw string literals
-   std::string to_do_list {R"(  Clean the house
-   Walk the dog
-   Do laundry
-   Pick groceries)"};
+    std::cout << message << std::endl;
 
-   std::cout << "to_do_list : " << std::endl;
-   std::cout << to_do_list << std::endl;
-   */
+    std::string message2 = R"---(R"(C:\TOOLS\MinGW)")---";
+    std::cout << message2 << std::endl;
 
-  /*
-  //Raw string literals with assignments
-  std::string to_do_list =   R"(
-	Clean the house
-	Walk the dog
-	Do Laundry
-	Pick groceries
-    )";
+    std::string jsonstr{
+        R"json(
+            {"key" : "value"}
+        )json" 
+    };
+    std::cout << jsonstr << std::endl;
 
-   std::cout << "to_do_list : " << std::endl;
-   std::cout << to_do_list << std::endl;
-   */
+    // std::string message3 {R"(He said :  R"(Stay out of this)" and left)"};
+    std::string message3 {R"(He said :  ("Stay out of this") and left)"};
+    std::cout << "message3 : " << message3 << std::endl;
 
-  /*
-  //Raw string literals with assignments
-  const char* c_string {  R"(
-	Clean the house
-	Walk the dog
-	Do Laundry
-	Pick groceries
-    )"} ;
-
-   std::cout << "to_do_list : " << std::endl;
-   std::cout << c_string << std::endl;
-   */
-
-    /*
-    //Fixing other escaped strings
-    std::string windows_path1 {R"(D:\sandbox\testProject\hello.txt)"};
-	std::string linux_path1 {R"(/home/username/files/hello.txt)"};
-    std::string hint1 {R"("\\" escapes a backslash character like \.)"};	
-	
-	std::cout << "windows_path1 : " << windows_path1 << std::endl;
-	std::cout << "linux_path1 : " << linux_path1 << std::endl;
-	std::cout << "hint1 : " << hint1 << std::endl;
-    */
-
-   //Problematic raw string literals
-   std::string sentence {R"--(The message was "(Stay out of this!)")--"};
-
-   std::cout << "sentence : " << sentence << std::endl;
+    // std::string message4 {R"(He said :  )"Stay out of this"( and left)"};
+    std::string message4 {R"*(He said :  )"Stay out of this"( and left)*"};
+    std::cout << "message4 : " << message4 << std::endl;
 
     return 0;
 }

@@ -1,82 +1,41 @@
 #include <iostream>
-#include <string>
 
+int main() {
+    std::string message1{"Hello world"};
+    std::string message2;
+    std::string message3;
 
-int main(){
+    std::cout << "message1.empty is " << std::boolalpha << message1.empty() << std::endl;
+    std::cout << "message2.empty is " << std::boolalpha << message2.empty() << std::endl;
+    std::cout << "message3.empty is " << std::boolalpha << message3.empty() << std::endl;
 
-    /*
-    std::string str1 {"Hello World"};
-    std::string str2;
-    std::string str3{};
-    
-    //Empty
-    std::cout << std::endl;
-    std::cout << "std::string::empty() : " << std::endl;
-    std::cout << "str1 is empty : " << std::boolalpha << str1.empty() << std::endl;
-    std::cout << "str2 is empty : " << std::boolalpha << str2.empty() << std::endl;
-    std::cout << "str3 is empty : " << std::boolalpha << str3.empty() << std::endl;
+    std::cout << "message1.size is " << message1.size() << std::endl;
+    std::cout << "message2.size is " << message2.size() << std::endl;
+    std::cout << "message3.size is " << message3.size() << std::endl;
 
-    //Size
-    std::cout << std::endl;
-    std::cout << "std::string::size() : " << std::endl;
-    std::cout << "str1 contains " << str1.size() << " characters" << std::endl; //11
-    std::cout << "str2 contains " << str2.size() << " characters" << std::endl; // 0
-    std::cout << "str3 contains " << str3.size() << " characters" << std::endl; // 0
+    std::cout << "message1.length is " << message1.length() << std::endl;
+    std::cout << "message2.length is " << message2.length() << std::endl;
+    std::cout << "message3.length is " << message3.length() << std::endl;
 
-   //Length
-    std::cout << std::endl;
-    std::cout << "std::string::length() : " << std::endl;
-    std::cout << "str1 contains " << str1.length() << " characters" << std::endl; //11
-    std::cout << "str2 contains " << str2.length() << " characters" << std::endl; // 0
-    std::cout << "str3 contains " << str3.length() << " characters" << std::endl; // 0
-    */
+    std::cout << "message1.max_size is " << message1.max_size() << std::endl;
+    std::cout << "message2.max_size is " << message2.max_size() << std::endl;
+    std::cout << "message3.max_size is " << message3.max_size() << std::endl;
 
-    //max_size : max number of characters a string can have on the system
-    /*
-	//Prints : 2147483647 on my system
-    std::string str1 {"Hello World"};
-    std::cout << "std::string can hold " << str1.max_size() << " characters" << std::endl;
-    */
+    std::cout << "message1.capacity is " << message1.capacity() << std::endl;
+    std::cout << "message2.capacity is " << message2.capacity() << std::endl;
+    std::cout << "message3.capacity is " << message3.capacity() << std::endl;
 
+    message1.append(" and it's my world~");
+    std::cout << "message1.capacity is " << message1.capacity() << std::endl;
+    std::cout << "message1.size is " << message1.size() << std::endl;
 
-    //Capacity
-    /*
-    std::string str1 {"Hello World"};
-    std::string str2;
-    std::cout << "str1 capacity : " << str1.capacity() << std::endl;
-	std::cout << "str2 capacity : " << str2.capacity() << std::endl;
-	
-	str1 = "The sky is so blue, the grass is green. Kids are running all over the place";
-	
-    std::cout << "str1 size : " << str1.size() << std::endl;
-	std::cout << "str1 capacity : " << str1.capacity() << std::endl;
-    */
+    message1.reserve(100);
+    std::cout << "message1.capacity is " << message1.capacity() << std::endl;
+    std::cout << "message1.size is " << message1.size() << std::endl;
 
-    //Reserve : Update the capacity
-    /*
-    std::string str1 {"Hello World"};
-	std::cout << "str1 capacity : " << str1.capacity() << std::endl; // 15
-	std::cout << "str1 size : " << str1.size() << std::endl;
-
-    str1.reserve(100);
-    
-    std::cout << "str1 after reserve : " << str1 << std::endl; 
-	std::cout << "str1 capacity : " << str1.capacity() << std::endl; // 100
-	std::cout << "str1 size : " << str1.size() << std::endl;
-    */
-
-
-    //shrink_to_fit
-    std::string str1 {"Hello World"}; // 11
-    str1.reserve(100);
-
-	std::cout << "str1 capacity : " << str1.capacity() << std::endl; //100
-	std::cout << "str1 size : " << str1.size() << std::endl; // 11
-
-	str1.shrink_to_fit();
- 
-	std::cout << "str1 capacity : " << str1.capacity() << std::endl; //11
-	std::cout << "str1 size : " << str1.size() << std::endl;//11
+    message1.shrink_to_fit();
+    std::cout << "message1.capacity is " << message1.capacity() << std::endl;
+    std::cout << "message1.size is " << message1.size() << std::endl;
 
     return 0;
 }
