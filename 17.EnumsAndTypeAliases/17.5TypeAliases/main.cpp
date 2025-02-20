@@ -1,15 +1,17 @@
 #include <iostream>
 
-int main(){
+int main() {
+    using HugeInt = unsigned long long int;
+    HugeInt number{12345678};
 
-     using HugeInt = unsigned long long int; // Recommended in modern C++
-     //typedef unsigned long long int HugeInt; // Older C++ syntax for type aliases
-     HugeInt huge_number {123378997};
+    std::cout << "huge number is " << number << std::endl;
+    std::cout << "sizeof(HugeInt) is " << sizeof(HugeInt) << std::endl;
 
-     std::cout << "sizeof(unsigned long long int ) : " << sizeof(unsigned long long int) << std::endl;
-     std::cout << "sizeof(HugeInt) : " << sizeof(HugeInt) << std::endl;
-
-    std::cout << "huge_number : " << huge_number << std::endl;
+    typedef unsigned long long int HugeIntOldType;
+    HugeIntOldType number2{123456};
+ 
+    std::cout << "huge number of old type is " << number << std::endl;
+    std::cout << "sizeof(HugeIntOldType) is " << sizeof(HugeIntOldType) << std::endl;
 
     return 0;
 }

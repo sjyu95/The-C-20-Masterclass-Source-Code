@@ -3,7 +3,7 @@ int max_subsequence_sum(int sequence[] , unsigned int size){
     //YOUR CODE WILL GO BELOW THIS LINE 
     //DON'T MODIFY ANYTHING ABOVE THIS LINE
     
-    int result{};
+    int result{}; // no unsigned
     
     for (size_t left{0}; left < size; left++) {
         for (size_t right{left}; right < size; right++) {
@@ -13,7 +13,7 @@ int max_subsequence_sum(int sequence[] , unsigned int size){
             }
                 
             if (result < sum) {
-                result = sum;
+                result = sum; // if result is unsigned, worng.
             }        
         }
     }    
