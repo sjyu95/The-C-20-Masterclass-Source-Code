@@ -1,0 +1,1 @@
+int max_subsequence_sum(int sequence[] , unsigned int size);

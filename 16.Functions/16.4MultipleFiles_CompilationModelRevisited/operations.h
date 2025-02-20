@@ -1,2 +1,1 @@
-
-int incr_mult(int a, int b);
+int inc_mult( int a, int b);

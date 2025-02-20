@@ -1,25 +1,28 @@
 #include <iostream>
+// #include <array>
 
-//Declaration
-double sum( const double (&scores) [10]);
+double sum(double (&array)[5]); 
 
+int main() {
+    double values[]{2.3, 3.4, 4.5, 5.6, 6.7};
+    std::cout << "sum is " << sum(values) << std::endl;
 
-int main(){
-
-    double student_scores[] {10.0,20.0,30.0,40.0,50.0,60.0,70.0,80.0,90.0,1}; 
-    
-    double sum_result = sum(student_scores);
-	
-    std::cout << "result is : " << sum_result << std::endl;
-   
     return 0;
 }
 
-//Definition
-double sum( const double (&scores) [10]){
-    double sum{};
-    for(size_t i{}; i < std::size(scores) ; ++i){
-        sum  += scores[i];
+double sum(double (&array)[5]) {
+    double result{};
+
+    std::cout << "sizeof(array) is " << sizeof(array) << std::endl;
+    std::cout << "sizeof(int) is " << sizeof(int) << std::endl;
+    std::cout << "sizeof(double) is " << sizeof(double) << std::endl;
+
+    // for (size_t i{}; i < std::size(array); i++) {
+    //     result += array[i];
+    // }
+    for (double i : array) {
+        result += i;
     }
-    return sum;
+
+    return result;
 }

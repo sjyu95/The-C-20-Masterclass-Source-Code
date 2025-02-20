@@ -1,15 +1,22 @@
 #include <iostream>
 
-void print_sum(int* param1, int* param2){
-	std::cout << "sum : " << (*param1 + *param2) << std::endl;
+// declairation - function prototype
+void print_sum(int* num1, int* num2);
+
+int main() {
+    // int num1{1};
+    // int* p_num1{&num1};
+    // int* p_num2{ new int{2} };
+    // print_sum(p_num1, p_num2);
+
+    // double num1{1}, num2{2};
+    int num1{1}, num2{2};
+    print_sum(&num1, &num2);
+
+    return 0;
 }
 
-int main(){
-
-    int a{3};
-    int b{12};
-
-    print_sum(&a,&b);
-   
-    return 0;
+// definition
+void print_sum(int* num1, int* num2) {
+    std::cout << "sum is " << (*num1 + *num2) << std::endl;
 }

@@ -1,32 +1,24 @@
 #include <iostream>
 
-void increment(int& value);
-void print_out(const int & value);
+// declairation : prototype
+void increment(int& num);
+void print_out(const int& num);
 
-int main(){
+int main() {
+    // int num{3};
+    double num{3.0};
 
-    /*
-    int int_var{3};
+    print_out(num);
+    // increment(num);
+    print_out(num);
 
-    increment(int_var);
-    print_out(int_var);
-    */
-
-   double double_var{3.6};
-
-   int data = double_var;
-
-   increment(data);
-   print_out(double_var);
-    
     return 0;
 }
 
-void increment(int& value){
-    value++;
-	std::cout << "value incremented to : " << value << std::endl;
+// definitions
+void increment(int& num) {
+    ++num;
 }
-
-void print_out(const int & value){
-    std::cout << "value : " << value << std::endl;
+void print_out(const int& num) {
+    std::cout << "incremented num is " << num << std::endl;
 }

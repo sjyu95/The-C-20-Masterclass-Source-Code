@@ -1,19 +1,17 @@
 #include <iostream>
 
-void say_age(const int age); // Declaration
+void say_age(const unsigned age); // declairation - prototype
 
-int main(){
+int main() {
+    unsigned age{23};
 
-    int age{23}; // Local
-    std::cout << "age (before call) : " << age << "&age : " << &age << std::endl;
-    say_age(age); // Argument
-    std::cout << "age (after call) : " << age << "&age : " << &age <<  std::endl;
-
+    std::cout << "before age is " << age << ", address : " << &age << std::endl;
+    say_age(age);
+    std::cout << "after age is " << age << ", address : " << &age << std::endl;
+    
     return 0;
 }
 
-
-void say_age(const int age){ // Parameter
-    ///++age; 
-    std::cout <<  "Hello , you are " << age << " years old! &age : " << &age <<  std::endl;
+void say_age(const unsigned age) { // definition
+    // std::cout << "age is " << ++age << ", address : " << &age << std::endl;
 }

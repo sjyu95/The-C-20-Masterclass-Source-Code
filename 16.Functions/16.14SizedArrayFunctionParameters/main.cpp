@@ -1,22 +1,27 @@
 #include <iostream>
+// #include <array>
 
+double sum(double array[5], unsigned int size); 
 
-double sum ( double scores[], size_t count){
-    double sum{};
-        
-    for(size_t i{} ; i < count ; ++i){
-       sum += scores[i];
-    }
-    return sum;
+int main() {
+    double values[]{2.3, 3.4};
+    std::cout << "sum is " << sum(values, std::size(values)) << std::endl;
+
+    return 0;
 }
 
+double sum(double array[5], unsigned int size) {
+    double result{};
 
-int main(){
+    std::cout << "sizeof(array) is " << sizeof(array) << std::endl;
+    std::cout << "sizeof(int) is " << sizeof(int) << std::endl;
+    std::cout << "sizeof(double) is " << sizeof(double) << std::endl;
 
-    double student_scores[] {10.0,20.0,30.0,4,5,6,7,8,9}; // Less than 5 parameters
+    // size = std::size(array); // pointer decay
 
-    double result = sum(student_scores,std::size(student_scores));
-    std::cout << "result : " << result << std::endl;
-   
-    return 0;
+    for (size_t i{}; i < size; i++) {
+        result += array[i];
+    }
+
+    return result;
 }

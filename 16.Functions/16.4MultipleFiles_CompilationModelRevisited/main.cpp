@@ -1,22 +1,17 @@
 #include <iostream>
-#include "compare.h" // Preprocessor
+#include "compare.h"
 #include "operations.h"
-
 
 int main(){
 
-    int maximum = max(134,56);
-    std::cout << "max : " << maximum << std::endl;
+    int x {5};
+    int y{12};
 
-    int minimum = min(146,23);
-    std::cout << "min : " << minimum << std::endl;
+    int result = min(x,y);
+    std::cout << "min : " << result << std::endl;
 
-    int x{4}; // 5
-    int y{5}; // 6
-
-    int result = incr_mult(x,y);
+    result =inc_mult(x,y);
     std::cout << "result : " << result << std::endl;
-   
+
     return 0;
 }
-

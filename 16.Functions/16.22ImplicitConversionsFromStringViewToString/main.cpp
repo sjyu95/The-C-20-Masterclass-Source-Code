@@ -1,27 +1,27 @@
 #include <iostream>
-void say_my_name(const std::string& name);
-void process_name(std::string_view name_sv);
 
-int main(){
+// function declairation - prototype
+void say_name(std::string_view name);
+void print_my_name(const std::string & name); // copy
 
-    process_name("Daniel");
-   
+int main() {
+
+    say_name("Sejung");
+    
     return 0;
 }
 
-//Definitions
-void say_my_name(const std::string& name){
-    std::cout << "Your name is " << name << std::endl;
+// function declairation
+void say_name(std::string_view name){
+    std::cout << "my name (string_view) is " << name << std::endl;
+    std::cout << "address (string_view) is " << &name << std::endl;
+
+    // print_my_name(name);
+    print_my_name(std::string(name));
 }
 
-void process_name(std::string_view name_sv){
-    
-	say_my_name(name_sv); // Compiler error . Implicit conversion
-						  // from std::string_view
-                          // to std::string is not  allowed.
-                          
-    //Fix : Be explicit about the conversion
-    //say_my_name(std::string(name_sv));
-    
-    
+void print_my_name(const std::string & name) {
+    // name = "Sejung1";
+    std::cout << "my name is " << name << std::endl;
+    std::cout << "address is " << &name << std::endl;
 }

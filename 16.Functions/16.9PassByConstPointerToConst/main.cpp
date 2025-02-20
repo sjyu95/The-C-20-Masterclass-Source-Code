@@ -1,22 +1,21 @@
 #include <iostream>
 
-int dog_count{2};
+unsigned dog_count{2};
 
-void say_age(const int* const age); // Declaration
+void say_age(const unsigned* const age); // declairation - prototype
 
-int main(){
+int main() {
+    unsigned age{23};
 
-    int age{23}; // Local
-    std::cout << "age (before call) : " << age << "&age : " << &age << std::endl; //23
-    say_age(&age); // Argument
-    std::cout << "age (after call) : " << age << "&age : " << &age <<  std::endl; //24
-
+    std::cout << "before age is " << age << ", address : " << &age << std::endl;
+    say_age(&age);
+    std::cout << "after age is " << age << ", address : " << &age << std::endl;
+    
     return 0;
 }
 
-
-void say_age(const int* const age){ // Parameter
-    //++(*age); //
-    std::cout <<  "Hello , you are " << *age << " years old! &age : " << &age <<  std::endl;//24
-    //age = & dog_count;
+void say_age(const unsigned* const age) { // definition
+    // std::cout << "age is " << ++(*age) << ", address : " << age << ", &address : " << &age << std::endl; // dereferencing
+    // age = &dog_count;
+    std::cout << "age is " << (*age) << ", address : " << age << ", &address : " << &age << std::endl; // dereferencing
 }
