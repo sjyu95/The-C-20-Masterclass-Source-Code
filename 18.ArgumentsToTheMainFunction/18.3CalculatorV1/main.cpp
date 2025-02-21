@@ -1,32 +1,22 @@
 #include <iostream>
 
-int main(){
+int main(int argc, char** argv) {
+	double num1{1.0};
+	double num2{2.0};
+	char op{'-'};
 
-	double first_number {5.0};
-    double second_number {33.1};
-    char c{'+'};
-    
-    switch(c){
-        case '+':
-        std::cout << first_number << " + " << second_number << " = " 
-                << first_number + second_number << std::endl;
-        break;
-        
-        case '-':
-        std::cout << first_number << " - " << second_number << "=" 
-                << first_number - second_number << std::endl;
-        break;
-        
-        case 'x':
-        std::cout << first_number << " * " << second_number << " = " 
-                << first_number * second_number << std::endl;
-        break;
-        
-        case '/':
-        std::cout << first_number << " / " << second_number << " = " 
-                << first_number / second_number << std::endl;
-        break;
-		
-    }
+	switch(op) {
+		case '+': std::cout << num1 << " + " << num2 << " = " << (num1 + num2) << std::endl;
+		break;
+		case '-': std::cout << num1 << " - " << num2 << " = " << (num1 - num2) << std::endl;
+		break;
+		case '*': std::cout << num1 << " * " << num2 << " = " << (num1 * num2) << std::endl;
+		break;
+		case '/': std::cout << num1 << " / " << num2 << " = " << (num1 / num2) << std::endl;
+		break;
+		default:
+		break;
+	}
+
 	return 0;
 }
