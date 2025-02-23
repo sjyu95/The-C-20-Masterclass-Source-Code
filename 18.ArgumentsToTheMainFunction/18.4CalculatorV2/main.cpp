@@ -1,5 +1,7 @@
 #include <iostream>
 
+// input argument to launch.json's args
+
 int main(int argc, char** argv) {
     if (argc != 4 || strlen(argv[2]) != 1 || (argv[2][0] != '+' && argv[2][0] != '-' && argv[2][0] != '*' && argv[2][0] != '/' )) {
         std::cout << "So many arguments. we need just 3 arguments. and need operator" << std::endl;

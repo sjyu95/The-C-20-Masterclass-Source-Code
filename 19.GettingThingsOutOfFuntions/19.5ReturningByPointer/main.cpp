@@ -1,69 +1,30 @@
 #include <iostream>
 
+int* sum(int* a, int* b) {
+    int result = *a + *b;
+    return &result; // wrong
+}
 
-int* max_return_pointer(int* a, int* b)
-{
-    if(*a > *b) {
+int sum2(int a, int b) {
+    int result = a + b;
+    std::cout << "result address is " << &result << std::endl;
+    return result;
+}
+
+int* max(int* a, int* b) {
+    if (a > b) {
         return a;
     } else {
-        return b;
+        return  b;
     }
 }
 
-int* max_input_by_value (int a, int b)
-{
-    if(a > b) {
-        return &a; // Pointer to local variable returned
-    } else {
-        return &b; // Pointer to local variable returned
-    }
-}
+int main(int argc, char** argv) {
+    int a{1}, b{2};
+    std::cout << "max is " << *(max(&a, &b)) << std::endl;
 
+    int result{sum2(a,b)};
+    std::cout << "sum address is " << &result << std::endl;
 
-int* sum( int* a, int* b){
-    int result = *a + *b; 
-    return &result;// Pointer to local variable returned
-}
-
-
-int main(){
-
-    /*
-    int x{56};
-    int y{45};
-    int* p_max = max_return_pointer(&x,&y);
-
-    std::cout << "x : " << x << std::endl;
-    std::cout << "y : " << y << std::endl;
-    std::cout << "*p_max : " << *p_max << std::endl;
-
-
-    ++(*p_max);
-
-    std::cout << "-----" << std::endl;
-    std::cout << "x : " << x << std::endl;
-    std::cout << "y : " << y << std::endl;
-    std::cout << "*p_max : " << *p_max << std::endl;
-    */
-
-
-   /*
-    int x{56};
-    int y{45};
-    int* p_sum = sum(&x,&y);
-    std::cout << *p_sum << std::endl;
-    */
-
-
-    int x{56};
-    int y{45};
-    int* p_sum = max_input_by_value(x,y);
-    std::cout << *p_sum << std::endl;
-
-
-
-
-    std::cout << "Done!" << std::endl;
-   
     return 0;
 }

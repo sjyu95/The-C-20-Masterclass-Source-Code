@@ -1,56 +1,38 @@
 #include <iostream>
 
+// declairation - prototype
+int find_char_v0(std::string_view str, char & ch);
+void find_char_v1(std::string_view str, char & ch, bool& success);
 
-int find_character_v0(const std::string & str, char c){
-    //If found , return the index, else return -1
-    int not_found {-1};
-    for (size_t i{} ; i < str.size()  ; ++i){
-        if(str.c_str()[i] == c){
+int main(int argc, char** argv) {
+    std::string str{"Hello World~!"};
+    char ch{'o'};
+
+    int index = find_char_v0(str, ch);
+    std::cout << "index is " << index << std::endl;
+
+    bool success{};
+    find_char_v1(str, ch, success);
+    std::cout << "success is " << std::boolalpha << success << std::endl;
+
+    return 0;
+}
+
+// definitions
+int find_char_v0(std::string_view str, char & ch) {
+    for(size_t i{}; i < str.size(); i++) {
+        if (str.data()[i] == ch) {
             return i;
         }
     }
-    return not_found;
+    return -1;
 }
 
-
-void find_character_v1(const std::string & str, char c, bool & success){
-    //If found set success to true, else set to false
-    for (size_t i{} ; i < str.size()  ; ++i){
-        if(str.c_str()[i] == c){
+void find_char_v1(std::string_view str, char & ch, bool& success) {
+    success = false;
+    for(size_t i{}; i < str.size(); i++) {
+        if (str.data()[i] == ch) {
             success = true;
-            return;
         }
     }
-    success = false;
-}
-
-
-
-int main(){
-
-	std::string str1 {"Hello World in C++20!"};
-	char c{'r'};
-
-
-    /*
-    int index =  find_character_v0(str1,c);
-
-    if((find_character_v0(str1,c))!=-1){
-        std::cout << "Found character " << c << " at index : " << index << std::endl;
-    }else{
-       std::cout << "Didn't find our character" << std::endl; 
-    }
-    */
-
-   bool success{false};
-
-   find_character_v1(str1,c,success);
-
-   if(success){
-         std::cout << "Found character " << c << " in our string " <<  std::endl;
-   }else{
-       std::cout << "Didn't find our character" << std::endl;
-   }
-   
-    return 0;
 }

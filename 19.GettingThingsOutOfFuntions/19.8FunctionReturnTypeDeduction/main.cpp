@@ -1,35 +1,18 @@
 #include <iostream>
 
-
-
-//The right way : return type deduction
-/*
-auto process_number(int value){
-    if(value < 10){
-        return 22; // returning int literal
-    }else{
-        return 55; // returning int literal
-    }
-}
-*/
-
-auto process_number(int value){
-    if(value < 10){
-        return static_cast<double>(22); // returning int literal
-    }else{
-        return 33.1; // returning double literal
+// auto process_value(int a, double b) {
+auto process_value(int a, int b) {
+    if (a > b) {
+        return a;
+    } else {
+        return b;
     }
 }
 
+int main(int argc, char** argv) {
 
-
-int main(){
-
-    auto result = process_number(17);
-    std::cout << "result : " << result << std::endl;
-    std::cout << "sizeof(result)  : " << sizeof(result) <<  std::endl;
-    std::cout << "sizeof(int) : " << sizeof(int) << std::endl;
-    std::cout << "sizeof(double) : " << sizeof(double) << std::endl;
-
+    auto val = process_value(2,3);
+    std::cout << "val is " << val << std::endl;
+    std::cout << "sizeof(val) : " << sizeof(val) << std::endl;
     return 0;
 }

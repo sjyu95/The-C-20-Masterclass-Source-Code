@@ -1,30 +1,23 @@
 #include <iostream>
 
-
-auto& max(int& a, int& b){
-    if(a>b){
+auto& max_ref(int& a, int& b) {
+    if (a > b) {
         return a;
-    }else{
-        return b; // Will return a copy.
+    } else {
+        return b;
     }
 }
 
-int main(){
+int main(int argc, char** argv) {
+    int a{1}, b{2};
 
+    int& result = max_ref(a,b);
 
-    int x{10};
-    int y{45};
+    result++;
 
-	int& result = max(x,y); // Error : Can not treat return value as a reference
-							// It's jut a bare separate variable with a value inside.
-							
-	//int result = max(x,y); // A copy of the max is returned
-	
-	++ result;
-	
-	std::cout << "x :" << x << std::endl; // 10
-	std::cout << "y :" << y << std::endl; // 46
-	std::cout << "result : " << result << std::endl; // 46
-   
+    std::cout << "a is " << a << std::endl;
+    std::cout << "b is " << a << std::endl;
+    std::cout << "result is " << result << std::endl;
+
     return 0;
 }
