@@ -1,22 +1,18 @@
 #include <iostream>
 
+int max(int a, int b);
+// int max(const int a, const int b);
 
-/*
-int max(int a, int b){
-    return (a > b)? a : b;
-}
-*/
-
-
-int max( int a,  int b);
-
-int main(){
-
-   
-    return 0;
+int main(int argc, char** argv) {
+    std::cout << max(1,3) << std::endl;
 }
 
-int max( int a,  int b){
-    ++a;
-    return (a > b)? a : b;
+// int max(int a, int b) {
+//     b++;
+//     return (a>b) ? a : b;
+// }
+
+int max(const int a, const int b) {
+    // a++;
+    return (a>b) ? a : b;
 }

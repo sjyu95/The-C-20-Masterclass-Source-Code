@@ -1,24 +1,24 @@
 #include <iostream>
 
-//Declarations
-void print_age(int age = 33);
+// declairation - prototype
+void print_age(int age = 22);
+void print_age(long int age = 88l);
 
-void print_age(long int age = 44);
+int main(int argc, char** argv) {
+    int age{40};
+    print_age(age);
 
-int main(){
+    long age2{0};
+    print_age(age2);
 
-
-    print_age();
-    
-    
     return 0;
 }
 
-//Definitions
-void print_age(int age ){
-    std::cout << "Your age is( int version)  : " << age << std::endl;
+// definition
+void print_age(int age) {
+    std::cout << "print age int : " << age << std::endl;
 }
 
-void print_age(long int age){
-    std::cout << "Your age is (long int version) : " << age << std::endl;
+void print_age(long int age) {
+    std::cout << "print age long int : " << age << std::endl;
 }

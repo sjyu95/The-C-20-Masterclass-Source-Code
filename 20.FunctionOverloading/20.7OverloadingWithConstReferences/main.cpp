@@ -1,37 +1,30 @@
 #include <iostream>
 
-int max(int& a, int&b){
-    std::cout << "max with int& called" << std::endl;
+int& max(int& a, int& b);
+const int& max(const int& a, const int& b);
+// const int& max(const int& const a, const int& const b);
 
-    //Can change a and b through the reference 
-    //a = 200;// This change will be visible outside the function
-    
-    return (a > b)? a : b;
-}
+int main(int argc, char** argv) {
+    int a{2}, b{1};
+    const int & c{a}, &d{b};
 
-int max(const int& a, const int& b){
-    std::cout << "max with const int& called" << std::endl;
-    
-    //Can NOT change a and b through the reference 
-    //a = 200; // Will give a compiler error.
-    return (a > b)? a : b;
-}
+    std::cout << "address a(" << &a << ") b(" << &b << std::endl;
+    std::cout << "address c(" << &c << ") d(" << &d << std::endl;
 
+    max(a, b);
+    max(c, d);
 
-int main(){
-
-	int a{45};
-    int b{85};
-    
-    int max1 = max(a,b);
-    std::cout << "max1 : " << max1 << std::endl;
-
-    const int& ref_a = a;
-    const int& ref_b = b;
-
-    int max2 = max(ref_a,ref_b);
-    std::cout << "max2 : " << max2 << std::endl;  
-
-   
     return 0;
+}
+
+int& max(int& a, int& b){
+    a++;
+    std::cout << "int reference address a(" << &a << ") b(" << &b << std::endl;
+    return (a > b) ? a : b; 
+}
+
+const int& max(const int& a, const int& b){
+    // a++;
+    std::cout << "const int reference address a(" << &a << ") b(" << &b << std::endl;
+    return (a > b) ? a : b; 
 }

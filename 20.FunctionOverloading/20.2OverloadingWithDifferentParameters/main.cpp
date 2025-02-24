@@ -1,46 +1,34 @@
 #include <iostream>
 
+// function declairation - prototype
+int max(int a, int b);
+double max(double a, double b);
+std::string_view max(std::string_view a, std::string_view b);
 
-int max(int a, int b){
-    std::cout << "int overload called" << std::endl;
-    return (a>b)? a : b; 
-}
+int main(int argc, char** argv) {
+    int x{1}, y{2};
+    double a{3.0}, b{4.0};
+    // std::string_view s{"hello"}, t{"world"};
 
-double max(double a, double b){
-    std::cout << "double overload called" << std::endl;
-    return (a>b)? a : b; 
-}
+    max(a,b);
+    max(x,y);
+    max("hello","world");
 
-double max(int a, double b){
-    std::cout << "(int,double) overload called" << std::endl;
-    return (a>b)? a : b; 
-}
-
-double max(double a, int b){
-    std::cout << "(double,int) overload called" << std::endl;
-    return (a>b)? a : b; 
-}
-
-double max(double a, int b,int c){
-    std::cout << "(double,int,int) overload called" << std::endl;
-    return a;
-}
-
-std::string_view  max(std::string_view a, std::string_view b){
-    std::cout << "(string_view,string_view) overload called" << std::endl;
-     return (a>b)? a : b;
-}
-
-int main(){
-
-    int x{4};
-    int y{9};
-    double a{5.4};
-    double b{7.4};
-
-    auto result = max(b,x,y);
-
-    max("Hello","World");
-   
     return 0;
+}
+
+// definition
+int max(int a, int b) {
+    std::cout << "call max of int" << std::endl;
+    return (a > b) ? a : b;
+}
+
+double max(double a, double b) {
+    std::cout << "call max of double" << std::endl;
+    return (a > b) ? a : b;
+}
+
+std::string_view max(std::string_view a, std::string_view b) {
+    std::cout << "call max of string" << std::endl;
+    return (a > b) ? a : b;
 }

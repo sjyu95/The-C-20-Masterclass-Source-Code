@@ -1,37 +1,35 @@
 #include <iostream>
-#include <string>
 
-//Ambiguous calls
-void say_my_name( const std::string& name){
-    std::cout << "Your name is (ref) : " << name << std::endl;
-}
+double max(double a, double b);
+// int max(int& a, int& b);
+int max(const int& a, const int& b);
+// void say_my_name(std::string_view a);
+void say_my_name(const std::string& a);
 
-void say_my_name( std::string name){
-    std::cout << "Your name is (non ref) : " << name << std::endl;
-}
+int main(int argc, char** argv) {
+    char a{'a'}, b{'b'};
 
-//Implicit conversions with references
+    max(a, b); // 1.const &, 2.double, 3.&
+    say_my_name("sejung");
 
-double max(double a, double b){
-    std::cout<< "double max called" << std::endl;
-    return (a>b)?a:b;
-}
-
-
-//int& max(int& a, int& b){
-const int& max(const int& a,const int& b){
-    std::cout << "int max called" << std::endl;
-    return (a>b)?a:b;
-}
-
-int main(){
-
-    char a{6};
-    char b{9};
-
-
-    auto result = max(a,b);
-
-   
     return 0;
+}
+
+double max(double a, double b) {
+    std::cout << "max non reference" << std::endl;
+    return (a > b) ? a : b;
+}
+
+// int max(int& a, int& b) {
+int max(const int& a, const int& b) {
+    std::cout << "max reference" << std::endl;
+    return (a > b) ? a : b;
+}
+
+// void say_my_name(std::string_view a) {
+//     std::cout << "string_view : " << a.data() << std::endl;
+// }
+
+void say_my_name(const std::string& a) {
+    std::cout << "const string referend : " << a.c_str() << std::endl;
 }

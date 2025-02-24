@@ -1,56 +1,31 @@
 #include <iostream>
 
+int * max(int* a, int* b);
+// const int * max(const int* a, const int* b);
+const int * max(const int* const a, const int* const b);
 
-int max(int*a , int* b){
-    std::cout << "max with int* called" << std::endl;
-    return (*a > *b)? *a : *b;
-}
+int main(int argc, char** argv) {
+    int a{1}, b{2};
+    int * p_a{&a}, *p_b{&b};
 
-int max(const int* a, const int* b){
-    std::cout << "max with cont int* called" << std::endl;
-    return (*a > *b)? *a : *b;
-}
+    max(p_a, p_b);
 
+    const int * p_ca{&a}, *p_cb{&b};
+    std::cout << "const int* address a(" << &a << ") b(" << &b << ")" << std::endl;
+    max(p_ca, p_cb);
 
-/*
-int min(const int* a, const int* b){
-    return (*a < *b)? *a : *b;
-}
-*/
-
-
-int min(const int* const a, const int* const b){
-	std::cout << "&a : " << &a << std::endl;
-	std::cout << "&b : " << &b << std::endl;
-    return (*a < *b)? *a : *b;
-}
-
-
-
-int main(){
-
-/*
-    int a{10};
-	int b{12};
-
-	const int c{30};
-	const int d{15};
-
-    auto result = max(&c,&c);
-    */
-
-   	const int c{30};
-	const int d{15};
-
-    const int* p_c{&c};
-    const int* p_d{&d};
-
-    std::cout << "&p_c : " << &p_c << std::endl;
-    std::cout << "&p_d : " << &p_d << std::endl;
-
-    auto result = min(p_c,p_d);
-
-
-    
     return 0;
+}
+
+int * max(int* a, int* b) {
+    return (*a > *b) ? a : b;
+}
+
+// const int * max(const int* a, const int* b) {
+//     return (*a > *b) ? a : b;
+// }
+
+const int * max(const int* const a, const int* const b) {
+    std::cout << "const int* const address a(" << &a << ") b(" << &b << ")" << std::endl;
+    return (*a > *b) ? a : b;
 }
