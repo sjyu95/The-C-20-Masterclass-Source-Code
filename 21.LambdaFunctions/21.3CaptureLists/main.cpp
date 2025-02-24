@@ -1,46 +1,21 @@
 #include <iostream>
 
-int main(){
+int main(int argc, char** argv) {
+    int c{40};
 
-    //Capture lists
-    /*
-     double a{10};
-     double b{20};
-     
-     auto func = [a,b](){
-         std::cout  << "a + b : " << a + b << std::endl;
-     };
-     func();
-     */
+    auto func = [c]() {
+        std::cout << "inner c value : " << c << ", address : " << &c << std::endl;
+    };
 
-    //Capturing by value
-    /*
-     int c{42};
-     
-     auto func = [c](){
-         std::cout << "Inner value : " << c << " &inner : " <<&c <<  std::endl;
-     };
-     
-     for(size_t i{} ; i < 5 ;++i){
-         std::cout << "Outer value : " << c << " &outer : " << &c << std::endl;
-         func();
-         ++c;
-     }
+    auto func1 = [&c]() {
+        std::cout << "inner c value : " << c << ", address : " << &c << std::endl;
+    };
 
-     */
+    std::cout << "outer c value : " << c << ", address : " << &c << std::endl;
+    func();
 
-    //Capture by reference
-     int c{42};
-     
-     auto func = [&c](){
-         std::cout << "Inner value : " << c << " &inner : " <<&c <<  std::endl;
-     };
-     
-     for(size_t i{} ; i < 5 ;++i){
-         std::cout << "Outer value : " << c << " &outer : " << &c << std::endl;
-         func();
-         ++c;
-     }
-    
+    std::cout << "outer c value : " << c << ", address : " << &c << std::endl;
+    func1();
+
     return 0;
 }

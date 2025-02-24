@@ -1,38 +1,23 @@
 #include <iostream>
 
+int main(int argc, char** argv) {
+    int c{40};
 
-int main(){
+    auto func = [=]() {
+        std::cout << "inner c value : " << c << ", address : " << &c << std::endl;
+    };
 
-    //Capture everything by value
-    /*
-     int c{42};
-     
-     auto func = [=](){
-         std::cout << "Inner value : " << c << std::endl;
-     };
-     
-     for(size_t i{} ; i < 5 ;++i){
-         std::cout << "Outer value : " << c << std::endl;
-         func();
-         ++c;
-     }
-     */
+    auto func1 = [&]() {
+        std::cout << "inner c value : " << c << ", address : " << &c << std::endl;
+    };
 
+    c++;
 
-    //Capturing all reference
-     int c{42};
-     int d{5};
-     
-     auto func = [&](){
-         std::cout << "Inner value : " << c << std::endl;
-         std::cout << "Inner value(d) : " << d << std::endl;
-     };
-     
-     for(size_t i{} ; i < 5 ;++i){
-         std::cout << "Outer value : " << c << std::endl;
-         func();
-         ++c;
-     }
-  
+    std::cout << "outer c value : " << c << ", address : " << &c << std::endl;
+    func();
+
+    std::cout << "outer c value : " << c << ", address : " << &c << std::endl;
+    func1();
+
     return 0;
 }
