@@ -1,14 +1,16 @@
 #include <iostream>
 
-size_t sum_up_to_zero(size_t value){
-    if(value!=0)
-        return value + sum_up_to_zero(value-1);
+int sum_up(int value);
+
+int main(int argc, char** argv) {
+    std::cout << "smu is " << sum_up(10);
     return 0;
 }
 
-int main(){
-
-    std::cout << "result : " << sum_up_to_zero(10) << std::endl;
-   
+int sum_up(int value) {
+    if (value > 0) {
+        value = value + sum_up(value-1);
+        return value;
+    }
     return 0;
 }

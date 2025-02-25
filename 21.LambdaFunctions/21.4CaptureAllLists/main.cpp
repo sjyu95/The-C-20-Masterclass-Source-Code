@@ -12,7 +12,7 @@ int main(int argc, char** argv) {
     };
 
     c++;
-
+ 
     std::cout << "outer c value : " << c << ", address : " << &c << std::endl;
     func();
 
