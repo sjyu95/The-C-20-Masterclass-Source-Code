@@ -1,20 +1,18 @@
 #include <iostream>
 
-template <typename T, typename P> 
-decltype(auto) maximum(T a, P b){
+template <typename T, typename U>
+decltype(auto) maximum(T a, U b) {
     return (a > b) ? a : b;
 }
 
+int main(int argc, char** argv) {
+    int a{1};
+    char b{5};
 
-int main(){
-    int x{7};
-    double y{45.9};
+    auto result = maximum(a, b);
 
-    auto result = maximum(x,y);
-    std::cout << "max : " << result << std::endl;
-    std::cout << "sizeof(result) : " << sizeof(result) << std::endl;
-   
+    std::cout << "result is " << result << std::endl;
+    std::cout << "sizeof(result) is " << sizeof(result) << std::endl;
+
     return 0;
 }
-
-

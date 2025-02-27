@@ -1,26 +1,20 @@
 #include <iostream>
 
-/*
-template <typename T, typename P>
-decltype(auto) func_add( T a, P b){
-    return a + b;
-}
-*/
+// template <typename T, typename U>
+// decltype(auto) add(T a, U b) {
+//     return a + b;
+// }
 
-
-auto func_add (auto a , auto b){
+auto add(auto a, auto b) {
     return a + b;
 }
 
+int main(int argc, char** argv) {
+    int a {1};
+    double b{10.0};
 
-int main(){
+    auto result = add(a, b);
+    std::cout << "result is " << result << " sizeof(result) is " << sizeof(result) << std::endl;
 
-    int a{7};
-    double b{78.2};
-
-    auto result = func_add(a,b);
-    std::cout << "result : " << result << std::endl;
-    std::cout << "sizeof(result) : " << sizeof(result) << std::endl;
-   
     return 0;
 }

@@ -2,38 +2,30 @@
 #include <type_traits>
 
 template <typename T>
-void print_number( T n){
-    static_assert(std::is_integral_v<T> ,"print_number() can only be called with integral types" );
-    std::cout << "number : " << n << std::endl;
+void print_num(T a) {
+    // static_assert(std::is_integral_v<T>);
+    static_assert(std::is_integral_v<T>, "T is not integral type");
+    std::cout << a << std::endl;
 }
 
+int main(int argc, char** argv) {
 
-int main(){
-
-    /*
     std::cout << std::boolalpha;
-    std::cout << "std::is_integral<int> : " << std::is_integral<int>::value << std::endl;
-    std::cout << "std::is_floating_point<int> : " << std::is_floating_point<int>::value << std::endl;
+    std::cout << "std::is_integral<int>::value is " << std::is_integral<int>::value << std::endl;
+    std::cout << "std::is_integral<double>::value is " << std::is_integral<double>::value << std::endl;
 
-    std::cout << "-------------" << std::endl;
+    std::cout << "std::is_integral_v<int> is " << std::is_integral_v<int><< std::endl;
+    std::cout << "std::is_integral_v<double> is " << std::is_integral_v<double> << std::endl;
 
-    std::cout << "std::is_integral_v<int> : " << std::is_integral_v<int> << std::endl;
-    std::cout << "std::is_floating_point_v<int> : " << std::is_floating_point_v<int> << std::endl;
-    */
+    print_num('a');
+    // print_num(1.1);
 
-   /*
-   double a{7};
-   print_number(a);
-   */
-
-    auto func = []<typename T>(T a, T b){
-        static_assert(std::is_integral_v<T>,"func can only be called with integral types");
+    auto func = []<typename T>(T a, T b) {
+        static_assert(std::is_integral_v<T>, "func need to integral type");
         return a + b;
     };
+    // func(1.1,2.2);
+    func(1,2);
 
-    double x {7};
-    double y{6};
-    func(x,y);
-   
     return 0;
 }

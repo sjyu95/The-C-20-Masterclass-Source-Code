@@ -1,18 +1,18 @@
 #include <iostream>
 
-template <typename T, typename P>
-auto maximum ( T a, P b){
-    return (a > b)? a : b;
+template <typename T, typename U>
+auto maximum(T a, U b) {
+    return (a > b) ? a : b;
 }
 
-int main(){
+int main(int argc, char** argv) {
+    int a{1};
+    char b{5};
 
-    //Largest type is going to be deduced as return type
+    auto result = maximum(a, b);
 
-	auto max1 = maximum ('e', 33); // double return type deduced
-    std::cout << "max1 : " << max1 << std::endl;
-    std::cout << "size of max1 : " << sizeof(max1) << std::endl;
-   
+    std::cout << "result is " << result << std::endl;
+    std::cout << "sizeof(result) is " << sizeof(result) << std::endl;
+
     return 0;
 }
-

@@ -1,23 +1,15 @@
-#include <iostream>
 #include <string>
+#include "utils.h"
 
-template <typename T> T maximum( T a, T b){
-    return (a > b) ? a : b;
-}
+int main(int argc, char** argv) {
+	int a{1}, b{2};
+	double c{3.0}, d{4.0};
+	std::string e{"hello"}, f{"world"};
 
-int main(){
+	maximum(a,b);
+	maximum(c,d);
+	maximum(e,f);
 
-	int a{10};
-	int b{23};
-	double c{34.7};
-	double d{23.4};
-	std::string e{"hello"};
-	std::string f{"world"};
-
-    //Explicit template arguments
-
-    auto max = maximum<double>(a,f);
-    std::cout << "max : " << max << std::endl;
-   
-    return 0;
+	// max(a,c);
+	maximum<double>(a,c);
 }

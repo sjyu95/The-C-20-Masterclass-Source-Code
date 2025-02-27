@@ -1,19 +1,20 @@
 #include <iostream>
 
+int main(int argc, char** argv) {
+    int a{1};
+    double b{11.1};
 
-int main(){
+    // auto func = [](auto a, auto b) {
+    //     return a+b;
+    // };
 
-    auto func =  [] <typename T, typename P>(T a, P b){
-            return a + b;
+    auto func = []<typename T>(T a, T b) {
+        return a+b;
     };
 
-    char a {'c'};
-    int b{63};
+    // auto result = func(a, b);
+    auto result = func(a, a);
+    std::cout << "result is " << result << " sizeof(result) is " << sizeof(result) << std::endl;
 
-    auto result = func(a,b);
-    std::cout << "result : " << result << std::endl;
-    std::cout << "sizeof(result) : " << sizeof(result) << std::endl;
-    
-    
     return 0;
 }

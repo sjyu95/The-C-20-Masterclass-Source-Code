@@ -1,33 +1,21 @@
 #include <iostream>
 
-//Declaration
-template <typename T, typename P>
-auto maximum( T a, P b) -> decltype((a > b)? a : b) ;
+template <typename T, typename U>
+auto maximum(T a, U b) -> decltype((a > b) ? a : b);
 
-int main(){
+int main(int argc, char** argv) {
+    int a{1};
+    char b{5};
 
-    //declytpe
-    int a {9};
-	double b{15.8};
-	
+    auto result = maximum(a, b);
 
-    /*
-	std::cout << "size : " << sizeof(decltype((a > b)? a : b)) << std::endl;//4
+    std::cout << "result is " << result << std::endl;
+    std::cout << "sizeof(result) is " << sizeof(result) << std::endl;
 
-    decltype((a > b)? a : b) c {7}; // Declaring other variables through declytype
-    std::cout << "c : " << c << std::endl;
-    std::cout << "sizeof(c) : " << sizeof(c) << std::endl; // 4
-    */
-
-   auto result = maximum(a,b);
-   std::cout << "result : " << result << std::endl;
-   std::cout << "sizeof(result) :" << sizeof(result) << std::endl;
-    
     return 0;
 }
 
-//Definition
-template <typename T, typename P>
-auto maximum( T a, P b) -> decltype((a > b)? a : b) {
-    return (a > b)? a : b;
+template <typename T, typename U>
+auto maximum(T a, U b) -> decltype((a > b) ? a : b) {
+    return (a > b) ? a : b;
 }
