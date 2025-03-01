@@ -2,43 +2,51 @@
 #include <concepts>
 
 template <typename T>
-concept TinyType = requires (T t){
-    sizeof(T) <= 4; // Simple requirement : Only enforces syntax
-    requires sizeof(T) <= 4; // Nested requirements
+concept TinyType = requires {
+    // sizeof(T) < 4;
+    requires sizeof(T) <= 4; // nested requirement clause
 };
 
+template <typename T>
+requires TinyType<T>
+T add(T a, T b) {
+    return a + b;
+};
 
-//Compound requirement
+// template <TinyType T>
+// T add(T a, T b) {
+//     return a + b;
+// };
+
+// template <typename T>
+// T add(T a, T b) requires TinyType<T> {
+//     return a + b;
+// };
+
+// template <typename T>
+// TinyType auto add(TinyType auto a, TinyType auto b) -> decltype(a + b) { // wrong why?
+//     return a + b;
+// };
+
 template <typename T>
 concept Addable = requires (T a, T b) {
-	//noexcept is optional
-	{a + b} -> std::convertible_to<int>; //Compound requirement
-	//Checks if a + b is valid syntax, doesn't throw expetions(optional) , and the result
-	//is convertible to int(optional)
+    // {a + b} -> std::convertible_to<T, int>; // wrong. std::convertible_to is concept. no type_traits
+    {a + b} -> std::convertible_to<int>;
 };
 
-
-Addable auto add( Addable auto a, Addable auto b){
+template <Addable T>
+T add2(T a, T b) {
     return a + b;
 }
 
+int main(int argc, char** argv) {
+    // char a{'a'}, b{'b'};
+    int a{1}, b{2};
+    // auto result = add(a,b);
+    // std::string a{"hello "}, b{"world"};
+    auto result = add2(a,b);
 
+    std::cout << "result is " << result << ", sizeof(result) is " << sizeof(result) << std::endl;
 
-
-int main(){
-
-    double x{67};
-    double y{56};
-
-    //std::string x{"Hello"};
-    //std::string y{"World"};
-
-    //auto s = x + y;
-
-    auto result  = add(x,y);
-    std::cout << "result : " << result << std::endl;
-    std::cout << "sizeof(result) : " << sizeof(result) << std::endl;
-
-   
     return 0;
 }

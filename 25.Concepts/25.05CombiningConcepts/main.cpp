@@ -1,34 +1,26 @@
-#include <iostream>
 #include <concepts>
 
-
 template <typename T>
-concept TinyType = requires ( T t){
-	sizeof(T) <=4; // Simple requirement
-	requires sizeof(T) <= 4; // Nested requirement
+concept TinyType = requires (T n) {
+    requires sizeof(T) < 4;
 };
 
+// template <typename T>
+// requires TinyType<T> || std::integral<T>
+// T add(T a, T b) {
+//     return a + b;
+// };
 
 template <typename T>
-//requires std::integral<T> || std::floating_point<T> // OR operator
-//requires std::integral<T> && TinyType<T>
-requires std::integral<T> && requires ( T t){
-	sizeof(T) <=4; // Simple requirement
-	requires sizeof(T) <= 4; // Nested requirement
-}
-T add(T a, T b){
+T add(T a, T b) requires TinyType<T> || std::integral<T> {
     return a + b;
-}
+};
 
+int main(int argc, char** argv) {
+    char a{'a'}, b{'b'};
+    // double a{1.1}, b{2.2};
 
+    add(a, b);
 
-int main(){
-
-    long long int x{7};
-    long long int y{5};
-
-    add(x,y);
-
-   
     return 0;
 }
