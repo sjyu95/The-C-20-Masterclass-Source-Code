@@ -1,29 +1,18 @@
 #include <iostream>
 #include "cylinder.h"
 
-int main(){
+int main(int argc, char** argv) {
+    Cylinder cylinder1;
+    // Cylinder cylinder1(3.0, 4.0);
 
-    Cylinder cylinder1(10,10);
+    // Cylinder* p_cylinder1 = new Cylinder;    
+    // p_cylinder1->set_base_radius(3.0);
+    // p_cylinder1->set_height(4.0);
 
-    cylinder1.volume();
+    Cylinder* p_cylinder1 = new Cylinder(3.0, 4.0);
 
-    //Managing a stack object through pointers
-    Cylinder* p_cylinder1 = &cylinder1;
-
-    //std::cout << "volume : " << (*p_cylinder1).volume() << std::endl;
-    std::cout << "volume : " << p_cylinder1->volume() << std::endl;
-
-    //Create a cylinder heap object through the new operator
-    Cylinder* p_cylinder2 = new Cylinder(100,2); // Heap
-
-    std::cout << "volume(clylinder2) : " << p_cylinder2->volume() << std::endl;
-    std::cout << "base_rad(cylinder2) : " << p_cylinder2->get_base_radius() << std::endl;
-
-
-
-
-    delete p_cylinder2;
-   
-    
+    std::cout << "radius is " << (*p_cylinder1).get_base_radius() << std::endl;
+    std::cout << "height is " << p_cylinder1->get_height() << std::endl;
+    std::cout << "volumn is " << p_cylinder1->volume() << std::endl;
     return 0;
 }

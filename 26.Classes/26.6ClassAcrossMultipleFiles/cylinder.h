@@ -1,26 +1,22 @@
 #ifndef CYLINDER_H
 #define CYLINDER_H
 
-#include "constants.h"
+#include "constances.h"
+
 class Cylinder {
-    public : 
-        //Constctors
+    public:
         Cylinder() = default;
-        Cylinder(double rad_param,double height_param);
-        //Functions (methods)
-        double volume();
-        
-        //Setter and getter methods
+        Cylinder(double radius, double height);
+
         double get_base_radius();
         double get_height();
-
-        void set_base_radius(double rad_param);
-
-        void set_height(double height_param);
-    private : 
-        //Member variables
-        double base_radius{1};
-        double height{1};
-};
+        void set_base_radius(double radius);
+        void set_height(double height);
+        double volume();
+    
+    private:
+        double m_base_radius{};
+        double m_height{};
+    };
 
 #endif

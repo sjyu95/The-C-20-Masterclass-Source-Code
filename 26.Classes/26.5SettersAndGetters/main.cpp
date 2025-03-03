@@ -1,53 +1,44 @@
 #include <iostream>
 
-const double PI {3.1415926535897932384626433832795};
+const double PI{3.1415926535897932384626433832795};
 
 class Cylinder {
-    public : 
-        //Constctors
-        Cylinder() = default;
-        Cylinder(double rad_param,double height_param){
-            base_radius = rad_param;
-            height = height_param;
-        }
-        //Functions (methods)
-        double volume(){
-            return PI * base_radius * base_radius * height;
-        }
-        
-        //Setter and getter methods
-        double get_base_radius(){
-            return base_radius;
-        }
-        double get_height(){
-            return height;
-        }
+public:
+    Cylinder() = default;
+    Cylinder(double radius, double height) {
+        m_base_radius = radius;
+        m_height = height;
+    }
+    double get_base_radius() {
+        return m_base_radius;
+    }
+    double get_height() {
+        return m_height;
+    }
+    void set_base_radius(double radius) {
+        m_base_radius = radius;
+    }
+    void set_height(double height) {
+        m_height = height;
+    }
+    double volume() {
+        return PI * m_base_radius * m_base_radius * m_height;
+    }
 
-        void set_base_radius(double rad_param){
-            base_radius = rad_param;
-        }
-
-        void set_height(double height_param){
-            height = height_param;
-        }
-    private : 
-        //Member variables
-        double base_radius{1};
-        double height{1};
+private:
+    double m_base_radius{};
+    double m_height{};
 };
 
+int main(int argc, char** argv) {
+    Cylinder cylinder1;
+    // Cylinder cylinder1(3.0, 4.0);
 
+    cylinder1.set_base_radius(3.0);
+    cylinder1.set_height(4.0);
 
-int main(){
-    Cylinder cylinder1(10,10);
-    std::cout << "volume : " << cylinder1.volume() << std::endl;
-
-    //Modify our object
-    cylinder1.set_base_radius(100);
-    cylinder1.set_height(10);
-
-    std::cout << "volume : " << cylinder1.volume() << std::endl;
-
-
+    std::cout << "radius is " << cylinder1.get_base_radius() << std::endl;
+    std::cout << "height is " << cylinder1.get_height() << std::endl;
+    std::cout << "volumn is " << cylinder1.volume() << std::endl;
     return 0;
 }

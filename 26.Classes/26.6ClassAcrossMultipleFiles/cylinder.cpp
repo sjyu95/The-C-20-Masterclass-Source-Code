@@ -1,26 +1,26 @@
 #include "cylinder.h"
 
-Cylinder::Cylinder(double rad_param,double height_param){
-    base_radius = rad_param;
-    height = height_param;
+Cylinder::Cylinder(double radius, double height) {
+    m_base_radius = radius;
+    m_height = height;
 }
 
-double Cylinder::volume(){
-    return PI * base_radius * base_radius * height;
+double Cylinder::get_base_radius() {
+    return m_base_radius;
 }
 
-//Setter and getter methods
-double Cylinder::get_base_radius(){
-    return base_radius;
-}
-double Cylinder::get_height(){
-    return height;
+double Cylinder::get_height() {
+    return m_height;
 }
 
-void Cylinder::set_base_radius(double rad_param){
-    base_radius = rad_param;
+void Cylinder::set_base_radius(double radius) {
+    m_base_radius = radius;
 }
 
-void Cylinder::set_height(double height_param){
-    height = height_param;
+void Cylinder::set_height(double height) {
+    m_height = height;
+}
+
+double Cylinder::volume() {
+    return PI * m_base_radius * m_base_radius * m_height;
 }

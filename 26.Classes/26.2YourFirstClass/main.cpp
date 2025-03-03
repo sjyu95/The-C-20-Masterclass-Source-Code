@@ -1,35 +1,25 @@
 #include <iostream>
 
-const double PI {3.1415926535897932384626433832795};
+const double PI{3.1415926535897932384626433832795};
 
 class Cylinder {
-    public : 
-        //Functions (methods)
-        double volume(){
-            return PI * base_radius * base_radius * height;
-        }
+public:
+    double base_radius{};
+    double height{};
 
-    public : 
-        //Member variables
-        double base_radius{1};
-        double height{1};
+    double volume() {
+        return PI * base_radius * base_radius * height;
+    }
 };
 
+int main(int argc, char** argv) {
+    Cylinder cylinder1;
 
-int main(){
+    cylinder1.base_radius = 3;
+    cylinder1.height = 2;
 
-    Cylinder cylinder1; // Objects
-    std::cout << "volume : " << cylinder1.volume() << std::endl;
-
-    //Change the member variables
-    cylinder1.base_radius = 10;
-    cylinder1.height = 3;
-
-    std::cout << "volume : " << cylinder1.volume() << std::endl;
-
-    cylinder1.height =8;
-
-    std::cout << "volume : " << cylinder1.volume() << std::endl;
-   
+    std::cout << "base radius is " << cylinder1.base_radius << std::endl;
+    std::cout << "height is " << cylinder1.height << std::endl;
+    std::cout << "volume is " << cylinder1.volume() << std::endl;
     return 0;
 }

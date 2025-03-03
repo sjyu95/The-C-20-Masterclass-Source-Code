@@ -1,39 +1,30 @@
 #include <iostream>
 #include <string_view>
 
+class Dog {
+public:
+    Dog() = default;
+    Dog(std::string_view name, std::string_view breed, int age) {
+        m_name = name;
+        m_breed = breed;
+        m_age = new int{age};
+        std::cout << "call constructor : name - " << m_name << ", breed - " << m_breed << ", age - " << *m_age << std::endl;
+    }
+    ~Dog() {
+        delete m_age;
+        std::cout << "call destructor : name - " << m_name << std::endl;;
+    }
 
-
-class Dog{
-    public : 
-        Dog() = default;
-        Dog(std::string_view name_param, std::string_view breed_param, int  age_param);
-        ~Dog();
-
-    private : 
-        std::string name;
-        std::string breed;
-        int * p_age{nullptr};
+private:
+    std::string m_name;
+    std::string m_breed;
+    int * m_age;
 };
-Dog::Dog(std::string_view name_param, std::string_view breed_param, int  age_param){
-    name = name_param;
-    breed = breed_param;
-    p_age = new int;
-    *p_age = age_param;
-    std::cout << "Dog constructor called for " << name << std::endl;
-}
 
-Dog::~Dog(){
-    delete p_age;
-    std::cout << "Dog destructor called for : " << name << std::endl;
-}
-
-
-int main(){
-    
-    Dog dog1("Dogyy1","Shepherd",2);
-    Dog dog2("Dogyy2","Shepherd",3);
-    Dog dog3("Dogyy3","Shepherd",5);
-    Dog dog4("Dogyy4","Shepherd",1);
-   
+int main(int argc, char** argv) {
+    Dog dog1 = Dog("happy1", "Buldog", 1);
+    Dog dog2 = Dog("happy2", "Buldog", 1);
+    Dog dog3 = Dog("happy3", "Buldog", 1);
+    Dog dog4 = Dog("happy4", "Buldog", 1);
     return 0;
 }

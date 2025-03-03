@@ -1,32 +1,18 @@
 #include <iostream>
 
-class Dog{
-    public : 
-     Dog() = default;
-     void prin_info(){
-
-     }
-     void do_something(){
-
-     }
-
-     private :
-      size_t leg_count; //8
-      size_t arm_count; //8
-      int * p_age; // 8
+class Dog {
+private:
+    int leg_count{4};
+    // int age{1};
 };
 
+int main(int argc, char** argv) {
+    std::cout << "sizeof(int) : " << sizeof(int) << std::endl;
+    std::cout << "sizeof(Dog) : " << sizeof(Dog) << std::endl;
 
-int main(){
+    std::string message{"aa"};
+    std::cout << "sizeof(std::string) : " << sizeof(std::string) << std::endl;
+    std::cout << "sizeof(message) : " << sizeof(message) << std::endl;
 
-    Dog dog1;
-    std::cout << "sizeof(size_t) : " << sizeof(size_t) << std::endl;
-    std::cout << "sizeof(int*) : " << sizeof(int*) << std::endl;
-    std::cout << "sizeof(Dog) : " << sizeof(dog1) << std::endl;
-
-    std::string name{"I am the king of the universe!"};
-
-    std::cout << "sizeof(name) : " << sizeof(name) << std::endl;
-   
     return 0;
 }
