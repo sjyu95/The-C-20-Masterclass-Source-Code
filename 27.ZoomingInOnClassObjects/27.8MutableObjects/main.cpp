@@ -1,15 +1,13 @@
 #include <iostream>
 #include "dog.h"
 
-int main(){
+int main(int argc, char** argv) {
+    const Dog dog("Happy", "Sheperd", 4);
 
-    Dog dog1("Fluffy","Shepherd",2);
-    dog1.print_info(); //1
-    dog1.print_info();//2
-
-    for(size_t i{0}; i <10;++i){
-        dog1.print_info();
+    for (size_t i{}; i < 10; i++) {
+        dog.print_info();
     }
 
     return 0;
+    
 }

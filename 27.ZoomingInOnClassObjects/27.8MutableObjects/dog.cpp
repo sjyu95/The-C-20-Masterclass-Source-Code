@@ -1,17 +1,33 @@
-     #include "dog.h"
-     
-     Dog::Dog(const std::string& name_param, const std::string& breed_param, unsigned int age_param){
-         m_name = name_param;
-         m_breed = breed_param;
-         m_age = age_param;
-     }
+#include <iostream>
+#include "dog.h"
 
+Dog::Dog(std::string_view name, std::string_view breed, unsigned age)
+: m_name(name)
+, m_breed(breed)
+, m_age(age) {
+}
 
-     //Utility functions
-     void Dog::print_info() const {
-         ++m_print_info_count;
-         std::cout << "Dog (" << this << ") : [ name : " << this->m_name  
-                << ", breed : " << this->m_breed  
-                << ", age : " << this->m_age
-                 << ",print_count : " << m_print_info_count << "]" << std::endl;
-     }
+// std::string& Dog::name() const {
+const std::string& Dog::name() const {
+    return m_name;
+}
+
+std::string& Dog::name() {
+    return m_name;
+}
+
+const unsigned& Dog::age() const {
+    return m_age;
+}
+
+unsigned& Dog::age() {
+    return m_age;
+}
+
+void Dog::print_info() const {
+    std::cout << "address : " << this << ", name : " << m_name << ", age : " << m_age << ", call_count : " << m_call_count++ << std::endl;
+}
+
+void Dog::print_info() {
+    std::cout << "address : " << this << ", name : " << m_name << ", age : " << m_age << std::endl;
+}

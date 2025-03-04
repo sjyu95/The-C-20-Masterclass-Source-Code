@@ -1,32 +1,26 @@
 #ifndef DOG_H
 #define DOG_H
 
-#include <iostream>
 #include <string>
+#include <string_view>
 
-class Dog{
-public : 
-     Dog() = default;
-     Dog(std::string_view name_param, std::string_view breed_param, unsigned int age_param);
+class Dog {
+public:
+	Dog() = default;
+	Dog(std::string_view name, std::string_view breed, unsigned age);
 
-     //Getters
-     std::string_view get_name();
-     std::string_view get_breed();
-     unsigned int get_age();
+	std::string getName();
+	unsigned getAge();
 
-     //Setters
-     void set_name(std::string_view name_param);
-     void set_breed(std::string_view breed_param);
-     void set_age(unsigned int age);
+	Dog & setName(std::string_view name);
+	Dog & setAge(unsigned age);
 
-     //Utility functions
-     void print_info();
+	void print_info();
 
-private : 
-        std::string_view m_name;
-        std::string_view m_breed;
-        unsigned int m_age;
+private:
+	std::string m_name;
+	std::string m_breed;
+	unsigned m_age{};
 };
 
-
-#endif // DOG_H
+#endif

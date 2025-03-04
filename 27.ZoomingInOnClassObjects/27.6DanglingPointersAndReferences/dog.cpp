@@ -1,40 +1,43 @@
-     #include "dog.h"
-     
-     Dog::Dog(const std::string& name_param, const std::string& breed_param, unsigned int age_param){
-         m_name = name_param;
-         m_breed = breed_param;
-         m_age = age_param;
-     }
+#include <iostream>
+#include "dog.h"
 
-    /*
-     //Getters
-     std::string Dog::get_name() const{
-         //return m_name;
-         return this->m_name;
-     }
-     std::string Dog::get_breed() const {
-         return m_breed;
-     }
-     unsigned int Dog::get_age() const{
-         return m_age;
-     }
+Dog::Dog(std::string_view name, std::string_view breed, unsigned age)
+: m_name(name)
+, m_breed(breed)
+, m_age(age) {
+}
 
-     //Setters
-     void Dog::set_name(std::string name_param){
-        // m_name = name_param;
-        this->m_name = name_param;
-     }
-     void Dog::set_breed(std::string breed_param){
-         m_breed = breed_param;
-     }
-     void Dog::set_age(unsigned int age){
-         m_age = age;
-     }
-     */
+// std::string& Dog::name() const {
+const std::string& Dog::name() const {
+    return m_name;
+}
 
-     //Utility functions
-     void Dog::print_info() const {
-         std::cout << "Dog (" << this << ") : [ name : " << this->m_name  
-                << ", breed : " << this->m_breed  
-                << ", age : " << this->m_age << "]" << std::endl;
-     }
+std::string& Dog::name() {
+    return m_name;
+}
+
+const unsigned& Dog::age() const {
+    return m_age;
+}
+
+unsigned& Dog::age() {
+    return m_age;
+}
+
+void Dog::print_info() const {
+    std::cout << "address : " << this << ", name : " << m_name.c_str() << ", age : " << m_age << std::endl;
+}
+
+void Dog::print_info() {
+    std::cout << "address : " << this << ", name : " << m_name.c_str() << ", age : " << m_age << std::endl;
+}
+
+const std::string& Dog::compiled_info() const {
+    std::string info = m_name + ", " + m_breed + ", " + std::to_string(m_age) + " years old";
+    return info;
+}
+
+const unsigned& Dog::jump_age() const {
+    unsigned jumped{m_age + 10};
+    return jumped;
+}

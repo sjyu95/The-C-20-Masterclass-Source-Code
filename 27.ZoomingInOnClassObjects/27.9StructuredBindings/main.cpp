@@ -1,46 +1,29 @@
 #include <iostream>
 
-
-class Point
-{
-public : 
-    double x;
-    double y;
+struct Point {
+    double x{};
+    double y{};
 };
 
-void print_point(const Point p){
-    std::cout << "Point [ x : " << p.x << ", y : " << p.y << "]" << std::endl;
-}
+int main(int argc, char** argv) {
+    Point pt{2.4, 5.1};
 
+    auto [x,y] = pt;
+    std::cout << "x : " << x << ", y : " << y << std::endl;
 
-int main(){
+    
+    auto& [xx, yy] = pt;
+    xx++;
+    yy++;
+    std::cout << "xx : " << xx << ", yy : " << yy << std::endl;
 
-    Point point1;
-
-    point1.x = 5;
-    point1.y = 6;
-
-    print_point(point1);
-
-    auto [a,b] = point1;
-
-    std::cout << "a : " << a << std::endl;
-    std::cout << "b : " << b << std::endl;
-
-    point1.x = 44.1;
-    point1.y = 55.2;
-
-    print_point(point1);
-
-    std::cout << "a : " << a << std::endl;
-    std::cout << "b : " << b << std::endl;
-
-    auto func = [=](){
-        std::cout << "a (captured) : " << a << std::endl;
-        std::cout << "b (captured) : " << b << std::endl;
+    auto func = [x, y]() {
+        std::cout << "(captured) x : " << x << ", y : " << y << std::endl;
     };
     func();
 
-    
+    // double [x2, y2] = pt;
+    // std::cout << "x2: " << x2 << ", y2 : " << y2 << std::endl;
+
     return 0;
 }

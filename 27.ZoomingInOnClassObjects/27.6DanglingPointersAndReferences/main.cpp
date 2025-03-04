@@ -1,18 +1,16 @@
 #include <iostream>
 #include "dog.h"
 
-int main(){
+int main(int argc, char** argv) {
+    const Dog dog("Happy", "Sheperd", 4);
 
-    Dog dog1("Fluffy","Shepherd",2);
+    // auto& info = dog.compiled_info();
+    // const std::string& info = dog.compiled_info();
+    // std::cout << "info : " << info << std::endl;
 
-    /*
-    const std::string& str_ref = dog1.compile_dog_info();
-    std::cout << " info : " << str_ref << std::endl;
-    */
+    const unsigned& jumped_age = dog.jump_age();
+    std::cout << "jumped age : " << jumped_age << std::endl;
 
-   unsigned int* int_ptr = dog1.jumps_per_minute();
-   std::cout << "jumps_per_minute : " << *int_ptr << std::endl;
-
-    std::cout << "Done!" << std::endl;
     return 0;
+    
 }

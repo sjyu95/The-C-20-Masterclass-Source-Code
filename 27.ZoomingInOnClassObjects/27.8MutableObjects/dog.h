@@ -1,47 +1,29 @@
 #ifndef DOG_H
 #define DOG_H
 
-#include <iostream>
 #include <string>
+#include <string_view>
 
-class Dog{
-public : 
-     Dog() = default;
-     Dog(const std::string& name_param, const std::string& breed_param, unsigned int age_param);
+class Dog {
+public:
+	Dog() = default;
+	Dog(std::string_view name, std::string_view breed, unsigned age);
 
-     std::string& name(){
-        return m_name;
-     }
-     const std::string& name() const{
-        return m_name;
-     }
+	std::string& name();
+	// std::string& name() const;
+	const std::string& name() const;
+	unsigned& age();
+	const unsigned& age() const;
 
+	void print_info();
+	void print_info() const;
 
-     std::string& breed(){
-        return m_breed;
-     }
-     const std::string& breed() const{
-        return m_breed;
-     }
-
-
-
-     unsigned int& age(){
-        return m_age;
-     }
-     const unsigned int& age() const{
-        return m_age;
-     }
- 
-     //Utility functions
-     void print_info() const;
-
-private : 
-        std::string m_name;
-        std::string m_breed;
-        unsigned int m_age;
-        mutable size_t m_print_info_count{};
+private:
+	std::string m_name;
+	std::string m_breed;
+	unsigned m_age{};
+   mutable unsigned m_call_count{};
+   // unsigned m_call_count{};
 };
 
-
-#endif // DOG_H
+#endif

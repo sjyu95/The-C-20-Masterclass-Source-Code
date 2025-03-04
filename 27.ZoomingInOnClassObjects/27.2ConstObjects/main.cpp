@@ -1,35 +1,29 @@
-#include <iostream>
 #include "dog.h"
 
+int main(int argc, char** argv) {
+    // const Dog dog("Happy", "Sheperd", 4);
+    // Dog dog("Happy", "Sheperd", 4);
+    Dog dog("Happy", "Sheperd", 4);
+    dog.print_info();
 
-int main(){
+    Dog* p_dog{&dog};
+    p_dog->print_info();
+    
+    Dog& r_dog{dog};
+    r_dog.print_info();
+    
+    // Dog* p_dog2 = new Dog("Happy2", "Sheperd", 3);
+    Dog* p_dog2{new Dog("Happy2", "Sheperd", 3)};
+    p_dog2->print_info();
+    delete p_dog2;
 
-    const Dog dog1("Fluffy","Shepherd",2);
+    const Dog* p_dog3{new Dog("Happy2", "Sheperd", 3)};
+    // p_dog3->print_info();
+    delete p_dog3;
 
-    //Direct access
-    /*
-    dog1.print_info(); // Compiler error
-
-    dog1.set_name("Milou"); // Compiler error
-
-    dog1.print_info();
-    */
-
-   //Pointer to non const
-   //Dog * dog_ptr = &dog1;
-
-   //Non const reference
-   //Dog& dog_ref = dog1;
-
-   //Pointer to const
-   const Dog* const_dog_ptr = &dog1;
-   //const_dog_ptr->set_name("Milou"); // Expect
-   //const_dog_ptr->get_name();
-
-   //Const reference
-   const Dog& const_dog_ref = dog1;
-   //const_dog_ref.set_name("Milou"); // Expected
-   //const_dog_ref.get_name();
+    const Dog& r_dog4{dog};
+    // r_dog4.print_info();
 
     return 0;
+    
 }
