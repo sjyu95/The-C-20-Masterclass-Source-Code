@@ -1,38 +1,46 @@
-#include <iostream>
 #include <cassert>
+#include <initializer_list>
+#include <iostream>
 
-struct Point{
-public: 
-    Point( std::initializer_list<double> list){
-        //static_assert( (list.size() == 2));
-        assert(list.size() == 2); // If the size of the list is not 2, terminate the program with an error
-        /*
-        std::cout << "Initalizer list constructor called" << std::endl;
-        std::cout << "list size : " << list.size() << std::endl;
-        
-        for(size_t i{} ;  i < list.size(); ++i){
-            std::cout << "elt [" << i << "]  :" << *(list.begin() + i) << std::endl;
-        }
-        */
-       x = *(list.begin());
-       y = *(list.begin() + 1);
-    }
+class Point {
+public:
+    Point(std::initializer_list<double> list);
+    void PrintInfo() const;
 
-    void print_point() const {
-        std::cout << "Point [ x : " << x << ", y : " << y << "]" << std::endl;
-    }
- private : 
-    double x;
-    double y;
+private:
+    double m_x{};
+    double m_y{};
 };
 
+Point::Point(std::initializer_list<double> list) {
+    assert(list.size() == 2);
 
+    m_x = *list.begin();
+    m_y = *(list.begin() + 1);
 
-int main(){
+    for (size_t i{}; i < list.size(); i++) {
+        std::cout << i << " : " << *(list.begin() + i) << std::endl;
+    }
+    std::cout << "----" << std::endl;
 
-    Point p1{22.4,34.9};
-    p1.print_point();
-   
-   
+    for (auto it = list.begin(); it != list.end(); it++) {
+        std::cout << *it << std::endl;
+    }
+    std::cout << "----" << std::endl;
+
+    for (auto& i : list) {
+        std::cout << i << std::endl;
+    }
+    std::cout << "----" << std::endl;
+}
+
+void Point::PrintInfo() const {
+    std::cout << "m_x : " << m_x << ", m_y : " << m_y << std::endl;
+}
+
+int main(int argc, char** argv) {
+    Point p{1.0, 2.0};
+    p.PrintInfo();
+
     return 0;
 }

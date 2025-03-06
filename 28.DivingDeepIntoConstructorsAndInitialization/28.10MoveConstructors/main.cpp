@@ -1,14 +1,18 @@
 #include <iostream>
 #include "point.h"
 
+int main(int argc, char** argv) {
+    Point p1{1.0, 2.0};
+    Point p2{std::move(p1)};
 
-int main(){
-    //Point p1(10.4,15.6);
-    //p1.print_info();
+    std::cout << "----" << std::endl;
+    Point p4{4.5,5.5};
+    Point p3{std::move(p4)};
 
-    //Create a copy from a temporary
-    Point p3(std::move(Point(20.5,5.8)));
-    p3.print_info();
-   
+    std::cout << "----2" << std::endl;
+    Point* p6{new Point{5.5, 6.5}};
+    // Point* p5{std::move(p6)}; // no call move constructor
+    Point* p5{p6};
+
     return 0;
 }

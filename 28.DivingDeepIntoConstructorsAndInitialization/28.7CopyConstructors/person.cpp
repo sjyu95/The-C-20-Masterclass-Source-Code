@@ -1,67 +1,51 @@
+#include <iostream>
 #include "person.h"
 
-Person::~Person()
-{
-	delete age; // Make sure that you are not leaking memory
-}
-Person::Person(const std::string& last_name)
-	: Person(last_name,"")
-{
-}
-Person::Person(const std::string& last_name_param, const std::string& first_name_param)
-	: Person(last_name_param,first_name_param,0)
-{
-}
-Person::Person(const std::string& last_name_param, const std::string& first_name_param, int age_param)
-	: 	last_name(last_name_param),
-		first_name(first_name_param),
-		age(new int(age_param))
-{
+Person::Person(const std::string& firstName, const std::string& lastName, int age)
+: m_firstName(firstName)
+, m_lastName(lastName)
+, m_age(new int(age)) {
+    std::cout << "call deligated constructor" << std::endl;
 }
 
-/*
-Person::Person(const Person source_p)  // BAAAAD!
-    : last_name(source_p.get_last_name()),
-        first_name(source_p.get_last_name()),
-        age(source_p.get_age())
-
-{
-
-}
-*/
-
-
-//Memberwise copy : BAD
-/*
-Person::Person(const Person& source_p) 
-    : last_name(source_p.get_last_name()),
-        first_name(source_p.get_first_name()),
-        age(source_p.get_age())
-
-{
-    std::cout << "Copy constructor called" << std::endl;
-
-}
-*/
-
-//Don't blindly copy pointer member variables
-/*
-Person::Person(const Person& source_p) 
-    : last_name(source_p.get_last_name()),
-        first_name(source_p.get_first_name()),
-        age(new int(*(source_p.get_age())))
-
-{
-    std::cout << "Copy constructor called" << std::endl;
-
-}
-*/
-
-//Delegate from the copy constructor
-Person::Person(const Person& source_p) 
-    : Person(source_p.get_last_name(),source_p.get_first_name(),*(source_p.get_age()))
-{
-    std::cout << "Copy constructor called" << std::endl;
-
+Person::~Person() {
+    std::cout << "call destructor" << std::endl;
+    delete m_age;
 }
 
+Person::Person(const Person& person)
+: Person(person.getFirstName(), person.getLastName(), *(person.getAge())) {
+    std::cout << "call copy constructor" << std::endl;
+}
+
+const std::string& Person::getFirstName() const {
+    return m_firstName;
+}
+
+const std::string& Person::getLastName() const {
+    return m_lastName;
+}
+
+int* Person::getAge() const {
+    return m_age;
+}
+
+void Person::setFirstName(const std::string& firstName) {
+    m_firstName = firstName;
+}
+
+void Person::setLastName(const std::string& lastName) {
+    m_lastName = lastName;
+}
+
+void Person::setAge(int age) {
+    *m_age = age;
+}
+
+void Person::printInfo() const {
+    std::cout << "this : " << this
+              << "firstname : " << m_firstName
+              << "lastname : " << m_lastName
+              << "age : " << *m_age 
+              << "age address : " << m_age << std::endl;
+}

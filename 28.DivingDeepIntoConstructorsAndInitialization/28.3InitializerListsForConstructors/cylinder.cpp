@@ -1,24 +1,12 @@
-#include "cylinder.h"
 #include <iostream>
+#include "cylinder.h"
 
-//Memberwise copy initialization
-/*
-Cylinder::Cylinder(double rad_param,double height_param){
-    base_radius = rad_param;
-    height = height_param;
-    std::cout <<"Two param constructor called" << std::endl;
-}
-*/
-
-
-//Initializer lists
-Cylinder::Cylinder(double rad_param, double height_param)
-      : base_radius(rad_param),
-         height(height_param)
+Cylinder::Cylinder(double rad_param,double height_param)
+: base_radius(rad_param)
+, height(height_param)
 {
-
+    std::cout << "Cylinder::Cylinder (using default parameter)" << std::endl;
 }
-
 
 double Cylinder::volume(){
     return PI * base_radius * base_radius * height;

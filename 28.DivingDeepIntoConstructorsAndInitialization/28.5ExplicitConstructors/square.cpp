@@ -1,16 +1,10 @@
 #include "square.h"
 
-Square::Square(double side_param , const std::string& color_param)
-     : m_side{side_param},
-        m_color{color_param}
-{
+Square::Square(double side, std::string_view color)
+: m_side{side}
+, m_color{color} {
 }
 
 double Square::surface() const {
-    return m_side*m_side;
+    return m_side * m_side;
 }
-
-Square::~Square()
-{
-}
-

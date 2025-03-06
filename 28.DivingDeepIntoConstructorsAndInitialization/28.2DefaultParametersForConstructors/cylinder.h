@@ -1,12 +1,12 @@
 #ifndef CYLINDER_H
 #define CYLINDER_H
 
-const double PI {3.1415926535897932384626433832795};
+#include "constants.h"
 class Cylinder {
     public : 
         //Constctors
         Cylinder() = default;
-        Cylinder(double rad_param,double height_param = 5  );
+        Cylinder(double rad_param,double height_param = 10);
         //Functions (methods)
         double volume();
         

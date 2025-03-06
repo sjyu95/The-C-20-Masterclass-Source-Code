@@ -1,11 +1,10 @@
-#include "cylinder.h"
 #include <iostream>
-
+#include "cylinder.h"
 
 Cylinder::Cylinder(double rad_param,double height_param){
     base_radius = rad_param;
     height = height_param;
-    std::cout <<"Two param constructor called" << std::endl;
+    std::cout << "Cylinder::Cylinder (using default parameter)" << std::endl;
 }
 
 double Cylinder::volume(){

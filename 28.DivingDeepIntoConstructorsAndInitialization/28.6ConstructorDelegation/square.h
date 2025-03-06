@@ -3,19 +3,17 @@
 
 #include <string>
 
-class Square
-{
+class Square {
 public:
-	 explicit Square(double side_param);
-     Square( double side_param, const std::string& color_param, int shading_param);
-	 ~Square();
+    Square(double side);
+    Square(double side, std::string_view color);
+    ~Square();
+
     double surface() const;
-    
-private :
-    double m_side;
+private:
+    double m_side{};
     std::string m_color;
-    int m_shading;
-    double m_position;
+    double m_point;
 };
 
-#endif // SQUARE_H
+#endif
