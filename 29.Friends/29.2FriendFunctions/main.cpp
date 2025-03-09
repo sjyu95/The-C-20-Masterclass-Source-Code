@@ -1,37 +1,24 @@
 #include <iostream>
+#include <string>
 
-class Dog{
-    friend void debug_dog_info(const Dog& d);
-    friend void debug_dog_info();
-public : 
-    Dog(const std::string& name, int age) 
-        : m_name{name},m_age{age}
-    {
+class Dog {
+public:
+    Dog(const std::string& name, int age) : m_name(name), m_age(age) {}
 
-    }
-
-private : 
+private:
     std::string m_name;
-    int m_age;
+    int m_age{};
+
+    friend void debugDogInfo(const Dog& dog);
 };
 
-void debug_dog_info(const Dog& d){
-    std::cout << "Dog [ name : " << d.m_name << ", age : " << d.m_age << "]" << std::endl;
+void debugDogInfo(const Dog& dog) {
+    std::cout << "name : " << dog.m_name << ", age : " << dog.m_age << std::endl;
 }
 
-void debug_dog_info(){
-    Dog dog1("Milou",3);
-    dog1.m_name = "Fluffy";
-    std::cout << "Dog [ name : " << dog1.m_name << ", age : " << dog1.m_age << "]" << std::endl;
+int main(int argc, char** argv) {
+    Dog dog{"Cookie", 1};
+    debugDogInfo(dog);
 
-}
-
-
-int main(){
-    Dog dog1("Fluffy",4);
-    //debug_dog_info(dog1);
-
-    debug_dog_info();
-   
     return 0;
 }

@@ -1,19 +1,23 @@
+#include <iostream>
 #include "outer.h"
-Outer::Outer(int int_param, double double_param)
-    : m_var1(int_param) , m_var2(double_param)
-{
+
+Outer::Outer(int intVar, double doubleVar) : m_intVar(intVar), m_doubleVar(doubleVar) {
+    CALL_COUNT++;
 }
 
-//default constructor . Delegates to two param constructor
-Outer::Outer() : Outer(0,0.0){
-    
+void Outer::doSomething() {
+    Inner inner(10);
+    std::cout << "getInnerValue : " << inner.getInnerValue() << std::endl;
+    inner.doSomethingWithOuter(this);
 }
 
-Outer::~Outer()
-{
+Outer::Inner::Inner(double inner) : m_innerVar(inner) {}
+double Outer::Inner::getInnerValue() {
+    return m_innerVar;
 }
 
-Outer::Inner::Inner(double double_param) : inner_var(double_param){
-    
+void Outer::Inner::doSomethingWithOuter(Outer* outer) {
+    std::cout << "static outer call count is " << Outer::CALL_COUNT << std::endl;
+    std::cout << "Outer.m_intVar : " << outer->m_intVar << ", Outer.m_doubleVar" << outer->m_doubleVar << std::endl;
 }
 

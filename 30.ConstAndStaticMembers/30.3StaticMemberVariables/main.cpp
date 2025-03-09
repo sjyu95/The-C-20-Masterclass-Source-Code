@@ -1,18 +1,12 @@
 #include <iostream>
 #include "point.h"
 
-int main(){
+int main(int argc, char** argv) {
+    Point point{1.0, 2.0};
+    std::cout << "call count : " << Point::CALL_COUNT << std::endl;
 
-    //Print the point count in our program
-    //std::cout << "Point count : " << Point::m_point_count << std::endl; //0
+    Point points[]{point, Point{3.1,4.1}, Point{5.2,6.2}};
+    std::cout << "total call count : " << Point::CALL_COUNT << std::endl;
 
-    Point p1(10.0,20.1);
-
-    std::cout << "Point count : " << p1.get_point_count() << std::endl; //1
-
-    Point points[] {Point(1,1),Point(),Point(4)};
-
-    std::cout << "Point count : " << p1.get_point_count() << std::endl; //4
-   
     return 0;
 }

@@ -4,42 +4,36 @@
 #include <string>
 
 class Cylinder {
-public : 
-    //int and enum can be initialized in class declaration
-	static const int    INT_CONSTANT {5};
-    enum Color{ Red = 0, Green, Blue };
-    static const Color COLOR_CONSTANT{Color::Green} ;
-	
-	//Others have to be done in the cpp file.
-	static const std::string default_color;
-	static const char*  CHAR_PTR_CONSTANT;
-    static const int    INT_ARRAY_CONSTANT[5];
-    static const float  FLOAT_CONSTANT;
-    static const std::string STRING_ARRAY_CONSTANT[2];
-	
-	//Not static
-	const float WEIRD_FLOAT;
-	const char * WEIRD_C_STRING;
-	const int    WEIRD_INT_ARRAY_CONSTANT[5];
-	
-    //Constructors
-    Cylinder()= default;
-    Cylinder(double radius_param , double height_param );
-	
-    //Getters
-    double get_base_radius();
-    double get_height();
-    
-    //Setters
-    void set_base_radius(double radius_param);
-    void set_height(double height_param);
-    
-    //Other operations on the class object
-    double volume();  
-	
-private :
-    double base_radius{1.0};
-    double height{1.0};
-    static  const double PI ;
-};
-#endif // CYLINDER_H
+    public:
+        // Cylinder() = default;
+        Cylinder(double radius, double height);
+
+        // primitive type static const variables - initialization
+        static const int STATIC_INT_VAR{0};
+        enum Color{ RED, BLUE, GREEN };
+        static const Color STATIC_COLOR{RED};
+        static const char STATIC_CHAR_VAR{'c'};
+
+        // non primitive type static variable - impossible initialization here
+        static const float FLOAT_CONSTANT;
+        static const double DOUBLE_CONSTANT;
+        static const int INT_ARRAY_CONSTANT[];
+        static const std::string STRING_CONSTANT;
+
+        // const variable - use initialize list
+        const int WEIRED_INT_CONSTANT;
+
+        double get_base_radius();
+        double get_height();
+        void set_base_radius(double radius);
+        void set_height(double height);
+        double volume();
+
+    private:
+        double m_base_radius{};
+        double m_height{};
+
+        static const double PI;
+    };
+
+#endif

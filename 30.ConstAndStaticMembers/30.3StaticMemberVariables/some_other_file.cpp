@@ -1,4 +1,3 @@
 #include "point.h"
 
-  //Initialize static member var
-  size_t Point::m_point_count {0};
+size_t Point::CALL_COUNT{0};

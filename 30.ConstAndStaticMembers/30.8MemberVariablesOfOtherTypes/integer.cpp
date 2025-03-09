@@ -1,12 +1,10 @@
-#include <iostream>
 #include "integer.h"
 
-Integer::Integer(int value) : inner_int(value)
-{
-	std::cout << "Constructor for Integer " << inner_int << " called" << std::endl;
-}
+Integer::Integer(int value) : m_integer(value) {}
 
-Integer::~Integer()
-{
+int Integer::get() const {
+	return m_integer;
 }
-
+void Integer::set(int value) {
+	m_integer = value;
+}

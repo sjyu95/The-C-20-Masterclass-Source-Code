@@ -3,7 +3,7 @@
 
 class Point{
 public:
-    Point(double x, double y) : m_x(x), m_y(y) {} 
+    Point(double x, double y) : m_x(x), m_y(y) {}
 private:
     double m_x{};
     double m_y{};
@@ -15,7 +15,6 @@ struct Person{
 };
 
 int main(int argc, char** argv) {
-    Point point{1,2};
     Point point2(1.1, 2.2);
 
     Person person{"John", 40};

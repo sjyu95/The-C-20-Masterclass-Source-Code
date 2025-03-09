@@ -1,13 +1,8 @@
-#include <iostream>
 #include "outer.h"
 
+int main(int argc, char** argv) {
+    Outer outer{1,10.0};
+    outer.doSomething();
 
-int main(){
-
-    Outer outer1(10,20.1);
-    outer1.do_something();
-
-    
-   
     return 0;
 }
