@@ -1,29 +1,28 @@
 #include <iostream>
 
-namespace Hello{
-    unsigned int age{23};
-    
-    namespace World{
-        int local_var{44};
-        
-        void say_something(){
-            std::cout << "Hello there " << std::endl;
-            std::cout << "The age is : " << age << std::endl;
+namespace parents {
+    int age{43};
+
+    namespace child {
+        int age{14};
+
+        void printAge() {
+            std::cout << "Child------" << std::endl;
+            std::cout << "Age of child is " << age << std::endl;
+            std::cout << "Parents age is " << parents::age << std::endl;
         }
     }
-    
-    void do_something(){
-        //Here we don't have direct access to local_var, we have to go 
-        //through the namespace.
-        std::cout << "Using local_var : " << World::local_var << std::endl;
+
+    void printAge() {
+        std::cout << "Parents------" << std::endl;
+        std::cout << "Age of parents is " << age << std::endl;
+        std::cout << "Age of child is" << child::age << std::endl;
+        child::printAge();
     }
 }
 
-
-
-int main(){
-    //Hello::World::say_something();
-    Hello::do_something();
-
+int main(int argc, char** argv) {
+    parents::printAge();
+    parents::child::printAge();
     return 0;
 }

@@ -1,63 +1,37 @@
 #include <iostream>
+const double ADJUST{2.1};
 
-const double adjustment{0.724};
+namespace Adjustment {
+    double Add(double a, double b) {
+        return a+b+ADJUST;
+    }
+    double Mul(double a, double b);
+}
 
-namespace No_Adjust
-{
-    double add(double x, double y){
-        return x + y;
-    }     
-} // namespace name
+namespace NoAdjustment {
+    double Add(double a, double b) {
+        return a+b;
+    }
+    double Mul(double a, double b);
+}
 
-namespace Adjust
-{
-    double add(double x, double y){
-        return x+ y - adjustment;
-    }  
-} // namespace Adjust
+int main(int argc, char** argv) {
+    auto result = Adjustment::Add(1,2);
+    std::cout << "Adjustment::Add is " << result << std::endl;
 
-namespace No_Adjust
-{
-    double mult(double x, double y); // Declarations
-    double div(double x, double y);
-    
-} // namespace No_Adjust
-
-namespace Adjust
-{
-    double mult(double x, double y); // Declarations
-    double div(double x, double y);    
-} // namespace Adjust
-
-
-
-
-
-int main(){
-
-   double result = No_Adjust::div(12,3);
-   std::cout << "result : " << result << std::endl;
+    result = NoAdjustment::Mul(1,2);
+    std::cout << "NoAdjustment::Mul is " << result << std::endl;
     return 0;
 }
 
+namespace Adjustment {
+    double Mul(double a, double b) {
+        return a*b*ADJUST;
+    }
+}
 
-namespace No_Adjust
-{
-    double mult(double x, double y){
-        return x * y;
+namespace NoAdjustment {
+    double Mul(double a, double b) {
+        return a*b;
     }
-    double div(double x, double y){
-        return x / y;
-    }
-    
-} // namespace No_Adjust
-
-namespace Adjust
-{
-    double mult(double x, double y){
-        return x * y - adjustment;
-    }
-    double div(double x, double y){
-        return x / y - adjustment;
-    }    
-} // namespace Adjust
+}

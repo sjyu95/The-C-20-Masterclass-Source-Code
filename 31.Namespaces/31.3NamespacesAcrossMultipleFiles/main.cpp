@@ -1,26 +1,16 @@
 #include <iostream>
 #include "point.h"
-#include "line.h"
+#include "Line.h"
 #include "cylinder.h"
 
+int main(int argc, char** argv) {
+    Geom::Point p1(1,2), p2(3,4);
 
-int main(){
+    Geom::Line line(p1, p2);
+    line.printInfo();
 
-    Geom::Point p1(10,20);
-    Geom::Point p2(3.4,6.1);
-    p1.print_info();
-    p2.print_info();
-
-    std::cout << "---" << std::endl;
-
-    Geom::Line l1(p1,p2);
-    l1.print_info();
-
-    std::cout << "---" << std::endl;
-
-    Geom::Cylinder c1(1.4,10);
-    std::cout << "c1.volume : " << c1.volume() << std::endl;
-
+    Geom::Cylinder cyliner{1,2};
+    std::cout << "cylinder.volume : " << cyliner.volume() << std::endl;
 
     return 0;
 }

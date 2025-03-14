@@ -1,21 +1,16 @@
 #include <iostream>
 
-namespace{
-    double add(double a, double b); // Declaration
-} 
+namespace {
+    int add(int a, int b);
+}
 
-
-int main(){
-
-    double result = add(10.2,20.2);
-    std::cout << "result : " << result << std::endl;
-   
+int main(int argc, char** argv) {
+    std::cout << "add(1,3) : " << add(1,3) << std::endl;
     return 0;
 }
 
-
-namespace{
-    double add(double a, double b){
-        return a + b;
+namespace {
+    int add(int a, int b) {
+        return a, b;
     }
-} 
+}

@@ -1,25 +1,23 @@
 #include <iostream>
 
-//Global namespace
-double add(double a, double b){
-    return a + b;
+const int ADJUSTMENT{10};
+
+int Add(int a, int b) {
+    return a+b;
 }
 
-namespace My_Thing{
-    double add(double a, double b){
-        return a + b - 1;
+namespace adjustment {
+    int Add(int a, int b) {
+        return a+b+ADJUSTMENT;
     }
-    
-    void do_something(){
-        double result = ::add(5,6);
-        std::cout << "result : " << result << std::endl;
+    void PrintNoAdjustment(int a, int b) {
+        std::cout << "Add no adjustment : " << ::Add(a,b) << std::endl;
     }
-    
 }
 
+int main(int argc, char** argv) {
+    std::cout << "adjusted Add : " << adjustment::Add(1,2) << std::endl;
+    adjustment::PrintNoAdjustment(1,2);
 
-int main(){
-    My_Thing::do_something();
-  
     return 0;
 }

@@ -1,5 +1,7 @@
-namespace{
-    double add(double a, double b){ //Only usable in this translation unit
-        return a + b;
+#include <string>
+
+namespace {
+    std::string add(std::string a, std::string b) {
+        return a+b;
     }
-} 
+}
