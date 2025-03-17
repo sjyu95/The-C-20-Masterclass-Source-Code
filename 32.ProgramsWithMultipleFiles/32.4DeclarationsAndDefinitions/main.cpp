@@ -1,53 +1,23 @@
-#include <iostream>
 #include "person.h"
 
+double variable{};
 
-//Declaration and definition
-double weight;
+double add (double a, double b);
 
-//Functions : Declaration and defintion
-/*
-double add(double a, double b){
-    return a + b;
+namespace {
+    struct Point {
+        double x;
+        double y;
+    };
 }
-*/
 
-//Declaration
-double add(double a, double b);
+int main(int argc, char** argv) {
+    Person p1{"John", 27};
+    p1.printInfo();
 
-
-
-//Declaration and definition
-struct Point{
-    double m_x;
-    double m_y;
-};
-
-
-
-
-
-
-
-int main(){
-    /*
-   // weight = 5; // Assignment
-
-    std::cout << weight << std::endl;
-
-    double result = add(10,20.5);
-    std::cout << "result : " << result << std::endl;
-    */
-
-   Person p1("John Snow",27);
-   p1.print_info();
-  
     return 0;
 }
 
-/*
-//Definition
-double add(double a, double b){
-    return a + b;
+double add (double a, double b) {
+    return a+b;
 }
-*/

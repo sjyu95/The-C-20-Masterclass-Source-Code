@@ -1,40 +1,21 @@
 #include <iostream>
 
-
-inline int age{12};
-
-inline void some_age_function(){
-	std::cout << "age : " << age << std::endl;
-	std::cout << "&age : " << &age << std::endl;
+inline int age{10};
+inline void print_age_2(){
+	std::cout << "2. age : " << age << ", &age : " << &age << std::endl;
 }
 
-void print_age_2(){
-	std::cout << "age(utility2) : " << std::endl;
-	some_age_function();
+void some_function_2() {
+	print_age_2();
 }
 
-static double distance {23.9};
-
-static void some_distance_function(){
-	std::cout << "distance : " << distance << std::endl;
-	std::cout << "&distance : " << &distance << std::endl;
-}
-
-
-/*
-namespace{
-	double distance {23.9};
-
-	void some_distance_function(){
-		std::cout << "distance : " << distance << std::endl;
-		std::cout << "&distance : " << &distance << std::endl;
+namespace {
+	double distance{10.1};
+	void print_distance_2() {
+		std::cout <<"2. distance : " << distance << ", &distance: " << &distance << std::endl;
 	}
 }
-*/
-void print_distance_2(){
-	std::cout << "distance(utility2) : " << std::endl;
-	some_distance_function();
+
+void some_distance_function_2() {
+	print_distance_2();
 }
-
-
-

@@ -1,10 +1,8 @@
 #include <iostream>
 #include "utilities.h"
 
-int main(){
-
-    double result = add(10.5,20.8);
-    std::cout << "result : " << result << std::endl;
-    
+int main(int argc, char** argv) {
+    auto result = add(1,2);
+    std::cout << result << std::endl;
     return 0;
 }

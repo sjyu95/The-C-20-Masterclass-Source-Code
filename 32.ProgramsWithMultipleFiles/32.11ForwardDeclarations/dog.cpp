@@ -1,10 +1,8 @@
+#include <iostream>
 #include "dog.h"
 
-Dog::Dog(const std::string& name) : name(name)
-{
-}
+Dog::Dog(std::string_view name) : mName(name) {}
 
-Dog::~Dog()
-{
+void Dog::print() const {
+    std::cout << "dog name is " << mName << std::endl;
 }
-

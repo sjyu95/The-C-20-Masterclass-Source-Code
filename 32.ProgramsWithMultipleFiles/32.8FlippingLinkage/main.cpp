@@ -1,22 +1,14 @@
 #include <iostream>
 
-//internal linkage -> external linkage 
-extern const double distance {45.7}; 
+extern const double distance;  // internal linkage -> external linkage
+const double distance{3.5};
 
-void print_distance(); // Declaration
-void some_other_function(); // Declaration
+void print_distance();
+// void print_distance() {
+// 	std::cout << "distance : " << distance << ", &distance : " << &distance << std::endl;
+// }
 
-
-
-int main(){
-
- 	std::cout << "distance(main) : " << distance << std::endl;
-	std::cout << "&distance(main) : " << &distance << std::endl;
-	
-	std::cout << std::endl;
+int main(int argc, char** argv) {
 	print_distance();
-
-    std::cout << "----" << std::endl;
-    some_other_function();
-    return 0;
+	return 0;
 }

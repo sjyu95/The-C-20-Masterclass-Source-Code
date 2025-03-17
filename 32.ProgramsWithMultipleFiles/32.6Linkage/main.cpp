@@ -1,38 +1,26 @@
 #include <iostream>
 
-//No linkage
-void some_function(){
-    int age {34}; // No linkage
-    std::cout << "age : " << age << " &age : " << &age << std::endl;
+void some_func() {
+    int age{}; // no linkage
+    std::cout << "age : " << age << ", &age : " << &age << std::endl;
 }
 
-const double distance{45.8}; // Internal linkage
+const int age{48}; // internal linkage
+// void print_age(); // print 32
+extern void print_age(); // print 32
+// void print_age() { // print 48
+//     std::cout << "age : " << age << ", &age : " << &age << std::endl;
+// }
 
-int item_count {6}; // External linkage
+double distance{3.8}; // external linkage. default is global.
+void print_distance();
+// void print_distance() { // duplicated definition
+//     std::cout << "distance : " << distance << ", &distance : " << &distance << std::endl;
+// }
 
-
-
-extern void print_distance();
-extern void print_item_count();
-
-int main(){
-
-    /*
-    std::cout << "distance(main) : " << distance << "  &distance : " << &distance <<std::endl;
-
-    std::cout << "-----" << std::endl;
-
+int main(int argc, char** argv) {
+    some_func();
+    print_age();
     print_distance();
-
-    */
-
-    std::cout << "item_count(main) : " << item_count << " &item_count : "
-        << &item_count << std::endl;
-
-    std::cout << "-----" << std::endl;
-    print_item_count();
-
-   
-    
     return 0;
 }

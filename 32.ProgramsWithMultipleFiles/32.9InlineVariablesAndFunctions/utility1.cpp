@@ -1,16 +1,14 @@
 #include <iostream>
 #include "utility.h"
 
- inline int age{12};
+inline int age{11};
+// constexpr int age{11};
 
- inline void some_function(){
-	std::cout << "age : " << age << std::endl;
-	std::cout << "&age : " << &age << std::endl;
+inline void print_age() {
+    std::cout << "age : " << age << ", &age : " << &age << std::endl;
 }
 
-void print_age_utility1(){
-    std::cout << "Printing from utility1 : " << std::endl;
-    some_function();
-    std::cout << std::endl;
+void print_utilities1() {
+    std::cout << "print_utilities1" << std::endl;
+    print_age();
 }
-

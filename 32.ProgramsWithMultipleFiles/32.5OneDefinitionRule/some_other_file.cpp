@@ -1,19 +1,10 @@
+#include <iostream>
 #include "person.h"
 
-//double weight {};
+int Person::sCallCount{0};
 
+Person::Person(std::string_view name, int age) : m_name(name), m_age(age) {}
 
-
-
-
-
-double add(double a, double b){
-    return a + b;
-}
-
-int Person::person_count = 8;
-
-Person::Person(const std::string& names_param, int age_param)
-    : full_name{names_param}, age{age_param}{
-        ++person_count;
+void Person::printInfo() {
+    std::cout << "name : " << m_name << ", age : " << m_age << std::endl;
 }

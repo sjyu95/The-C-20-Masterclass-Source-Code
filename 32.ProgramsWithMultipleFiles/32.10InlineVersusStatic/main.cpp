@@ -1,23 +1,13 @@
-#include <iostream>
+void some_function_1();
+void some_function_2();
+void some_distance_function_1();
+void some_distance_function_2();
 
 
-void print_age_1();
-void print_age_2();
-
-void print_distance_1();
-void print_distance_2();
-
-
-
-int main(){
-
-    print_age_1();
-    print_age_2();
-
-    std::cout << "----" << std::endl;
-
-    print_distance_1();
-    print_distance_2();
-   
+int main(int argc, char** argv) {
+    some_function_1();
+    some_function_2();
+    some_distance_function_1();
+    some_distance_function_2();
     return 0;
 }

@@ -1,22 +1,30 @@
 #ifndef PERSON_H
 #define PERSON_H
 
-#include <iostream>
+#include <string>
+#include <string_view>
 
-class Person{
-public : 
-	Person(const std::string& names_param, int age_param);
-	
-	void print_info()const{
-		std::cout << "name : " << full_name << " , age : " << age << std::endl;
-	}
-private : 
-	std::string full_name;
-	int age;
-	
-public : 
-	//static variable declaration
-	static int person_count;
+class Person;
+
+class Person {
+public:
+	Person(std::string_view name, int age);
+	void printInfo();
+
+	static int sCallCount;
+private:
+	std::string m_name;
+	int m_age{};
 };
+// class Person {
+// public:
+// 	Person(std::string_view name, int age);
+// 	void printInfo();
 
-#endif // PERSON_H
+// 	static int sCallCount;
+// private:
+// 	std::string m_name;
+// 	int m_age{};
+// };
+
+#endif

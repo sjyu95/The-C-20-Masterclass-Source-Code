@@ -1,16 +1,7 @@
-#include "farm.h"
 #include "dog.h"
+#include "farm.h"
 
-Farm::Farm()
-{
+void Farm::UseDog(const Dog& dog) {
+	dog.print();
+	mDogCount++;
 }
-
-Farm::~Farm()
-{
-}
-
-
-void Farm::use_dog(const Dog& dog_param){
-	dog_param.print_info();
-}
-
