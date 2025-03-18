@@ -1,16 +1,14 @@
+#include <iostream>
 #include "person.h"
-#include "dog.h"
-Person::Person(std::string name) : m_name{name}
-{
+
+Person::Person(std::string_view name, int age) : mName(name), mAge(age) {
+    std::cout << "Person constructor name : " << mName << ", age : " << mAge << std::endl;
 }
 
-void Person::adopt_dog( std::unique_ptr<Dog> dog){
-    std::cout << m_name << " just adopted the dog " << dog->get_name() << std::endl;
+Person::~Person() {
+    std::cout << "Person destructor name : " << mName << std::endl;
 }
 
-
-Person::~Person()
-{
-   
+void Person::adaptDog(const Dog& dog) {
+    dog.printName();
 }
-

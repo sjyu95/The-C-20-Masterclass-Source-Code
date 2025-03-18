@@ -1,20 +1,18 @@
 #ifndef PERSON_H
 #define PERSON_H
 
-#include <string>
-#include <memory>
+#include <iostream>
+#include "dog.h"
 
-class Dog;
-class Person
-{
+class Person {
 public:
-    Person(std::string name);
+    Person(std::string_view name, int age);
     ~Person();
-    
-    void adopt_dog( std::unique_ptr<Dog> dog);
-private : 
-    int m_age;
-    std::string m_name;
+
+    void adaptDog(const Dog& dog);
+private:
+    int mAge{};
+    std::string mName;
 };
 
-#endif // PERSON_H
+#endif

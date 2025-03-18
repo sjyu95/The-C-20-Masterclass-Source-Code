@@ -2,29 +2,19 @@
 #define DOG_H
 
 #include <string>
-#include <iostream>
-class Dog
-{
+
+class Dog {
 public:
-    explicit Dog(std::string name_param);
     Dog() = default;
+    Dog(std::string name);
     ~Dog();
-    
-    std::string get_name() const{
-        return dog_name;
-    }
-    
-    void set_dog_name(const std::string & name){
-        dog_name = name;
-    }
-	
-	void print_info() const{
-		std::cout << "Dog [ name : " << dog_name << " ]" <<  std::endl;
-	}
-    
+
+    std::string getName() const;
+    void setName(std::string_view name);
+    void printName() const;
+
 private:
-    std::string dog_name {"Puffy"};
+    std::string mName{"Poppy"};
 };
 
-
-#endif // DOG_H
+#endif

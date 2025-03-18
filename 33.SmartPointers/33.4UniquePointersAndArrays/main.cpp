@@ -1,59 +1,33 @@
 #include <iostream>
-#include <memory>
 #include "dog.h"
 
+int main(int argc, char** argv) {
+    int arr[]{1,2,3};
+    for (size_t i{}; i < std::size(arr); i++) {
+        std::cout << "int arr [" << i << "] : " << arr[i] << std::endl;
+    }
 
+    Dog dogArr[]{Dog{"Snoopy1"}, Dog{"Snoopy2"}, Dog{"Snoopy3"}};
+    for (size_t i{}; i < std::size(arr); i++) {
+        std::cout << "dogArr [" << i << "] : " << dogArr[i].getName() << std::endl;
+    }
 
-int main(){
+    // Dog* pDogArr = new Dog[3]{};
+    Dog* pDogArr = new Dog[3]{Dog{"Snoopy11"}, Dog{"Snoopy12"}, Dog{"Snoopy13"}};
+    for (size_t i{}; i < 3; i++) {
+        std::cout << "pDogArr [" << i << "] : " << pDogArr[i].getName() << std::endl;
+    }
+    delete[] pDogArr;
 
-     //Array allocated on the stack
-     /*
-     {
-        std::cout << "Working with dog array on the stack" << std::endl;
-        Dog dog_array[3] {Dog("Dog1"), Dog("Dog2") , Dog("Dog3")};
-        for( size_t i {0}; i < 3 ; ++i){
-            dog_array[i].print_info();
-        }
+    std::unique_ptr<Dog[]> pDogUniquePtrArr = std::unique_ptr<Dog[]>(new Dog[3]{Dog{"Snoopy21"}, Dog{"Snoopy22"}, Dog{"Snoopy23"}});
+    for (size_t i{}; i < 3; i++) {
+        std::cout << "pDogUniquePtrArr [" << i << "] : " << pDogUniquePtrArr[i].getName() << std::endl;
+    }
 
-     }
-    */
-
-     //Array allocated on the heap
-     /*
-     {
-        Dog * p_dog_array_raw = new Dog[3]{Dog("Dog4"), Dog("Dog5") , Dog("Dog6")};
-     
-        for( size_t i {0}; i < 3 ; ++i){
-            p_dog_array_raw[i].print_info();
-        }
-        
-        //If we don't delete explicitly like below. Have the line commented out, the memory
-        //for the array won't be released and we won't see the destructors for Dogs 4~6 called.
-        //If we delete explicitly, everything goes as expected and the destructors are called
-        //when we exit this scope.
-     
-        delete[] p_dog_array_raw;
-     }
-     */
-
-
-     //Array allocated on the heap with unique_ptr. Releases space for array automatically
-     {
-        //auto arr_ptr = std::unique_ptr<Dog[]> ( new Dog[3]{Dog("Dog7"), Dog("Dog8") , Dog("Dog9")});
-		
-        auto arr_ptr = std::make_unique<Dog[]>(3);// Works. Can't initialize individual elements
-        //auto arr_ptr = std::make_unique<Dog[]>(3) {Dog("Dog7"), Dog("Dog8") , Dog("Dog9")};//Compiler error
-        //auto arr_ptr = std::make_unique<Dog[]>{Dog("Dog7"), Dog("Dog8") , Dog("Dog9")};//Compiler error
-
-        for (size_t i{0} ; i < 3 ; ++i){
-            arr_ptr[i].print_info() ;
-        }
-         
-     }
-
-
-     std::cout << "Done!" << std::endl;
-	
-   
+    auto pDogMakeUniquePtrArr = std::make_unique<Dog[]>(3);
+    for (size_t i{}; i < 3; i++) {
+        pDogMakeUniquePtrArr[i].setName("Snoopy3");
+        std::cout << "pDogMakeUniquePtrArr [" << i << "] : " << pDogMakeUniquePtrArr[i].getName() << std::endl;
+    }
     return 0;
 }

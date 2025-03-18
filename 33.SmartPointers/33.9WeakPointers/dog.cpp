@@ -1,12 +1,23 @@
 #include "dog.h"
+
 #include <iostream>
-Dog::Dog(std::string name_param) : dog_name(name_param)
-{
-    std::cout << "Constructor for dog " << dog_name << " called." << std::endl;
+
+Dog::Dog(std::string name) : mName(name) {
+    std::cout << "Dog constructor : name " << mName << std::endl;
 }
 
-Dog::~Dog()
-{
-    std::cout << "Destructor for dog " << dog_name << " called" << std::endl;;
+Dog::~Dog() {
+    std::cout << "Dog destructor : name " << mName << std::endl;
 }
 
+std::string Dog::getName() const {
+    return mName;
+}
+
+void Dog::setName(std::string_view name) {
+    mName = name;
+}
+
+void Dog::printName() const {
+    std::cout << "dog name is " << mName << std::endl;
+}
