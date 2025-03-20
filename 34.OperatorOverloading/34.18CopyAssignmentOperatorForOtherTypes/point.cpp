@@ -1,29 +1,28 @@
-#include <cmath>
+#include <iostream>
 #include "point.h"
 #include "car.h"
 
+Point::Point(double x, double y, double data) : m_x{x}, m_y{y}, m_data{new double{data}} {}
 
-double Point::length() const{
-    return sqrt(pow(m_x - 0, 2) +  pow(m_y - 0, 2) * 1.0); 
+Point::Point(const Point& p) {
+    m_x = p.m_x;
+    m_y = p.m_y;
+    m_data = new double{*(p.m_data)};
 }
 
-void Point::operator= (const Car& c){
-    m_x = m_y = c.get_speed();
-    *p_data = c.get_speed();
-}
-
-Point::Point(const Point &p)
-{
-    std::cout << "Copy constructor called to copy point " << p << std::endl;
-    if(this != &p){
-		delete p_data;
-		p_data = new int(*(p.p_data));
+Point& Point::operator=(const Point& p) {
+    if (this != &p) {
+        delete m_data;
         m_x = p.m_x;
         m_y = p.m_y;
+        m_data = new double{*(p.m_data)};
     }
+    return *this;
 }
 
-
-
-
-
+Point& Point::operator=(const Car& c) {
+    delete m_data;
+    m_x = m_y = c.get_speed();
+    m_data = new double{static_cast<double>(c.get_speed())};
+    return *this;
+}

@@ -1,16 +1,13 @@
 #include <iostream>
 #include "number.h"
 
+int main(int argc, char** argv) {
+    Number num1{1};
+    Number num2{2};
 
-
-int main(){
-
-    Number n1(22);
-    std::cout << "n1 : " << n1 << std::endl;
-    std::cout << "n1 + 2  : " << (n1 + 2) << std::endl;
-    std::cout << "2 + n1 : " << (2 + n1) << std::endl;
-    std::cout << "42 - n1 : " << (42 - n1) << std::endl;
-   
+    std::cout << (num1 + num2) << std::endl;
+    std::cout << (num1 + 5) << std::endl;
+    std::cout << (5 + num2) << std::endl;
 
     return 0;
 }

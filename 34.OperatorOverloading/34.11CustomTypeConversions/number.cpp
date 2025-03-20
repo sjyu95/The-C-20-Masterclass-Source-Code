@@ -1,34 +1,12 @@
 #include "number.h"
 
+Number::Number(int num) :m_int{num} {}
 
-
-Number::Number(int value) : m_wrapped_int(value)
-{
+Number& Number::operator+= (const Number& rhs) {
+    m_int += rhs.m_int;
+    return *this;
 }
-
-std::ostream& operator<<(std::ostream& out , const Number& number){
-    out << "Number : [" << number.m_wrapped_int << "]";
-    return out;
-}
-
-
-Number operator+(const Number& left_operand, const Number& right_operand){
- return Number(left_operand.m_wrapped_int + right_operand.m_wrapped_int);    
-}
-Number operator-(const Number& left_operand, const Number& right_operand){
- return Number(left_operand.m_wrapped_int - right_operand.m_wrapped_int);    
-}
-Number operator*(const Number& left_operand, const Number& right_operand){
- return Number(left_operand.m_wrapped_int * right_operand.m_wrapped_int);    
-}
-Number operator/(const Number& left_operand, const Number& right_operand){
- return Number(left_operand.m_wrapped_int / right_operand.m_wrapped_int);    
-}
-Number operator%(const Number& left_operand, const Number& right_operand){
- return Number(left_operand.m_wrapped_int % right_operand.m_wrapped_int);    
-    
-}
-
-Number::~Number()
-{
+Number& Number::operator-= (const Number& rhs) {
+    m_int -= rhs.m_int;
+    return *this;
 }

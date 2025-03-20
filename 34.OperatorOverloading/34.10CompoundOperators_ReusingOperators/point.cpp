@@ -1,8 +1,9 @@
-#include <cmath>
+#include <iostream>
 #include "point.h"
 
-double Point::length() const{
-    return sqrt(pow(m_x - 0, 2) +  pow(m_y - 0, 2) * 1.0); 
-}
+Point::Point(double x, double y) : m_x{x}, m_y{y} {}
 
-
+// std::ostream& operator<< (std::ostream& os, const Point& point) {
+// 	os << "m_x : " << point.m_x << ", m_y : " << point.m_y;
+// 	return os;
+//  }

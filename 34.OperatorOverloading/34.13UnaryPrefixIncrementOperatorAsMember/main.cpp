@@ -1,20 +1,13 @@
 #include <iostream>
 #include "point.h"
 
-int main(){
+int main() {
+    Point p1{1,2};
+    std::cout << p1 << std::endl;
+    // auto p2 = ++p1;
+    ++p1;
+    std::cout << p1 << std::endl;
+    // std::cout << p2 << std::endl;
 
-    Point p1(10,10);
-    std::cout << "p1 : " << p1 << std::endl;
-
-   // ++p1;
-   p1.operator++();
-
-    std::cout << "p1 : " << p1 << std::endl; // 11
-
-    for(size_t i{}; i < 20 ; ++i){
-        ++p1;
-        std::cout << "p1 : " << p1 << std::endl;
-    }
-    
     return 0;
 }

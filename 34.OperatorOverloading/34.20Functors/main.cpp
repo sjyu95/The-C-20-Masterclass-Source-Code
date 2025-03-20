@@ -2,28 +2,34 @@
 #include <string>
 
 class Print{
-    public : 
-    void operator()(const std::string& name) const{
-        std::cout << "The name is : " << name << std::endl;
+public:
+    void operator() (std::string_view name) {
+        std::cout << name << std::endl;
     }
-
-    std::string operator()(const std::string& last_name,
-                            const std::string& first_name) const {
-        return (last_name + " " + first_name);
+    std::string operator() (std::string name1, std::string name2) {
+        return name1 + " " + name2;
     }
 };
 
-void do_something(const Print& printer){
-    printer("Snow");
+void do_something(Print& p) {
+    p("snow");
+}
+
+Print do_something2() {
+    Print p;
+    return p;
 }
 
 
-int main(){
+int main() {
+    Print p;
+    p("John");
+    std::cout << p("John", "Snow") << std::endl;
 
-    Print print;
-    print("John");
-    do_something(print);
-    std::cout << print("Daniel","Gray") << std::endl;
-   
+    do_something(p);
+
+    Print p2 = do_something2();
+    p2("hello");
+
     return 0;
 }

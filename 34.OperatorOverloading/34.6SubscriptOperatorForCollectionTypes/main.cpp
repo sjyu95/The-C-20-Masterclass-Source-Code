@@ -1,31 +1,21 @@
-#include <iostream>
 #include "scores.h"
 
+int main(int argc, char** argv) {
+    Scores math{"math"};
+    math.Print();
 
-int main(){
-
-  
-    Scores math("Math");
-    math.print_info();
-
-    for(size_t i{} ; i <20 ; ++i){
-        if(i==0){
-            math[0] = 73.7;
-        }else{
-            math[i] = math[i-1] + 0.56;
+    for (size_t i{}; i < SCORE_SIZE; i++) {
+        if (i == 0) {
+            math[i] = 80.0;
+        } else {
+            math[i] = math[i-1] + 0.76;
         }
     }
+    math.Print();
 
-    math.print_info(); 
-
-    std::cout << "------" << std::endl;
-   
-
-    //Const objecst
-    const Scores geo("Geography");
-    std::cout << "geo [5] : " << geo[5] << std::endl;
-
-
+    const Scores english{"english"};
+    english.Print();
+    // english[0] = 100;
 
     return 0;
 }

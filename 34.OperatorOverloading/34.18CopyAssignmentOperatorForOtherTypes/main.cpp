@@ -1,17 +1,17 @@
 #include <iostream>
-#include "point.h"
 #include "car.h"
+#include "point.h"
 
-int main(){
+int main() {
+    Point p{1,2,3};
+    Car c{"Carchaoo", 100};
 
-    
-    Point p1(10,10,10);
-    Car c1("red",200.0);
+    std::cout << p << std::endl;
+    std::cout << c << std::endl;
 
-    p1 = c1;
+    p = c;
+    std::cout << p << std::endl;
 
-    std::cout << "p1 : " << p1 << std::endl;
-    
 
     return 0;
 }

@@ -1,23 +1,23 @@
 #ifndef CAR_H
 #define CAR_H
 
-#include <string>
-class Car
-{
+#include <iostream>
+
+class Car {
+    friend std::ostream& operator<< (std::ostream& os, const Car& car);
 public:
     Car() = default;
-    Car(const std::string& color, int speed);
-    ~Car();
-    
-    double get_speed()const{
-        return m_speed;
-    }
-    std::string get_color() const{
-        return m_color;
-    }
+    Car(std::string_view name, int speed);
+
+    int get_speed() const;
 private:
-    std::string m_color;
-    double m_speed;
+    std::string m_name;
+    int m_speed{};
 };
 
-#endif // CAR_H
+inline std::ostream& operator<< (std::ostream& os, const Car& car) {
+    os << "Car name : " << car.m_name << ", speed : " << car.get_speed() << std::endl;
+    return os;
+}
+
+#endif

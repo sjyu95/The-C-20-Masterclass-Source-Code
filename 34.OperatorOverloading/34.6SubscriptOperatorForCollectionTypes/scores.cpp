@@ -1,12 +1,12 @@
+#include <iostream>
 #include "scores.h"
-#include <cassert>
 
-double& Scores::operator[](size_t index){
-    assert((index >= 0) &&(index < 20));
-    return m_scores[index];
- }
+void Scores::Print() const {
+    std::cout << m_subject << " : [ ";
 
-double Scores::operator[](size_t index) const{
-    assert((index >= 0) &&(index < 20));
-    return m_scores[index];
+    for (size_t i{}; i < SCORE_SIZE; i++) {
+        std::cout << m_scores[i] << ", ";
+    }
+
+    std::cout << " ]" << std::endl;
 }

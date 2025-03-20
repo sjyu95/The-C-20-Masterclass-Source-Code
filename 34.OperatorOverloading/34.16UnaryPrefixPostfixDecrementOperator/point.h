@@ -1,38 +1,36 @@
 #ifndef POINT_H
 #define POINT_H
+
+#include <cassert>
 #include <iostream>
 
-class Number;
-
-
-class Point
-{
-	friend std::ostream& operator<<(std::ostream& os, const Point& p);
-	friend void operator++(Point& operand);
-	friend void operator--(Point& operand);
-	
+class Point {
+	friend std::ostream& operator<< (std::ostream& os, const Point& point);
+	// friend Point operator--(Point& point, int);
 public:
 	Point() = default;
-	Point(double x, double y) : 
-		m_x(x), m_y(y){
+	Point(double x, double y);
+
+	Point operator--(int) {
+		Point tmp{*this};
+		m_x--;m_y--;
+		return tmp;
 	}
-	~Point() = default;
 
-private: 
-	double length() const;   // Function to calculate distance from the point(0,0)
-
-private : 
-	double m_x{}; 
-	double m_y{}; 
+private:
+	double m_x{};
+	double m_y{};
 };
-Point operator++(Point& operand,int);
-Point operator--(Point& operand,int);
 
-
-inline std::ostream& operator<<(std::ostream& os, const Point& p){
-	os << "Point [ x : " << p.m_x << ", y : " << p.m_y << "]";	
+inline std::ostream& operator<< (std::ostream& os, const Point& point) {
+	os << "m_x : " << point.m_x << ", m_y : " << point.m_y;
 	return os;
-}
+ }
 
+//  inline Point operator--(Point& point, int) {
+// 	Point tmp{point};
+// 	point.m_x--; point.m_y--;
+// 	return tmp;
+//  }
 
-#endif // POINT_H
+#endif
