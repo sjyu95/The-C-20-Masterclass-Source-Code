@@ -1,24 +1,20 @@
 #ifndef ENGINEER_H
 #define ENGINEER_H
+
+#include <iostream>
+#include <string>
 #include "person.h"
+// class Person;
 
-//Engineer is doing private inheritance
-
-class Engineer : private Person
-{
-friend std::ostream& operator<<(std::ostream& out , const Engineer& operand);
+class Engineer : private Person {
+    friend std::ostream& operator<< (std::ostream& os, const Engineer& Engineer);
 public:
-    Engineer();
-    ~Engineer();
-    
-    void build_something(){
-        m_full_name = "John Snow"; // OK
-        m_age = 23; // OK
-        //m_address = "897-78-723"; Compiler error
-    }
-    
-private : 
-    int contract_count{0};
+    Engineer() = default;
+    Engineer(std::string_view company, std::string_view firstName, std::string_view lastName);
+
+    void Print() const;
+private:
+    std::string m_company;
 };
 
-#endif // ENGINEER_H
+#endif

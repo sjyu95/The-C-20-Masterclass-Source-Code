@@ -1,24 +1,20 @@
 #ifndef NURSE_H
-#define NURSE_H
+#define NURSH_H
 
+#include <iostream>
+#include <string>
 #include "person.h"
+// class Person;
 
-//Nurse will do protected inheritance
-class Nurse : protected Person
-{
-	friend std::ostream& operator<<(std::ostream& , const Nurse& operand);
+class Nurse : protected Person {
+    friend std::ostream& operator<< (std::ostream& os, const Nurse& nurse);
 public:
-	Nurse();
-	~Nurse();
-	
-    void treat_unwell_person(){
-        m_full_name = "John Snow"; // OK
-        m_age = 23; // OK
-        //m_address = "897-78-723"; Compiler error
-    }
-    
-private : 
-    int practice_certificate_id{0};
+    Nurse() = default;
+    Nurse(std::string_view hospitalName, int cureerAge, std::string_view firstName, std::string_view lastName);
+
+private:
+    std::string mHospitalName;
+    int mCureerAge{};
 };
 
-#endif // NURSE_H
+#endif

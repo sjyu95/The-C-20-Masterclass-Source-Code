@@ -2,28 +2,17 @@
 #define CIVIL_ENGINEER_H
 
 #include "engineer.h"
-class CivilEngineer : public Engineer
-{
-    friend std::ostream& operator<<(std::ostream&, const CivilEngineer& operand);
+#include "person.h"
+
+class CivilEngineer : public Engineer {
 public:
     CivilEngineer();
-    ~CivilEngineer() ;
-    
-    void build_road(){
-        //get_full_name(); // Compiler error
-        ///m_full_name = "Daniel Gray"; //Compiler error
-        //m_age = 45; // Compiler error
+    CivilEngineer(std::string_view name) : Engineer{"nc", "Sejung", "Yoo"}, mCivilName(name) {}
 
-        add(10,2);
-        add(10,2,4);
-    }
+    // using Person::getLastName;
 
-    public : 
-        //using Person::do_something; // Compiler error
-	
-private : 
-    std::string m_speciality{"None"};
-
+private:
+    std::string mCivilName;
 };
 
-#endif // CIVIL_ENGINEER_H
+#endif

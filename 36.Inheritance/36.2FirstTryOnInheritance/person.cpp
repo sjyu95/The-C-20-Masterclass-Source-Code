@@ -1,20 +1,25 @@
+#include <iostream>
 #include "person.h"
 
-Person::Person(){
+Person::Person(std::string_view firstName, std::string_view lastName) : m_firstName(firstName), m_lastName(lastName) {}
+
+std::string Person::getFirstName() const {
+    return m_firstName;
 }
 
-Person::Person(std::string& first_name_param, std::string& last_name_param)
-    : first_name(first_name_param), last_name(last_name_param)
-{
+std::string Person::getLastName() const {
+    return m_lastName;
 }
 
-std::ostream& operator<<(std::ostream& out , const Person& person){
-    out << "Person [" << person.first_name << " " << person.last_name << "]";
-    return out;
+void Person::setFirstName(std::string_view firstName) {
+    m_firstName = firstName;
 }
 
-
-Person::~Person()
-{
+void Person::setLastName(std::string_view lastName) {
+    m_lastName = lastName;
 }
 
+std::ostream& operator<< (std::ostream& os, const Person& person) {
+    os << "Person : " << person.m_firstName << " " << person.m_lastName << std::endl;
+    return os;
+}

@@ -1,17 +1,9 @@
-#include <iostream>
-#include "person.h"
-#include "engineer.h"
 #include "civilengineer.h"
+#include "engineer.h"
 
-int main(){
-
-    Engineer eng1;
-
-    CivilEngineer ce1;
-
-    std::cout << "Done" << std::endl;
-
-  
-   
+int main() {
+    CivilEngineer cv1{"nc"};
+    cv1.Print();
+    // cv1.getFirstName();
     return 0;
 }

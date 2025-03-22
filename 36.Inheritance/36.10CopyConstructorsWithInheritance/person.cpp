@@ -1,40 +1,35 @@
-#include "person.h"
 #include <iostream>
+#include "person.h"
 
-Person::Person(){
-    std::cout << "Default constructor for Person called..." << std::endl;
+Person::Person() {
+    std::cout << "default constructor Person" << std::endl;
 }
 
-Person::Person(std::string_view fullname, int age,
-    std::string_view address) 
-        : m_full_name{fullname}, m_age{age},
-            m_address{address}
-{
-    std::cout << "Custom constructor for Person called..." << std::endl;
+Person::Person(std::string_view firstName, std::string_view lastName) : m_firstName(firstName), m_lastName(lastName) {
+    std::cout << "custom constructor Person" << std::endl;
 }
 
-Person::Person(const Person& source)
-    : m_full_name(source.m_full_name) , m_age(source.m_age),
-        m_address(source.m_address)
-{
-    std::cout << "Custom copy constructor for Person called..." << std::endl;
-
+Person::Person(const Person& person) : m_firstName{person.m_firstName}, m_lastName{person.m_lastName} {
+    std::cout << "copy constructor Person" << std::endl;
 }
 
-void Person::do_something() const{
-    std::cout << "Hello" << std::endl;
+std::string Person::getFirstName() const {
+    return m_firstName;
 }
 
-std::ostream& operator<<(std::ostream& out , const Person& person){
-   out << "Person [Full name :" << person.get_full_name() <<
-                      ", Age:" << person.get_age() <<
-                      ", Address:" << person.get_address() << "]";
-  return out;
+std::string Person::getLastName() const {
+    return m_lastName;
 }
 
-
-Person::~Person()
-{
+void Person::setFirstName(std::string_view firstName) {
+    m_firstName = firstName;
 }
 
+void Person::setLastName(std::string_view lastName) {
+    m_lastName = lastName;
+}
 
+std::ostream& operator<< (std::ostream& os, const Person& person) {
+    os << "Person : " << person.m_firstName << " " << person.m_lastName << std::endl;
+    return os;
+}

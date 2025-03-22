@@ -1,11 +1,11 @@
-#include <iostream>
-#include "person.h"
 #include "engineer.h"
 
-int main(){
+int main() {
+	Engineer eng;
+	eng.Print();
 
-	Engineer eng1("Daniel Gray",23,"asdl;fkjdas;fkdas;fk",4);
-	std::cout << "eng1 : " << eng1 << std::endl;
+	Engineer eng1{"aa", "bb", "cc"};
+	eng1.Print();
 
-    return 0;
+	return 0;
 }

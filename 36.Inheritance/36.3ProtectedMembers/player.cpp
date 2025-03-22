@@ -1,18 +1,12 @@
 #include "person.h"
 #include "player.h"
 
-Player::Player(std::string_view game_param, std::string_view first_name_param,
-            std::string_view last_name_param)
-{
-    m_game = game_param;
-    first_name = first_name_param;
-    last_name = last_name_param;
+Player::Player(std::string_view game, std::string_view firstName, std::string_view lastName) : m_game(game) {
+    m_firstName = firstName;
+    m_lastName = lastName;
 }
 
-std::ostream& operator<<(std::ostream& out, const Player& player){
- 
-    out << "Player : [ game : "  << player.m_game
-         << " names : " << player.get_first_name()
-             << " " << player.get_last_name() << "]";
-    return out;
+std::ostream& operator<< (std::ostream& os, const Player& player) {
+    os << "Player game : " << player.m_game << ", name : " << player.m_firstName << " " << player.m_lastName << std::endl;
+    return os;
 }
