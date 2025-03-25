@@ -11,11 +11,12 @@ public:
     Animal() = default;
     Animal(std::string_view description);
     virtual ~Animal();
-    
+
     virtual void breathe()const{
         std::cout << "Animal::breathe called for : " << m_description << std::endl;
     }
-protected: 
+
+protected:
     std::string m_description;
 };
 

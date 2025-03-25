@@ -1,12 +1,14 @@
 #ifndef STREAM_INSERTABLE_H
 #define STREAM_INSERTABLE_H
-#include <iostream>
 
-class StreamInsertable{
-    friend std::ostream& operator<< (std::ostream& out, const StreamInsertable& operand);
-    
-public : 
-    virtual void stream_insert(std::ostream& out)const =0;
+#include <ostream>
+
+class IStreamInsertable {
+    friend std::ostream& operator<<(std::ostream& os, const IStreamInsertable& lhs);
+public:
+    virtual ~IStreamInsertable() = default;
+
+    virtual void stream_insert(std::ostream& os) const = 0;
 };
 
-#endif //STREAM_INSERTABLE_H
+#endif

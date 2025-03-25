@@ -1,19 +1,15 @@
 #ifndef CIRCLE_H
 #define CIRCLE_H
+
+#include <string_view>
 #include "oval.h"
 
-class Circle : public Oval
-{
+class Circle : public Oval {
 public:
     Circle() = default;
-    Circle(double radius,std::string_view description);
-    ~Circle();
-    
-    virtual void draw() const{
-        std::cout << "Circle::draw() called. Drawing " << m_description <<
-            " with radius : " << get_x_rad() << std::endl;        
-    }
+    Circle(int radius, std::string_view description);
 
+    void draw() const override;
 };
 
-#endif // CIRCLE_H
+#endif

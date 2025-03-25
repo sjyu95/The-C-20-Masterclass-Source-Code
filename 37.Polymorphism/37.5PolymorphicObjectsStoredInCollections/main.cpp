@@ -1,55 +1,32 @@
-#include <iostream>
 #include <memory>
-#include "shape.h"
-#include "oval.h"
 #include "circle.h"
+#include "oval.h"
+#include "shape.h"
 
-int main(){
+int main(int argc, char** argv) {
 
-    Circle circle1(7.2,"circle1");
-    Oval oval1(13.3,1.2,"Oval1");
-    Circle circle2(11.2,"circle2");
-    Oval oval2(31.3,15.2,"Oval2");
-    Circle circle3(12.2,"circle3");
-    Oval oval3(53.3,9.2,"Oval3");
+    Shape shape1 = Shape{"shape1"};
+    Shape shape2 = Shape{"shape2"};
+    Oval oval1 = Oval{1,2,"oval1"};
+    Oval oval2 = Oval{3,4,"oval2"};
+    Circle circle1 = Circle{11, "circle1"};
+    Circle circle2 = Circle{12, "circle2"};
 
-
-
-    //If you store raw object data in an array set up to store base class objects
-    //the data is going to be sliced off!
-    /*
-    std::cout << "sizeof (circle1) : " << sizeof(circle1) << std::endl;
-    Shape shapes1[] {circle1,oval1,circle2,oval2,circle3,oval3};
-
-    for(Shape& s : shapes1){
-         std::cout << "sizeof (object) : " << sizeof(s) << std::endl;
-        s.draw(); //
+    Shape shape[]{shape1, shape2, oval1, oval2, circle1, circle2};
+    for (size_t i{}; i < std::size(shape); i++) {
+        shape[i].draw();
     }
-    */
 
-   //What if we store in references? Compiler error : references aren't left assignable
-	//const Shape& shapes2[] {circle1,oval1,circle2,oval2,circle3,oval3};
+    // const Shape& rshape[]{shape1, shape2, oval1, oval2, circle1, circle2};
 
-
-    //Raw pointers
-    /*
-	Shape* shapes3[] {&circle1,&oval1,&circle2,&oval2,&circle3,&oval3};
-	
-	for ( Shape* shape_ptr : shapes3){
-		std::cout << "Inside array , sizeof(*shape_ptr) : " << sizeof(*shape_ptr) << std::endl;
-		shape_ptr->draw();	
-		std::cout << std::endl;
-	}
-    */
-
-
-    //Smart pointers
-	std::shared_ptr<Shape> shapes4[] {std::make_shared<Circle>(12.2,"Circle4"),
-                            std::make_shared<Oval>(10.0,20.0,"Oval4")};
-    for(auto& s : shapes4){
+    const Shape* pShape[]{&shape1, &shape2, &oval1, &oval2, &circle1, &circle2};
+    for (auto s : pShape) {
         s->draw();
     }
 
-
+    std::shared_ptr<Shape> pShape2[]{ std::make_shared<Circle>(1,"circle"), std::make_shared<Oval>(1,2,"oval") };
+    for (auto a : pShape2) {
+        a->draw();
+    }
     return 0;
 }

@@ -1,20 +1,16 @@
+#include <iostream>
 #include "shape.h"
 
-int Shape::m_count{0};
+int Shape::mCount{0};
 
-Shape::Shape(std::string_view description)
-    : m_description(description)
-{
-    ++m_count;
+Shape::Shape(std::string_view desc) : mDescription(desc) {
+    mCount++;
 }
 
-Shape::Shape()
-    : Shape("NoDescription")
-{
+void Shape::draw() const {
+    std::cout << "Shape::draw(), mDescription : " << mDescription << std::endl;
 }
 
-Shape::~Shape()
-{
-    --m_count;
+int Shape::getCount() const {
+    return mCount;
 }
-

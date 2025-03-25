@@ -1,23 +1,19 @@
 #ifndef SHAPE_H
 #define SHAPE_H
-#include <iostream>
+
 #include <string>
-class Shape
-{
+
+class Shape {
 public:
-    Shape();
+    Shape() = default;
     Shape(std::string_view description);
-    ~Shape();
-public:
-     void draw( )const{
-        std::cout << "Shape::draw() called for : " << m_description << std::endl;
-    }
-private : 
-     void func() const {
-        std::cout << "Shape::func() called for : " << m_description << std::endl;
-    }
-protected:
+    virtual ~Shape() = default;
+
+    void draw() const;
+
+private:
+    void func() const;
     std::string m_description;
 };
 
-#endif // SHAPE_H
+#endif

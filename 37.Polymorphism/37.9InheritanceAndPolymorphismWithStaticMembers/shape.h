@@ -1,25 +1,20 @@
 #ifndef SHAPE_H
 #define SHAPE_H
-#include <iostream>
-#include <string>
-class Shape
-{
-public:
-    Shape();
-    Shape(std::string_view description);
-    virtual ~Shape();
-    void draw( )const{
-        std::cout << "Shape::draw() called for : " << m_description << std::endl;
-    }
-    
-    virtual int get_count() const{
-        return m_count;
-    }
-    
-    static int m_count;
-protected:
-    std::string m_description;
 
+#include <string>
+
+class Shape{
+public:
+    Shape() = default;
+    Shape(std::string_view desc);
+
+    virtual void draw() const;
+    virtual int getCount() const;
+
+    static int mCount;
+
+private:
+    std::string mDescription;
 };
 
-#endif // SHAPE_H
+#endif

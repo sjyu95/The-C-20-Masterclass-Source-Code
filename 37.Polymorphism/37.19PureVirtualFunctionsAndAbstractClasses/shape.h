@@ -3,20 +3,20 @@
 
 #include <string>
 
-class Shape
-{
-protected:
+class Shape {
+public:
     Shape() = default;
     Shape(std::string_view description);
-public :    
-    
-    virtual ~Shape() = default; // If destructor is not public, you won't be
-                            // able to delete base_ptrs. SHOW THIS TO STUDENTS
-    //Pure virtual functions
+
+    virtual ~Shape() = default;
+
+    std::string getDescription() const;
+
     virtual double perimeter() const = 0;
     virtual double surface() const = 0;
-private : 
+
+private:
     std::string m_description;
 };
 
-#endif // SHAPE_H
+#endif

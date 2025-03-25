@@ -1,54 +1,30 @@
-#include <iostream>
 #include "animal.h"
-#include "feline.h"
-#include "dog.h"
-#include "cat.h"
 #include "bird.h"
-#include "pigeon.h"
+#include "cat.h"
 #include "crow.h"
+#include "dog.h"
+#include "feline.h"
+#include "pigeon.h"
 
+int main() {
+    Crow crow{"black", "crow"};
+    Cat cat{"short", "cat"};
+    Dog dog{"long", "dog"};
+    Pigeon pigeon{"black&white", "pigeon"};
 
-int main(){
-
-    //Animal polymorphism
-    Dog dog1("dark gray","dog1");
-    Cat cat1("black stripes","cat1");
-    Pigeon pigeon1("white","pigeon1");
-    Crow crow1("black","crow1");
-    
-    Animal* animals[]{&dog1,&cat1,&pigeon1,&crow1};
-    
-    for(const auto& animal : animals){
-        animal->breathe();
+    Animal* animals[]{&crow, &cat, &dog, &pigeon};
+    for (auto a : animals) {
+        a->breathe();
     }
 
-    std::cout << "------------" << std::endl;
-
-    //Feline polymorphism
-    Dog dog2("dark gray","dog2");
-    Cat cat2("black stripes","cat2");
-    Pigeon pigeon2("white","pigeon2");//Putting pigeon in felines will result in compiler error
-                                        // pigeon is and Animal,a but is not a feline.
-    Animal animal1("some animal");
-    
-    Feline* felines[] {&dog2,&cat2};
-    
-    for(const auto& feline : felines){
-        feline->run();
+    Feline* Feline[]{&dog, &cat};
+    for (auto f : Feline) {
+        f->run();
     }
 
-
-    std::cout << "------------" << std::endl;
-
-    //Bird polymorphism
-    Pigeon pigeon3("white","pigeon1");
-    Crow crow3("black","crow1");
-    
-    Bird* birds[] {&pigeon3,&crow3};
-    
-    for(const auto& bird : birds){
-        bird->fly();
+    Bird* birds[]{&crow, &pigeon};
+    for (auto b : birds) {
+        b->fly();
     }
-   
-    return 0;
+
 }

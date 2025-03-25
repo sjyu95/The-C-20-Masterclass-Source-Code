@@ -1,67 +1,50 @@
 #include <iostream>
 
-
-class Base
-{
+class Base {
 public:
-    Base()
-    {
-        std::cout << "Base constructor called" << std::endl;
+    Base() = default;
+    Base(int num) : m_value{num} { }
+    virtual ~Base() = default;
+
+    virtual void setup() {
+        std::cout << "Base::setup()" << std::endl;
     }
-    virtual ~Base(){
-        std::cout << "Base destructor called" << std::endl;
+    virtual void clean() {
+        std::cout << "Base::clean()" << std::endl;
     }
-    virtual void setup()
-    {
-        std::cout << "Base::setup() called" << std::endl;
-        m_value = 10;
-    }
-    virtual void clean_up(){
-        std::cout << "Base::clean_up() called" << std::endl;
-    }
-    int get_value()
-    {
+    int getValue() const {
         return m_value;
     }
+
 protected:
-    int m_value;
+    int m_value{};
 };
 
-class Derived : public Base
-{
+class Derived : public Base {
 public:
-    Derived()
-        : Base()
-    {
-        std::cout << "Derived constructor called" << std::endl;
-    }
-    virtual ~Derived(){
-        std::cout << "Derived destructor called" << std::endl;
-    }
+    Derived() = default;
+    Derived(int num) : Base(num) { /*setup();*/}
+    ~Derived() { /*clean();*/ }
 
-    virtual void setup() override
-    {
-        std::cout << "Derived::setup() called" << std::endl;
-        m_value = 100;
+    void setup() override {
+        m_value=100;
+        std::cout << "Derivied::setup() and value = 100" << std::endl;
     }
-    virtual void clean_up() override{
-        std::cout << "Derived::clean_up() called" << std::endl;
+    void clean() override {
+        m_value=-1;
+        std::cout << "Derived::clean() and value = -1" << std::endl;
     }
 };
 
+int main(int argc, char** argv) {
+    Base* pBase {new Derived};
 
-int main(){
+    pBase->setup();
+    std::cout << "getValue : " << pBase->getValue() << std::endl;
+    pBase->clean();
+    std::cout << "getValue : " << pBase->getValue() << std::endl;
 
-    Base * p_base = new Derived;
+    delete pBase;
 
-    p_base->setup();
-
-    auto value = p_base->get_value();
-    std::cout << "value : " << value <<  std::endl; // 100
-
-    p_base->clean_up();
-
-    delete p_base;
-   
     return 0;
 }

@@ -2,21 +2,21 @@
 #include "circle.h"
 #include "rectangle.h"
 
-int main(){
-   
-   //Shape * shape_ptr = new Shape; // Compiler error
+int main() {
+    Shape* pShape { new Circle{10,"circle"}};
+    std::cout << "circle perimeter : " << pShape->perimeter() << std::endl;
+    std::cout << "circle surface : " << pShape->surface() << std::endl;
+    std::cout << "typeid(pShape) : " << typeid(pShape).name() << std::endl;
+    std::cout << "typeid(*pShape) : " << typeid(*pShape).name() << std::endl;
 
-    const Shape * shape_rect = new Rectangle(10,10,"rect1");
-    double surface = shape_rect->surface();
-    std::cout << "dynamic type of shape_rect : " << typeid(*shape_rect).name() << std::endl;
-    std::cout << "The surface of shape rect is : " << surface << std::endl;
+    Shape* pShape2 { new Rectangle{1,2,"rectangle"}};
+    std::cout << "rectangle perimeter : " << pShape2->perimeter() << std::endl;
+    std::cout << "rectangle surface : " << pShape2->surface() << std::endl;
+    std::cout << "typeid(pShape2) : " << typeid(pShape2).name() << std::endl;
+    std::cout << "typeid(*pShape2) : " << typeid(*pShape2).name() << std::endl;
 
+    delete pShape;
+    delete pShape2;
 
-    std::cout << "--------------" << std::endl;
-
-    const Shape * shape_circle = new Circle(10,"circle1");
-    surface = shape_circle->surface();
-    std::cout << "dynamic type of shape_circle : " << typeid(*shape_circle).name() << std::endl;
-    std::cout << "The surface of the circle is : " << surface << std::endl;
     return 0;
 }

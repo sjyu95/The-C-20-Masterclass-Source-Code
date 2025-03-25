@@ -1,19 +1,24 @@
-#ifndef NON_POLYMORPHIC_H
-#define NON_POLYMORPHIC_H
+#ifndef NONPOLYMOPHIC_H
+#define NONPOLYMOPHIC_H
 
 #include <iostream>
 
-class StaticBase{
-     void do_something(){
-        std::cout << "StaticBase::do_something() called" << std::endl;
+class StaticBase {
+public:
+    StaticBase() = default;
+
+    void print() const {
+        std::cout << "StaticBase::print()" << std::endl;
     }
 };
 
-class StaticDerived : public StaticBase{
-     void do_something() {
-        std::cout << "StaticDerived::do_something() called" << std::endl;
-    }    
+class StaticDerived : public StaticBase {
+public:
+    StaticDerived() = default;
+
+    void print() const {
+        std::cout << "StaticDerived::print()" << std::endl;
+    }
 };
 
-
-#endif // NON_POLYMORPHIC_H
+#endif

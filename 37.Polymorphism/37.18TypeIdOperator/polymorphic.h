@@ -1,23 +1,25 @@
-#ifndef POLYMORPHIC_H
-#define POLYMORPHIC_H
+#ifndef POLYMOPHIC_H
+#define POLYMOPHIC_H
 
 #include <iostream>
 
-class DynamicBase{
-public: 
-    virtual void do_something(){
-        std::cout << "DynamicBase::do_something() called" << std::endl;
-    }
+class DynamicBase {
+public:
+    DynamicBase() = default;
     virtual ~DynamicBase() = default;
+
+    virtual void print() const {
+        std::cout << "DynamicBase::print()" << std::endl;
+    }
 };
 
-class DynamicDerived : public DynamicBase{
-public : 
-    virtual void do_something() override{
-        std::cout << "DynamicDerived::do_something() called" << std::endl;
-    } 
-    virtual ~DynamicDerived() = default;
+class DynamicDerived : public DynamicBase {
+public:
+    DynamicDerived() = default;
+
+    void print() const override {
+        std::cout << "DynamicDerived::print()" << std::endl;
+    }
 };
 
-
-#endif // POLYMORPHIC_H
+#endif

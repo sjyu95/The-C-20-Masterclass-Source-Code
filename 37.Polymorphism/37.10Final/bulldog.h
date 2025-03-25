@@ -1,20 +1,17 @@
-#ifndef BULL_DOG_H
-#define BULL_DOG_H
-#include "dog.h"
-class BullDog : public Dog
-{
-public:
-    BullDog();
-    virtual ~BullDog();
-    
-    
-    //Will throw a compiler error
-    /*
-   virtual void run() const override{
-       std::cout << "Bulldog::run() called" << std::endl;
-   }
-   */
+#ifndef BULLDOG_H
+#define BULLDOG_H
 
+#include "dog.h"
+
+class Bulldog : public Dog {
+public:
+    Bulldog() = default;
+
+    // void run() const {
+    //     std::cout << "Dog " << m_description << " is running" << std::endl;
+    // }
+
+private:
 };
 
-#endif // BULL_DOG_H
+#endif

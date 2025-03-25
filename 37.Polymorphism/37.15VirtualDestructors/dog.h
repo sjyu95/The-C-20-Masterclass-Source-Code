@@ -6,8 +6,8 @@ class Dog : public Feline
 public:
     Dog() = default;
     Dog(std::string_view fur_style, std::string_view description);
-     virtual ~Dog();
-    
+    ~Dog();
+
     virtual void bark() const{
         std::cout << "Dog::bark called : Woof!" << std::endl;
     }

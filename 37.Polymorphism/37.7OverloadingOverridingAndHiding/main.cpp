@@ -5,9 +5,11 @@
 #include "circle.h"
 
 int main(){
+    Circle circle{1,"circle"};
+    circle.draw();
 
-    Shape * shape_ptr = new Circle(10,"Circle1");
-    shape_ptr->draw(45,"Red");
+    Shape* shape = &circle;
+    shape->draw(111);
 
     return 0;
 }
