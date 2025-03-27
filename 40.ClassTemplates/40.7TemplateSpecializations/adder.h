@@ -1,41 +1,42 @@
-#include <iostream>
-#include <cstring>
+#ifndef ADDER_H
+#define ADDER_H
 
-// Regular class template
+#include <cstring>
+#include <iostream>
+
 template <typename T>
-class Adder
-{
+class Adder {
 public:
-	Adder(){
-    }
-	T add(T x, T y);
-	void do_something(){
-		std::cout << "Doing something..." << std::endl;
+	Adder() = default;
+
+	void do_something() const {
+		std::cout << "call do_something.." << std::endl;
 	}
+	// T add(T a, T b) const {
+	// 	return a+b;
+	// }
+	T add(T a, T b) const;
+private:
 };
 
 template <typename T>
-T Adder<T>::add(T a, T b)
-{
+T Adder<T>::add(T a, T b) const {
 	return a+b;
 }
 
-
-// Template specialization
 template <>
-class Adder <char*>
-{
+class Adder<char *> {
 public:
-	Adder(){
-    }
-	char* add(char* a, char* b);
+	Adder() = default;
+
+	// char * add(char * a, char * b) const {
+	// 	return std::strcat(a, b);
+	// }
+	char * add(char* a, char*b) const;
 };
 
- //template <> //  <= this is not needed if defined outside of class
-inline 
-char* Adder<char*>::add(char* a, char* b)
-{
-	return strcat(a,b);
+inline char* Adder<char *>::add(char* a, char* b) const {
+	return std::strcat(a,b);
 }
 
-
+#endif

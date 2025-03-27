@@ -1,33 +1,25 @@
 #include <iostream>
+#include <memory>
 #include "boxcontainer.h"
 
+template class BoxContainer<int, 4>; // explicit template instanciation
 
-int main(){
+int main() {
+	BoxContainer boxContainer{10};
 
-	BoxContainer<int> int_box;
-	int_box.add(10);	
-	int_box.add(11);
-	int_box.add(62);
-	int_box.add(330);
-	int_box.add(3);
-	int_box.add(7);
-	int_box.add(9);
-	int_box.add(8);
-	
-	std::cout << "int_box : " << int_box << std::endl;
-	std::cout << "int_box.max : " << int_box.get_max() << std::endl;
+	boxContainer.add(1);
+	boxContainer.add(2);
+	boxContainer.add(3);
+	boxContainer.add(1);
+	boxContainer.add(4);
+	std::cout << boxContainer.get_max() << std::endl;
 
-    std::cout << "-------------" << std::endl;
+	std::cout << "-----------" << std::endl;
 
-	BoxContainer<const char*> char_ptr_box;
-	
-	char_ptr_box.add("Apple");
-	char_ptr_box.add("Kiwi");
-	char_ptr_box.add("Banana");
-    char_ptr_box.add("Zeus");
-	std::cout << "char_ptr_box : " << char_ptr_box << std::endl;
-	std::cout << "char_ptr_box : " << char_ptr_box.get_max() << std::endl;
-    
+	BoxContainer<const char*> boxContainerChar{};
+	boxContainerChar.add("hello");
+	boxContainerChar.add("world");
+	std::cout << boxContainerChar.get_max() << std::endl;
 
-    return 0;
+	return 0;
 }

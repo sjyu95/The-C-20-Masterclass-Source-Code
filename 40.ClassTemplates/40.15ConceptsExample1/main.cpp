@@ -1,43 +1,37 @@
 #include <iostream>
-#include <concepts>
 #include <vector>
 
 template <typename T>
-concept OutputStreamable = requires(std::ostream& o , T d){
-	o << d;
+concept Ostreamable = requires (std::ostream& os, T d) {
+	os << d;
 };
 
-
-template <OutputStreamable T>
-std::ostream & operator << (std::ostream& out, const std::vector<T> & vec){
-   	out << " [ ";
-  	for(auto i : vec){
-      	out << i  << " ";
-   	 }
-   	out << "]";
-   	return out;
+template <typename T>
+std::ostream& operator<< (std::ostream& os, const std::vector<T>& vec) {
+	for (auto a : vec) {
+		os << a;
+	}
+	return os;
 }
 
-
-struct Point{
-	double mx;
-	double my;
-
-	friend std::ostream& operator<<( std::ostream& o, const Point p){
-		o << "Point [ x : " << p.mx << ", y : " << p.my << "]";
-		return o;
+class Point {
+	friend std::ostream& operator<< (std::ostream& os, const Point& rhs) {
+		os << "(" << rhs.m_a << ", " << rhs.m_b << ") ";
+		return os;
 	}
-   
+public:
+	Point() = default;
+	Point(int a, int b) : m_a{a}, m_b{b} {}
+
+private:
+	int m_a{};
+	int m_b{};
 };
 
+int main() {
+	std::vector<int> a{1,2,3,4,5};
+	// std::cout << a << std::endl;
 
-int main(){
-
-    std::vector<int> numbers {1,2,3,4,5};
-    std::cout << "numbers : " << numbers << std::endl;
-
-    std::vector<Point> points {{10,20} , {59,45}};
-    std::cout << "points : " << points << std::endl;
-   
-    return 0;
+	std::vector<Point> b{Point{1,2}, Point{3,4}};
+	std::cout << b << std::endl;
 }
