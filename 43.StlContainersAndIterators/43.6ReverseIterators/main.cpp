@@ -1,30 +1,26 @@
 #include <iostream>
 #include <vector>
 
+template <typename T>
+void print_reverse_collection(const T& col) {
+    auto rbegin_it = col.rbegin();
+    auto rend_it = col.rend();
 
-int main(){
-
-    std::vector<int> numbers {1,2,3,4,5,6,7,8,9,10};
-    
-    //Trying out reverse iterators
-    //auto it = numbers.rbegin(); // A reverse iterator increments backwards from the end.
-    std::vector<int>::reverse_iterator it= numbers.rbegin();
-    *it = 34;
-    std::cout << "Numbers : [";
-    while(it != numbers.rend()){
-        std::cout << " " << *it ;
-        ++it;
+    while (rbegin_it != rend_it) {
+        std::cout << *rbegin_it << std::endl;
+        rbegin_it++;
     }
-    std::cout << "] " << std::endl;
+}
 
-    std::cout << "--------" << std::endl;
-    /*
-    auto it_rev = numbers.rbegin();
-    
-    if( it_rev != numbers.end()){ // Compiler error.
-        std::cout << "Do something..." << std::endl;
-    }
-    */
-   
+int main() {
+    std::vector<int> vec1{1,2,3,4,5};
+    print_reverse_collection(vec1);
+
+    std::vector<int>::reverse_iterator rbegin_it = vec1.rbegin();
+    std::cout << *rbegin_it << std::endl;
+
+
+    std::vector<int>::reverse_iterator rend_it = vec1.rend();
+    std::cout << *rend_it << std::endl;
     return 0;
 }

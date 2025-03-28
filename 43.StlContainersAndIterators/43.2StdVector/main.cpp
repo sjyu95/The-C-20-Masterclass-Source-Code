@@ -1,91 +1,49 @@
+#include <concepts>
 #include <iostream>
+#include <string>
 #include <vector>
 
 template <typename T>
-void print_vec( const std::vector<T>& vec){
-    for(size_t i{}; i < vec.size();++i){
-        std::cout << vec[i] << " ";
+void print_vec(const T& vec){
+    for (auto i : vec) {
+        std::cout << i << " ";
     }
-    std::cout << std::endl;    
+    std::cout << std::endl;
 }
 
 template <typename T>
-void print_raw_array(const T* p, std::size_t size)
-{
-    std::cout << "data = ";
-    for (std::size_t i = 0; i < size; ++i)
-        std::cout << p[i] << ' ';
+// requires std::is_arithmetic_v<T>
+// template <std::integral T>
+void print_raw_array(const T* array, size_t size) {
+    for (size_t i{}; i < size; i++) {
+        std::cout << array[i] << " ";
+    }
     std::cout << std::endl;
 }
 
+int main() {
+    std::vector<int> vec1{1,2,3,4,5};
+    print_vec(vec1);
+    print_raw_array(vec1.data(), vec1.size());
 
-int main(){
+    std::vector<std::string> vec2 { "The", "blue", "sky"};
+    print_vec(vec2);
+    print_raw_array(vec2.data(), vec2.size());
 
-    //Constructing vectors
-    std::vector<std::string> vec_str {"The","sky","is","blue","my","friend"};
-    std::cout << "vec1[1]  : " << vec_str[1] << std::endl;
-    print_vec(vec_str);
+    std::cout << vec2[0] << " " << vec2[1] << " " << vec2[2] << std::endl;
+    std::cout << vec2.at(0) << " " << vec2.at(1) << " " << vec2.at(2) << std::endl;
 
-    std::cout << "------" << std::endl;
+    std::cout << vec2.front() << std::endl;
+    print_vec(vec2);
 
-    std::vector<int> ints1;
-    std::cout << "ints1 : ";
-    print_vec(ints1); // Won't print anything, the vector has no content
+    std::cout << vec2.back() << std::endl;
+    print_vec(vec2);
 
-    std::vector<int> ints2 = { 1,2,3,4 };
-    std::vector<int> ints3{ 11,22,33,44 };
-    
-    std::cout << "ints2 : ";
-    print_vec(ints2);
+    vec2.pop_back();
+    print_vec(vec2);
 
-    std::cout << "ints3 : ";
-    print_vec(ints3);
+    vec2.push_back("heart");
+    print_vec(vec2);
 
-
-    std::vector<int> ints4(20, 55); // A vector with 20 items, all initialized to 55
-    std::cout << "ints4 : ";
-    print_vec(ints4);
-    
-    //Be careful about uniform initialization
-    std::vector<int> ints5{20, 55}; // A vector with 2 items : 20 and 55
-    std::cout << "ints5 : ";
-    print_vec(ints5);
-
-
-    //Accessing elements
-    std::cout << std::endl;
-    std::cout << "Accessing elements in a vector: " << std::endl;
-    std::cout << "vec_str[2] : " << vec_str[2] << std::endl;
-    std::cout << "vec_str.at(3) : " << vec_str.at(3) << std::endl;
-    std::cout << "vec_str.front() : " << vec_str.front() << std::endl;
-    std::cout << "vec_str.back() : " << vec_str.back() << std::endl;
-
-    //Using the data method
-    std::cout << "using raw array : " << std::endl;
-    print_raw_array(vec_str.data(),vec_str.size());
-
-
-    //Adding and removing stuff
-    std::cout << std::endl;
-    std::cout << "Adding and removing stuff : " << std::endl;
-    
-    std::cout << "ints1 : " ;
-    print_vec(ints1);
-    
-    
-    //Pushing back
-    ints1.push_back(100);
-    ints1.push_back(200);
-    ints1.push_back(300);
-    ints1.push_back(500);
-    std::cout << "ints1 : " ;
-    print_vec(ints1);
-    
-    //Poping back
-    ints1.pop_back();
-    std::cout << "ints1 : " ;
-    print_vec(ints1);
-
-   
     return 0;
 }

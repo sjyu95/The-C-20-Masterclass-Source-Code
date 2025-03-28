@@ -1,58 +1,36 @@
 #include <iostream>
 #include <vector>
 
-
 template <typename T>
-void print_collection(const T& collection){
-    
-    auto it = collection.begin();
-    
-    std::cout << " [";
-    while(it != collection.end()){
-        std::cout << " " << *it ;
-        ++it;
+void print_collection_not_modify(const T& col) {
+    auto cbegin_it = col.cbegin();
+    auto cend_it = col.cend();
+
+    while(cbegin_it != cend_it) {
+        std::cout << *cbegin_it << std::endl;
+        cbegin_it++;
     }
-    std::cout << "]" << std::endl;
 }
 
+template <typename T>
+void print_collection_not_modify_and_reverse(const T& col) {
+    auto crbegin_it = col.crbegin();
+    auto crend_it = col.crend();
 
-int main(){
-
-    std::vector<int> numbers{ 11,22,33,44,55,66,77};
-
-    std::cout << "numbers : ";
-    print_collection(numbers);
-
-    /*
-    std::vector<int>::iterator it = numbers.begin();
-    while( it != numbers.end()){
-        *it = 100;
-        ++it;
+    while(crbegin_it != crend_it) {
+        std::cout << *crbegin_it << std::endl;
+        crbegin_it++;
     }
-    */
+}
 
-    std::cout << "numbers : ";
-    print_collection(numbers);
+int main() {
+    std::vector<int> vec1{1,2,3,4,5};
+    print_collection_not_modify(vec1);
+    print_collection_not_modify_and_reverse(vec1);
 
-    std::cout << "-------" << std::endl;
+    std::vector<int>::const_reverse_iterator crbegin = vec1.crbegin();
+    std::cout << *crbegin << std::endl;
+    // *crbegin = 100;
 
-    //std::vector<int>::const_iterator c_it = numbers.cbegin();
-    auto c_it = numbers.cbegin();
-    while( c_it != numbers.end()){
-       // *c_it = 100;
-        ++c_it;
-    }
-
-
-    //Constant reverse iterators
-    auto it1 = numbers.crbegin();
-    //std::vector<int>::const_reverse_iterator it1= numbers.crbegin();
-
-    while(it1 != numbers.crend()){
-      //*it1 = 600; // Compiler error, it1 is a const iterator, we can't modify 
-                    // container data through it.
-      ++it1;
-    }
-   
     return 0;
 }
