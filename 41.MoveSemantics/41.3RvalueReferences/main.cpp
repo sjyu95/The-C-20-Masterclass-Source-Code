@@ -1,24 +1,18 @@
 #include <iostream>
 
-double add(double a , double b){
-    return a + b;
+int add (int x, int y) {
+    return x + y;
 }
 
+int main(int argc, char** argv) {
+    int x{10};
+    int y{20};
 
-int main(){
-    
-    int x{5};
-    int y{10};
+    int&& z = x + y;
+    std::cout << "int&& z = " << z << std::endl;
 
-    int&& result = x + y;
+    int&& result = add(x, y);
+    std::cout << "add(x, y)'s rvalue reference : " << result << std::endl;
 
-    double&& outcome = add(10.1,20.2);
-
-
-    //
-
-    std::cout << "result : " << result << std::endl;
-    std::cout << "outcome : " << outcome << std::endl;
-   
     return 0;
 }

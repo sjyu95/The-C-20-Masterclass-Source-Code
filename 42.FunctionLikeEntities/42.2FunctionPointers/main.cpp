@@ -1,29 +1,18 @@
 #include <iostream>
 
-double add(double a, double b){
-    return a+b;
+double add (double a, double b) {
+    return a + b;
 }
 
+int main(int argc, char**argv) {
+    // double (*f_ptr)(double, double) = add;
+    // double (*f_ptr)(double, double) = &add;
+    // double (*f_ptr)(double, double) {add};
+    double (*f_ptr)(double, double) {&add};
+    // double (*f_ptr)(double, double) = nullptr; // crash!!
 
-int main(){
-
-    //double (*f_ptr) (double, double)  = &add;
-    //double(*f_ptr) (double,double) = add;
-
-    //double(*f_ptr) (double,double) {&add};
-    //double(*f_ptr) (double,double){add};
-
-    //auto f_ptr = &add;
-    //auto f_ptr = add;
-
-    //auto *f_ptr = &add;
-    //auto *f_ptr = add;
-
-    //Things gone wroong
-    double(*f_ptr) (double , double) = nullptr;
+    std::cout << "(a+b) = " << f_ptr(1,3) << std::endl;
 
 
-    std::cout << "add(10,30) : " << f_ptr(10,30) << std::endl;
-    
     return 0;
 }

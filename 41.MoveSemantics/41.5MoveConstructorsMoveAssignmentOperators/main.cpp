@@ -1,30 +1,29 @@
 #include <iostream>
+#include <memory>
 #include "boxcontainer.h"
 
-void populate_box(BoxContainer<int>& box, int modifier){
-	for(size_t i{0} ; i < 20 ; ++i){
-		box.add((i+1)*modifier);
+void PopulateBox(BoxContainer<int>& box, int modifier) {
+	for (auto i{0}; i < 20; ++i) {
+		box.add((i+1) * modifier);
 	}
 }
 
-BoxContainer<int> make_box(int modifier){
-	BoxContainer<int> local_int_box(20);
-	populate_box(local_int_box,modifier);
-	return local_int_box;
+BoxContainer<int> MakeBox(int modifier) {
+	BoxContainer<int> localbox{20};
+	PopulateBox(localbox, modifier);
+	return localbox;
 }
 
+int main(int argc, char** argv) {
+	BoxContainer<int> boxarray[2];
 
-int main(){
+	std::cout << "---------------------" << std::endl;
 
-	BoxContainer<int> box_array[2];
-
-    std::cout << "--------" << std::endl;
-
-	for(size_t i{0} ; i < 2 ; ++i){
-		box_array[i] = make_box(i+1);//Move assignment operator called
+	for (auto i{0}; i < std::size(boxarray); ++i) {
+		boxarray[i] = MakeBox(2);
 	}
 
-    std::cout << "--------" << std::endl;
-   
-    return 0;
+	std::cout << "---------------------" << std::endl;
+
+	return 0;
 }

@@ -1,49 +1,45 @@
+#include <concepts>
 #include <iostream>
-#include <set>
 #include <map>
-#include <unordered_set>
+#include <set>
+#include <string>
 #include <unordered_map>
+#include <unordered_set>
 
-template<typename T>
-void show_collection( const T& collection){
-    
-    std::cout << " [" ;
-    for(const auto& elt : collection){
-        std::cout << " " << elt ;
+template <typename T>
+void PrintCollection(const T& coll) {
+    for (auto e : coll) {
+        std::cout << e << std::endl;
     }
-    std::cout << "]" << std::endl;
-    
 }
 
 template <typename T>
-void show_map_collection( const T& collection){
-    
-    std::cout << " [" ;
-    for(const auto& [key,value ]: collection){
-        std::cout << " (" << key << "," << value << ")" ;
+void PrintMapCollection(const T& coll) {
+    for (auto [k, v] : coll) {
+        std::cout << k << " : " << v << std::endl;
     }
-    std::cout << "]" << std::endl;
-    
 }
 
-int main(){
+int main() {
+    std::set<int> set1{1,2,3,4,5};
+    std::unordered_set set2{1,2,5,4,3};
 
-    //std::set<int> collection1 {11,16,2,912,15,6,15,2};
-    std::unordered_set<int> collection1 {11,16,2,912,15,6,15,2};
+    PrintCollection(set1);
+    PrintCollection(set2);
 
-    //std::map<int,int> collection2 {{1,11},{0,12},{4,13},{2,14},{3,15}};
-    std::unordered_map<int,int> collection2 {{1,11},{0,12},{4,13},{2,14},{3,15}};
-    
-    
-    std::cout << "collection1 : " ;
-    show_collection(collection1);
-    
-    std::cout << "collection2 : ";
-    show_map_collection(collection2);
-    
-    //The operations are mostly similar to std::set and std::map . The details
-    //can be checked in your favorite C++ standard library reference manual
-    
-    
+    std::map<int, std::string> map1{
+        std::make_pair(1,"sejung"),
+        std::make_pair(2, "mully"),
+        std::make_pair(3, "puppy")
+    };
+    PrintMapCollection(map1);
+
+    std::unordered_map<int, std::string> map2{
+        std::make_pair(1,"sejung"),
+        std::make_pair(3, "puppy"),
+        std::make_pair(2, "mully")
+    };
+    PrintMapCollection(map2);
+
     return 0;
 }

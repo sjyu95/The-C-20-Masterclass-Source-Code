@@ -2,48 +2,38 @@
 #include <memory>
 #include "boxcontainer.h"
 
-void populate_box(BoxContainer<int>& box, int modifier){
-	for(size_t i{0} ; i < 20 ; ++i){
-		box.add((i+1)*modifier);
+template <typename T>
+void PopulateBox(BoxContainer<T>* box, int modifier) {
+	for (size_t i{0}; i < modifier; ++i) {
+		box->add((i+1) * modifier);
 	}
 }
 
+int main() {
+	BoxContainer<int> box1;
 
+	std::cout << "box 1 : " << box1 << std::endl;
+	PopulateBox(&box1, 2);
+	std::cout << "box 1 : " << box1 << std::endl;
 
-int main(){
+	BoxContainer<int> box2 = std::move(box1);
+	std::cout << "box 2 : " << box2 << std::endl;
 
-    BoxContainer<int> box1;
-	populate_box(box1,2);
+	std::cout << "------------------" << std::endl;
+	std::cout << "box 1 : " << box1 << std::endl;
+	std::cout << "box 2 : " << box2 << std::endl;
 
-    std::cout << "box1 : " << box1 << std::endl;
+	std::unique_ptr<int> int_ptr = std::make_unique<int>(33);
+	std::cout << "------------------" << std::endl;
+	std::cout << "*int_ptr : " << *int_ptr << std::endl;
 
-    BoxContainer<int> box2;
-	
-	box2 = std::move(box1);
+	std::unique_ptr<int> int_ptr2 = std::move(int_ptr);
+	std::cout << "*int_ptr2 : " << *int_ptr2 << std::endl;
 
-	std::cout << "------" << std::endl;
+	if (int_ptr)
+		std::cout << "*int_ptr : " << *int_ptr << std::endl;
+	else
+		std::cout << "*int_ptr is moved" << std::endl;
 
-	std::cout << "box1 : " << box1 << std::endl;
-	std::cout << "box2 : " << box2 << std::endl;
-
-
-	std::cout << "------" << std::endl;
-
-    std::unique_ptr<int> ptr_int = std::make_unique<int>(33);
-
-	std::cout << "*ptr_int : " << *ptr_int << std::endl;
-
-	std::unique_ptr<int> ptr_int_copy = ptr_int;
-
-
-	if(ptr_int){
-		std::cout << "*ptr_int : " << *ptr_int << std::endl;
-	}else{
-		std::cout << "ptr_int doesn't contain any valid data" << std::endl;
-	}
-	std::cout << "*ptr_int_copy : " << *ptr_int_copy << std::endl;
-
-
-  
-    return 0;
+	return 0;
 }
