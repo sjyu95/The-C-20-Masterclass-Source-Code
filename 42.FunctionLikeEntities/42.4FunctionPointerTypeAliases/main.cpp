@@ -1,103 +1,84 @@
 #include <iostream>
+#include <string>
 #include "boxcontainer.h"
 
-char encrypt(const char& param){ // Callback function
-    return static_cast<char> (param + 3);
+char encrypt(const char& src){
+    char enc = static_cast<char>(src + 3);
+    return enc;
 }
 
-char decrypt(const char& param){ // Callback function
-    return static_cast<char> (param - 3);
+char decrypt(const char& src){
+    char dec = static_cast<char>(src - 3);
+    return dec;
 }
 
+using str_modifier = char(*)(const char&);
 
-std::string & modify(std::string& str_param,
-                                        char(* modifier)(const char&))
-{
-     for(size_t i{} ; i < str_param.size() ; ++i){
-        str_param[i] = modifier(str_param[i]); // Calling the callback
-     }
-     return str_param;
+// std::string& modify(std::string& src_param, char(*modifier)(const char&)){
+std::string& modify(std::string& src_param, str_modifier modifier){
+    for (size_t i{}; i < std::size(src_param); ++i) {
+        src_param[i] = modifier(src_param[i]);
+    }
+    return src_param;
 }
 
-//Modifying a BoxContainer of strings
-BoxContainer<std::string>& modify(BoxContainer<std::string>& sentence,
-                                        char(*modifier) (const char&)){
-    for(size_t i{}; i < sentence.size() ; ++i){
-            
-        //Code below relies on get_item() to return a reference
-        //Loop through the word modifying each character 
-        for(size_t j{} ; j < sentence.get_item(i).size(); ++j){
-            sentence.get_item(i)[j] = modifier(sentence.get_item(i)[j]);
+BoxContainer<std::string>& modify(BoxContainer<std::string>& src_param, char(*modifier)(const char&)) {
+    for (size_t i{}; i < src_param.size(); ++i) {
+        for (size_t j{}; j < src_param.get_item(i).size(); ++j) {
+            src_param.get_item(i)[j] = modifier(src_param.get_item(i)[j]);
         }
     }
-    return sentence;
+    return src_param;
 }
 
+using str_compatator = bool(*)(std::string, std::string);
 
-//Using syntax
-using str_comparator = 
-    bool(*)(const std::string& str1, const std::string& str2);
-
-//With typedefs
-//typedef bool(*str_comparator) (const std::string& str1, const std::string& str2);
-
-std::string get_best (const BoxContainer<std::string>& sentence,
-                        str_comparator comparator){
-
-    std::string best = sentence.get_item(0);
-    for(size_t i{}; i < sentence.size() ; ++i){
-            
-        if(comparator(sentence.get_item(i),best)){
-            best = sentence.get_item(i);
-        }
-            
+// std::string get_best(BoxContainer<std::string> src_param, bool(*compatator)(std::string, std::string)) {
+std::string get_best(BoxContainer<std::string> src_param, str_compatator compatator) {
+    std::string best{};
+    for (size_t i{}; i < src_param.size(); ++i) {
+        if (compatator(src_param.get_item(i), best))
+            best = src_param.get_item(i);
     }
-         
     return best;
 }
 
-
-bool larger_in_size (const std::string& str1, const std::string& str2){
-    if(str1.size() > str2.size())
+bool larger_in_size(std::string src1, std::string src2) {
+    if (src1.size() > src2.size())
         return true;
-    else 
+    else
         return false;
 }
 
-bool greater_lexicographically(const std::string& str1, const std::string& str2){
-    return (str1>str2);
+bool greater_lexicographically(std::string src1, std::string src2) {
+    return (src1 > src2);
 }
 
+int main() {
+    std::string src_param{"You are best friend"};
+    auto enc = modify(src_param, encrypt);
+    std::cout << "enc : " << enc << std::endl;
+    std::cout << "dec : " << modify(enc, decrypt) << std::endl;
 
-int main(){
+    auto box{BoxContainer<std::string>{}};
+    box.add("This ");
+    box.add("is ");
+    box.add("my ");
+    box.add("box ");
 
-    std::string msg{"Hello"};
-    modify(msg,encrypt);
-    std::cout << "outcome : " << msg << std::endl;
+    std::cout << box << std::endl;
+    str_modifier enc_modifier{encrypt};
+    // auto enc_box = modify(box, encrypt);
+    str_modifier enc_mod{encrypt}, dec_mod{decrypt};
+    auto enc_box = modify(box, enc_mod);
+    std::cout << "enc box : " << enc_box << std::endl;
+    // auto dec_box = modify(box, decrypt);
+    auto dec_box = modify(box, dec_mod);
+    std::cout << "dec box : " << dec_box << std::endl;
 
-    std::cout << "------" << std::endl;
+    str_compatator larger{larger_in_size}, greater{greater_lexicographically};
+    std::cout << "larger in size : " << get_best(dec_box, larger) << std::endl;
+    std::cout << "greater lexicographically : " << get_best(dec_box, greater) << std::endl;
 
-    BoxContainer<std::string> quote;
-    quote.add("The");
-    quote.add("sky");
-    quote.add("is");
-    quote.add("blue");
-    quote.add("my");
-    quote.add("friend");
-    std::cout << "Initial : " <<  quote << std::endl;
-    std::cout << "Encrypted : " << modify(quote,encrypt) << std::endl;
-    std::cout << "Decrypted : " << modify(quote,decrypt) << std::endl;
-
-
-    std::cout << "-------" << std::endl;
-
-    str_comparator callback{larger_in_size};
-
-    std::cout << "larger in size : " << get_best(quote,callback) << std::endl;
-    std::cout << "greater lexicographicaly : " 
-            << get_best(quote,greater_lexicographically) << std::endl;
-
-
-   
     return 0;
 }

@@ -1,55 +1,38 @@
 #include <iostream>
-#include "encrypt.h"
 #include "decrypt.h"
+#include "encrypt.h"
 
-
-char encrypt(const char& param){ // Callback function
-    return static_cast<char> (param + 3);
+char encrypt(const char& ch) {
+    return static_cast<char>(ch + 3);
 }
 
-char decrypt(const char& param){ // Callback function
-    return static_cast<char> (param - 3);
+char decrypt(const char& ch) {
+    return static_cast<char>(ch - 3);
 }
 
+// using str_modifier = char(*)(const char&);
 
-template <typename Modifier>
-std::string & modify(std::string& str_param,
-                                        Modifier modifier)
-{
-     for(size_t i{} ; i < str_param.size() ; ++i){
-        str_param[i] = modifier(str_param[i]); // Calling the callback
-     }
-     return str_param;
+template <typename str_modifier>
+std::string& modify(std::string& src_param, str_modifier modifier) {
+    for (size_t i{}; i < src_param.size(); ++i) {
+        src_param[i] = modifier(src_param[i]);
+    }
+    return src_param;
 }
 
+int main() {
+    Encrypt enc_functor;
+    Decrypt dec_functor;
+    std::cout << "using functor" << std::endl;
+    std::cout << "encrypt " << enc_functor('A') << " to decrypt " << dec_functor(enc_functor('A')) << std::endl;
 
-int main(){
+    std::cout << "using modifier callback" << std::endl;
+    std::string src_param{"A"};
+    std::cout << "encrypt " << modify(src_param, encrypt) << " to decrypt " << modify(src_param, decrypt) << std::endl;
 
-    std::string str {"Hello"};
-    
-    std::cout << std::endl;
-    std::cout << "Modifying string through function pointers : " << std::endl;
-    std::cout << "Initial : " << str << std::endl;
-    std::cout << "Encrypted : " <<  modify(str,encrypt) << std::endl;
-    std::cout << "Decrypted : " << modify(str,decrypt) << std::endl;
+    std::cout << "using modifier by functor -- template function" << std::endl;
+    src_param = "A";
+    std::cout << "encrypt " << modify(src_param, enc_functor) << " to decrypt " << modify(src_param, dec_functor) << std::endl;
 
-    std::cout << "------" << std::endl;
-
-    //Using functors
-    Encrypt encrypt_functor;
-    Decrypt decrypt_functor;
-    
-    std::cout << "encrypt_functor : " << encrypt_functor('A') << std::endl; // D
-    std::cout << "decrypt_functor : " << decrypt_functor('D') << std::endl;// A
-
-
-    std::cout << "-----" << std::endl;
-
-    std::cout << std::endl;
-    std::cout << "Modifying string through functors : " << std::endl;
-    std::cout << "Initial : " << str << std::endl;
-    std::cout << "Encrypted : " <<  modify(str,encrypt_functor) << std::endl;
-    std::cout << "Decrypted : " << modify(str,decrypt_functor) << std::endl;
-   
     return 0;
 }

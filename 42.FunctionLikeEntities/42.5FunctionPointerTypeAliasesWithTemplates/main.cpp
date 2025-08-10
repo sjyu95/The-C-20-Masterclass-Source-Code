@@ -1,75 +1,52 @@
 #include <iostream>
+#include <string>
 #include "boxcontainer.h"
 
-//Templated type alias
 template <typename T>
-using compare_T=  bool(*)(const T& , const T& );
+using compatator_T = bool(*)(const T&, const T&);
 
 template <typename T>
-T get_best (const BoxContainer<T>& collection,
-                            compare_T<T> comparator){
-    T best = collection.get_item(0);
-    for(size_t i{}; i < collection.size() ; ++i){
-            
-        if(comparator(collection.get_item(i),best)){
-            best = collection.get_item(i);
-        }
-    }    
+T get_best(BoxContainer<T> src_param, compatator_T<T> compatator) {
+    T best{};
+    for (size_t i{}; i < src_param.size(); ++i) {
+        if (compatator(src_param.get_item(i), best))
+            best = src_param.get_item(i);
+    }
     return best;
 }
 
-bool larger_in_size (const std::string& str1, const std::string& str2){
-    if(str1.size() > str2.size())
+template <typename T>
+bool larger_in_size(const T& src1, const T& src2) {
+    if (src1.size() > src2.size())
         return true;
-    else 
+    else
         return false;
 }
 
-bool greater_lexicographically(const std::string& str1, const std::string& str2){
-    return (str1>str2);
+template <typename T>
+bool greater_lexicographically(const T& src1, const T& src2) {
+    return (src1 > src2);
 }
-
-bool larger_int( const int& param1, const int& param2){
-    return param1 > param2;
-}
-
 
 template <typename T>
-bool smaller(const T& param1, const T& param2){
-     if(param1 < param2){
-         return true;
-     }
-     return false;
+T smaller(const T& val1, const T& val2) {
+    return val1 < val2 ? val1 : val2;
 }
 
-int main(){
+int main() {
+    auto box{BoxContainer<std::string>{}};
+    box.add("This ");
+    box.add("is ");
+    box.add("my ");
+    box.add("box ");
 
-    BoxContainer<std::string> quote;
-    quote.add("The");
-    quote.add("sky");
-    quote.add("is");
-    quote.add("blue");
-    quote.add("my");
-    quote.add("friend");
-    
-    std::cout << std::endl;
-    std::cout << "Gettting the best : " << std::endl;
-    std::cout << "larger in size : " << get_best(quote,larger_in_size) << std::endl;
-    std::cout << "greater lexicographicaly : " 
-            << get_best(quote,greater_lexicographically) << std::endl;
+    std::cout << box << std::endl;
 
+    compatator_T<std::string> larger{larger_in_size}, greater{greater_lexicographically};
+    std::cout << "larger in size : " << get_best<std::string>(box, larger) << std::endl;
+    std::cout << "greater lexicographically : " << get_best<std::string>(box, greater) << std::endl;
 
-    std::cout << "------------" << std::endl;
+    std::cout << "smaller (1,2) : " << smaller<int>(1,2) << std::endl;
 
-    BoxContainer<int> ints;
-    ints.add(10);
-    ints.add(3);
-    ints.add(233);
-    ints.add(23);
-    ints.add(4);
-
-    //std::cout << "larger int : " << get_best(ints,larger_int) << std::endl;
-    std::cout << "smaller int : " << get_best(ints,smaller) << std::endl;
-         
     return 0;
 }
