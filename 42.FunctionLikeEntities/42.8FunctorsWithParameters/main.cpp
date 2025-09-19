@@ -1,77 +1,48 @@
-#include <iostream>
 #include <concepts>
+#include <iostream>
 #include "boxcontainer.h"
 
-//A functor can  take parameters and internally 
-// store them as member variables
 template <typename T>
 requires std::is_arithmetic_v<T>
-class IsInRange{
-public : 
-    IsInRange(T min, T max) : min_inclusive{min}, max_inclusive{max}{}
-    bool operator()(T value) const{
-        return ((value >= min_inclusive)&&(value<= max_inclusive));
+class IsInRange {
+public:
+    IsInRange(T min, T max) : m_min{min}, m_max{max} {}
+    bool operator() (T a) {
+        return ((m_min <= a) && (m_max >= a));
     }
-private : 
-    T min_inclusive;
-    T max_inclusive;
+private:
+    T m_min{};
+    T m_max{};
 };
 
-
-
-template <typename T ,typename RangePicker>
+template <typename T, typename RangePicker>
 requires std::is_arithmetic_v<T>
-T range_sum (const BoxContainer<T>& collection 
-                                , RangePicker is_in_range){
-    
-    T sum{};
-    for(size_t i{}; i < collection.size() ; ++i){
-        if(is_in_range(collection.get_item(i)))
-            sum += collection.get_item(i);
+class RangeSum {
+public:
+    RangeSum(BoxContainer<T> box, RangePicker is_in_range) : m_container{box}, m_rangePicker{is_in_range} {}
+    T operator() () {
+        T sum{};
+        for (size_t i{}; i < m_container.size(); ++i) {
+            if (m_rangePicker(m_container.get_item(i))) {
+                sum += m_container.get_item(i);
+            }
+        }
+        return sum;
     }
-    return sum;
-}
+private:
+    BoxContainer<T> m_container;
+    RangePicker m_rangePicker;
+};
 
-int main(){
+int main() {
+    BoxContainer<double> boxes1;
+    boxes1.add(10.1);
+    boxes1.add(20.1);
+    boxes1.add(30.1);
+    boxes1.add(40.1);
 
-    BoxContainer<double> doubles;
-    doubles.add(10.1);
-    doubles.add(20.2);
-    doubles.add(30.3);
-    doubles.add(15);
-    
-    std::cout << "doubles : " << doubles << std::endl;
-    std::cout <<"range_sum : "
-        <<  range_sum(doubles,IsInRange<double>(10.0,15.5)) << std::endl; // 10.1
-    std::cout << "range_sum : "
-        <<  range_sum(doubles,IsInRange<double>(10.0,41.5)) << std::endl;// 30.3
+    RangeSum<double, IsInRange<double>> sumFunctor(boxes1, IsInRange<double>(10,40));
+    std::cout << "double sum : " << sumFunctor() << std::endl;
 
-
-    std::cout << "------" << std::endl;
-    /*
-    BoxContainer<std::string> strings;
-    strings.add("Hello");
-    strings.add("World");
-
-    range_sum(strings,IsInRange<std::string> ("Hello","World"));
-    */
-
-   std::cout << "-----" << std::endl;
-
-    BoxContainer<int> ints;
-    ints.add(10);
-    ints.add(3);
-    ints.add(6);
-    ints.add(72);
-    ints.add(23);
-    ints.add(4);
-    
-    std::cout << "ints : " << ints << std::endl;
-    std::cout << "range_sum : "
-        << range_sum(ints,IsInRange<int>(10,20)) << std::endl; // 10
-    std::cout << "range_sum : "
-        <<  range_sum(ints,IsInRange<int>(10,30)) << std::endl; // 33
-
-   
     return 0;
 }
